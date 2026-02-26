@@ -1,16 +1,16 @@
-# API_3-_semestre
+<h1># API_3-_semestre<\h1>
 
-# Nome do Projeto
-
----
-
-## 📌 Desafio Proposto
-Descrever aqui o problema que será resolvido pelo sistema.
+<h2># Nome do Projeto<\h2>
 
 ---
 
-## 🎯 Objetivo
-Explicar qual é o objetivo principal do projeto.
+<h2>## 📌 Desafio Proposto<\h2>
+<p>Descrever aqui o problema que será resolvido pelo sistema.</p>
+
+---
+
+<h2>## 🎯 Objetivo<\h2>
+<p>Explicar qual é o objetivo principal do projeto.</p>
 
 ---
 
@@ -27,27 +27,28 @@ Explicar qual é o objetivo principal do projeto.
 
 ---
 
-## 🗓 Cronograma das Sprints
+<h2 id='sprints'> 📌 Cronograma de Sprints </h2>
 
-### Sprint 1
-- Story 01 – ...
-- Story 02 – ...
-
-### Sprint 2
-- Story 03 – ...
-- Story 04 – ...
+| Sprint | Período | Entregas | Documentação |
+|--------|---------|----------|--------|
+| 1 | 08/09 - 28/09 | Planejamento inicial, Protótipos Visuais | <a href = ""> sprint-1 |
+| 2 | 06/10 - 26/10 | Enviar/Receber Pedido de Orientação, Chat entre Orientador e Orientando, Histórico de Mensagens e TG, Adicionar Orientador  | <a href = ""> sprint-2 </a>    |
+| 3 | 03/11 - 23/11 | Cadastro/Login, Armazenamento de Documentos, Alteração de Dados de Cadastro, Notificação de Resposta ao Pedido de Orientação | <a href = ""> sprint-3 </a>    |
 
 ---
 
-## 🛠 Tecnologias Utilizadas
-- Java
-- Spring Boot
-- MySQL
-- Git / GitHub
+<h2 id='tecnologias'> 💻 Tecnologias </h2>
+
+[![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.java.com/)
+[![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)](https://maven.apache.org/)
+[![Jira](https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=jira&logoColor=white)](https://www.atlassian.com/software/jira)
+[![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
+[![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/)
 
 ---
 
-## 🌳 Estratégia de Versionamento
+<h2>## 🌳 Estratégia de Versionamento<\h2>
 
 - main → versão estável
 - develop → integração
@@ -56,13 +57,16 @@ Explicar qual é o objetivo principal do projeto.
 
 ---
 
-## 📦 Estrutura do Projeto
-
+<h2>## 📦 Estrutura do Projeto<\h2>
+<code>
 src/
  ├── controller
  ├── service
  ├── repository
  └── model
+ </code>
+
+---
 
 <h2> # 📝 Padrão de Commits <\h2>
 <p>Os commits devem seguir o padrão **"Padrão de Commits – por Renato Adorno"** para manter a consistência e a clareza no repositório.<\p>
