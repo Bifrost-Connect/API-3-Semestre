@@ -1,15 +1,15 @@
 <h1># API_3-_semestre</h1>
 
-<h2># Nome do Projeto<\h2>
+<h2># Nome do Projeto</h2>
 
 ---
 
-<h2>## 📌 Desafio Proposto<\h2>
+<h2>## 📌 Desafio Proposto</h2>
 <p>Descrever aqui o problema que será resolvido pelo sistema.</p>
 
 ---
 
-<h2>## 🎯 Objetivo<\h2>
+<h2>## 🎯 Objetivo</h2>
 <p>Explicar qual é o objetivo principal do projeto.</p>
 
 ---
@@ -48,7 +48,7 @@
 
 ---
 
-<h2>## 🌳 Estratégia de Versionamento<\h2>
+<h2>## 🌳 Estratégia de Versionamento</h2>
 
 - main → versão estável
 - develop → integração
@@ -57,7 +57,7 @@
 
 ---
 
-<h2>## 📦 Estrutura do Projeto<\h2>
+<h2>## 📦 Estrutura do Projeto</h2>
 <code>
 src/
  ├── controller
@@ -68,12 +68,12 @@ src/
 
 ---
 
-<h2> # 📝 Padrão de Commits <\h2>
+<h2> # 📝 Padrão de Commits </h2>
 <p>Os commits devem seguir o padrão **"Padrão de Commits – por Renato Adorno"** para manter a consistência e a clareza no repositório.<\p>
 
 ---
 
-<h3> ## 📌 Formato do Commit<\h3>
+<h3> ## 📌 Formato do Commit</h3>
 
 ```
 <tipo>: descrição em tom de ação direta
@@ -82,7 +82,7 @@ src/
 
 ---
 
-<h3>## 🔖 Tipos de Commit<\h3>
+<h3>## 🔖 Tipos de Commit</h3>
 
 - **fix** – Soluciona um problema (bug fix). Relacionado ao PATCH no versionamento semântico.  
 - **feat** – Inclui um novo recurso. Relacionado ao MINOR no versionamento semântico.  
@@ -95,7 +95,7 @@ src/
 
 ---
 
-<h3>## 💡 Exemplos<\h3>
+<h3>## 💡 Exemplos</h3>
 
 - `feat: Adiciona botão de login na tela inicial`  
 - `fix: Corrige bug no redirecionamento após login`  
