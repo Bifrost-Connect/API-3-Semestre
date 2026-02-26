@@ -31,9 +31,9 @@
 
 | Sprint | Período | Entregas | Documentação |
 |--------|---------|----------|--------|
-| 1 | 08/09 - 28/09 | Planejamento inicial, Protótipos Visuais | <a href = ""> sprint-1 |
-| 2 | 06/10 - 26/10 | Enviar/Receber Pedido de Orientação, Chat entre Orientador e Orientando, Histórico de Mensagens e TG, Adicionar Orientador  | <a href = ""> sprint-2 </a>    |
-| 3 | 03/11 - 23/11 | Cadastro/Login, Armazenamento de Documentos, Alteração de Dados de Cadastro, Notificação de Resposta ao Pedido de Orientação | <a href = ""> sprint-3 </a>    |
+| 1 |  |  | <a href = ""> sprint-1 |
+| 2 |  |   | <a href = ""> sprint-2 </a>    |
+| 3 |  |  | <a href = ""> sprint-3 </a>    |
 
 ---
 
