@@ -1,6 +1,6 @@
 <h1># API_3-_semestre</h1>
 
-![alt text](docs/logo.png.png)
+![alt text](docs/logo.png)
 
 ---
 <div align="center">
@@ -27,12 +27,36 @@
 <h2>## 📌 Desafio Proposto</h2>
 <p>Atualizar o processo de informações sobre o uso das viaturas próprias da empresa IPEM, e no envio destes dados ao SGI mensalmente. Atualmente é um trabalho manual feito pelos funcionários em pranchetas contidas em cada viatura. O desafio é modernizar esse problema, para que os Técnicos que utilizem as viaturas possam ter esse controle tecnológico dos registros e para o Gestor que ira subir aos dados ao final do mês tenha uma facilidade maior em manejar estes dados.</p>
 
----
+<br>
 
 <h2>## 🎯 Objetivo</h2>
 <p>A Bifrost Connect Permitirá que os técnicos tenham acesso á uma interface interativa, onde irão poder de maneira digital, fornecer informações sobre o serviço que irão realizar e as estatísticas do veículo ao decorrer do mesmo, para que consigam enviar este relatório completo ao Gestor, onde ele poderá separar as informações de forma mais precisa e ágil para o envio ao SGI.</p>
 
----
+<br>
+
+<h1 id='product-backlog'> 📖 Backlog do Produto </h1>
+
+
+| Rank | Prioridade | User Story | Estimativa | Sprint |
+|------|-------------|-------------|-------------|---------|
+| 1 | Alta | Como Usuário (Técnico ou Gestor), quero **realizar login com minha funcional/senha** para que meus registros sejam vinculados automaticamente ao meu perfil. | 8 | 1 |
+| 2 | Alta |Como Técnico do IPEM, quero **registrar o KM inicial, data e horário** ao retirar o veículo. | 8 | 1 |
+| 3 | Alta | Como técnico do IPEM, quero **registrar o KM final** ao devolver a viatura. | 8 | 1 |
+| 4 | Alta | Como Técnico da IPEM, quero **ter o controle do abastecimento da viatura**, para saber o último abastecimento, e poder registrar quando for abastecer novamente. | 8 | 1 |
+| 5 | Alta | Como Gestor da IPEM, quero **registrar novos funcionários e viaturas** no sistema.| 8 | 1 |
+| 6 | Alta | Como Gestor da IPEM , quero **ter o controle das viaturas que estão disponíveis e as que estão em uso** pelo meu sistema. | 8 | 2 |
+| 7 | Alta | Como Gestor da IPEM, quero **ter acesso aos documentos com o compilado de informações** de cada viatura e chamados. | 5 | 2 |
+| 8 | Média | Como técnico da IPEM, quero que **o sistema calcule automaticamente a distância percorrida** com a viatura. | 3 | 2 |
+| 9 | Média | Como Técnico da IPEM, quero poder **fazer comentários sobre o estado viatura** no final do relatório. | 3 | 2 |
+| 10 | Baixa | Como Técnico da IPEM, quero **cancelar um Check-in caso tenha selecionado a viatura errada por engano**, antes de iniciar o trajeto.| 3 | 2 |
+| 11 | Alta | Como Gestor da IPEM, quero **enviar o arquivo com os registros da sede no ao final do mês**, para envio ao SGI. | 8 | 3 |
+| 12 | Alta | Como Técnico do IPEM, quero **contactar o suporte de mecânica** caso aja algum problema com a viatura. | 5 | 3 |
+| 13 | Média | Como Gestor, quero um **log de atividades (auditoria) para saber quem alterou dados de KM ou de funcionários** e quando isso ocorreu. | 5 | 3 |
+| 14 | Baixa | Como técnico da IPEM, quero **acessar o GPS do aplicativo para ter noção do trajeto** a ser percorrido no chamado.  | 8 | 3 |
+| 15 | Baixa | Como Gestor da IPEM, quero **fazer alterações nos perfis** dos técnicos e de viaturas.  | 3 | 3 |
+
+
+
 
 <h2 id='membros'> 👥 Membros </h2>
 
@@ -48,25 +72,29 @@
 | <img src="https://avatars.githubusercontent.com/u/206007960?v=4" width=50px> | Vitor Samuel | Desenvolvedor | <a href="https://github.com/VitorRibeiro09"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a> |
 
 ---
+<br>
 
 <h2 id='sprints'> 📌 Cronograma de Sprints </h2>
 
 | Sprint | Período | Entregas | Documentação |
 |--------|---------|----------|--------|
-| 1 |  |  | <a href = ""> sprint-1 |
-| 2 |  |   | <a href = ""> sprint-2 </a>    |
-| 3 |  |  | <a href = ""> sprint-3 </a>    |
+| 1 | 16/03 a 50/4 | Entrega dos designs iniciais, juntamente com o sistema de autenticação, módulos administrativos e funções técnicas. | <a href = ""> sprint-1 |
+| 2 | 13/04 a 03/05 |  | <a href = ""> sprint-2 </a>    |
+| 3 | 11/05 a 31/05 |  | <a href = ""> sprint-3 </a>    |
 
 ---
+<br>
 
 <h2 id='tecnologias'> 💻 Tecnologias </h2>
 
 [![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.java.com/)
 [![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)](https://maven.apache.org/)
-[![Jira](https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=jira&logoColor=white)](https://www.atlassian.com/software/jira)
+[![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com/)
 [![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
 [![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/)
+[![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)](ttps://slack.com/intl/pt-br/)
+[![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white)](https://www.notion.com/)
 
 ---
 
