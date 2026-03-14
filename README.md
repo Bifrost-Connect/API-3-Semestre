@@ -119,7 +119,7 @@ src/
 ---
 
 <h2> # 📝 Padrão de Commits </h2>
-<p>Os commits devem seguir o padrão **"Padrão de Commits – por Renato Adorno"** para manter a consistência e a clareza no repositório.<\p>
+<p>Os commits devem seguir o padrão **"Padrão de Commits – por Renato Adorno"** para manter a consistência e a clareza no repositório.</p>
 
 ---
 
