@@ -1,5 +1,7 @@
 <h1># API_3-_semestre</h1>
 
+![alt text](docs/logo.png.png)
+
 <h2># Nome do Projeto</h2>
 
 ---
