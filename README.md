@@ -2,17 +2,35 @@
 
 ![alt text](docs/logo.png.png)
 
-<h2># Nome do Projeto</h2>
-
 ---
+<div align="center">
+<a href='#topo'
+<a href="#desafio"> 🎯 Desafio </a> |
+<a href="#proposta"> ✅ Proposta de Solução </a> |
+<a href="#product-backlog"> 📖 Backlog do Produto </a> | 
+<a href="#sprints"> 📌 Cronograma de Sprints </a> |
+<a href="#tecnologias"> 💻 Tecnologias </a> |
+<a href="#Manual de Instalação"> 📘 Manual de Instalação </a> |
+<a href="#membros"> 👥 Membros </a> |
+</div>
 
+<br>
+
+> **Status do Projeto:** Em andamento    
+> **Relatório de Testes:** [MD]() 📊  
+> **Pasta de Documentação:** [Docs]() 📄   
+
+
+<br>
+
+<BR>
 <h2>## 📌 Desafio Proposto</h2>
-<p>Descrever aqui o problema que será resolvido pelo sistema.</p>
+<p>Atualizar o processo de informações sobre o uso das viaturas próprias da empresa IPEM, e no envio destes dados ao SGI mensalmente. Atualmente é um trabalho manual feito pelos funcionários em pranchetas contidas em cada viatura. O desafio é modernizar esse problema, para que os Técnicos que utilizem as viaturas possam ter esse controle tecnológico dos registros e para o Gestor que ira subir aos dados ao final do mês tenha uma facilidade maior em manejar estes dados.</p>
 
 ---
 
 <h2>## 🎯 Objetivo</h2>
-<p>Explicar qual é o objetivo principal do projeto.</p>
+<p>A Bifrost Connect Permitirá que os técnicos tenham acesso á uma interface interativa, onde irão poder de maneira digital, fornecer informações sobre o serviço que irão realizar e as estatísticas do veículo ao decorrer do mesmo, para que consigam enviar este relatório completo ao Gestor, onde ele poderá separar as informações de forma mais precisa e ágil para o envio ao SGI.</p>
 
 ---
 
@@ -20,12 +38,14 @@
 
 | Foto | Nome | Função | Github |
 | :---------: | :---------: | :---------------------: | :-----------------: |
-| <img src="" width=50px> | Daniel Natan | Product Owner | <a href="https://github.com/danieldanka"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a>|
+| <img src="https://avatars.githubusercontent.com/u/73396751?s=400&u=e44a85b1956ab445b8ac2751ae194d29d74b9632&v=4" width=50px> | Daniel Natan | Product Owner | <a href="https://github.com/danieldanka"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a>|
 | <img src="" width=50px> | Samir | Scrum Master | <a href="https://share.google/yripwQuvg7AHkaXP0"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a> |
 | <img src="https://media.licdn.com/dms/image/v2/D4D03AQEvcTc_ydKXOQ/profile-displayphoto-scale_400_400/B4DZjt2eeqG8Ao-/0/1756337140235?e=1773878400&v=beta&t=FEJwlOv1Amuv234X7KEPpYaKI7XjmxkY5iR9oDKgQIs" width=50px> | Guilherme Gomes | Desenvolvedor | <a href="https://github.com/guilhermegcris"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a>  |
 | <img src="" width=50px> | João Gabriel | Desenvolvedor | <a href="https://github.com/jjoaoGabriel"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a> |
-| <img src="" width=50px> | Leonardo Graciano | Desenvolvedor | <a href="https://github.com/LeonardoGracianoOliveira"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a> |
-| <img src="" width=50px> | Luan | Desenvolvedor | <a href="https://github.com/SantoszLuan"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a> |
+| <img src="https://avatars.githubusercontent.com/u/184759398?v=4" width=50px> | Leonardo Graciano | Desenvolvedor | <a href="https://github.com/LeonardoGracianoOliveira"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a> |
+| <img src="https://avatars.githubusercontent.com/u/179888153?v=4" width=50px> | Luan | Desenvolvedor | <a href="https://github.com/SantoszLuan"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a> |
+| <img src="https://avatars.githubusercontent.com/u/162627331?v=4" width=50px> | Niuan Souza | Desenvolvedor | <a href="https://github.com/NiuanSouza"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a> |
+| <img src="https://avatars.githubusercontent.com/u/206007960?v=4" width=50px> | Vitor Samuel | Desenvolvedor | <a href="https://github.com/VitorRibeiro09"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a> |
 
 ---
 
