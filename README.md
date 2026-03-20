@@ -55,8 +55,40 @@
 | 14 | Baixa | Como técnico da IPEM, quero **acessar o GPS do aplicativo para ter noção do trajeto** a ser percorrido no chamado.  | 8 | 3 |
 | 15 | Baixa | Como Gestor da IPEM, quero **fazer alterações nos perfis** dos técnicos e de viaturas.  | 3 | 3 |
 
+<br>
 
+## 🏃 Definition of Ready (DoR) 
 
+| Critério | Descrição | Status |
+|-----------|------------|---------|
+|  Título e Descrição claros | A User Story possui um título e uma descrição seguindo o formato: “Como [usuário], quero [funcionalidade] para [benefício]”. | [ ] |
+|  Critérios de Aceitação definidos | Todos os critérios de aceitação foram definidos e validados pelo Product Owner. | [ ] |
+| Sem dependências bloqueadoras | Não há dependências técnicas, funcionais ou externas que impeçam o desenvolvimento da User Story. | [ ] |
+| Compreensão validada pelo time | Todos os membros da equipe compreendem a história e concordam com o esforço estimado. | [ ] |
+| Estimativa de esforço realizada | A história possui uma estimativa de Story Points definida com base em Planning Poker. | [ ] |
+| Artefatos correlatos disponíveis| Foram anexados wireframes, fluxogramas, modelo de dados ou outros artefatos que auxiliem o desenvolvimento. | [ ] |
+|  Estratégia de teste definida | Foram planejados cenários de teste ou estratégias de validação da funcionalidade. | [ ] |
+
+---
+
+<br>
+
+## 🏆 Definition of Done (DoD)
+
+| Critério | Descrição | Status |
+|-----------|------------|---------|
+| Código desenvolvido e funcional | A funcionalidade foi implementada conforme os critérios de aceitação e está operando corretamente. | [ ] |
+| Código versionado no Git | O código foi commitado seguindo o padrão de mensagens definido (`feat(#id): descrição`). | [ ] |
+| Branch específica criada | A história foi desenvolvida em uma branch própria (`feature/<nome-da-funcionalidade>`). | [ ] |
+| Code Review realizado | O código passou por revisão de pelo menos um membro da equipe via Pull Request. | [ ] |
+| Código limpo e comentado | Não há trechos comentados desnecessariamente e o código segue boas práticas de legibilidade. | [ ] |
+| Testes executados com sucesso | Todos os testes unitários e funcionais previstos foram executados e aprovados. | [ ] |
+| Documentação atualizada | A documentação técnica e/ou de usuário foi atualizada no repositório (`/docs`). | [ ] |
+| Incremento apresentado | A funcionalidade foi demonstrada ao cliente/professor em review de Sprint com vídeo ou demonstração ao vivo. | [ ] |
+
+---
+
+<br>
 
 <h2 id='membros'> 👥 Membros </h2>
 
@@ -73,6 +105,8 @@
 
 ---
 <br>
+
+
 
 <h2 id='sprints'> 📌 Cronograma de Sprints </h2>
 
