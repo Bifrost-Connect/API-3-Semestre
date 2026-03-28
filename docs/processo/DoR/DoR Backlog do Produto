@@ -1,0 +1,434 @@
+### US-01 - Check-in (Retirar Viatura)
+
+**Como** Técnico do IPEM, **quero** registrar o KM inicial, data e horário e o estado da viatura ao retirar o veículo, p**ara** que meus registros sejam vinculados automaticamente ao meu perfil e o uso seja monitorado.
+
+### 1. Regras de negócio detalhadas:
+
+- O sistema deve permitir o registro de saída de uma viatura da frota.
+- **Vínculo Automático:** O registro de saída deve ser vinculado automaticamente à **Funcional** do técnico que realizou o login.
+- **Data e Hora:** O sistema deve capturar a data e o horário do sistema no momento do clique em "Confirmar".
+- **Validação de KM:** O sistema não deve permitir que o KM inicial informado seja menor que o último KM registrado para aquela viatura.
+- **Status de Disponibilidade:** Uma viatura que já está em uso ("Em Uso") não pode aparecer na lista para um novo Check-in.
+- **Campos obrigatórios:**
+    - Viatura: Placa (seleção em lista)
+    - KM Inicial: Numérico (positivo)
+    - Prefixo: Numérico (positivo)
+- Deve ser possível registrar observações adicionais sobre avarias no momento da retirada/devolução.
+
+**2. Dados a armazenar definidos (tipos e validações):**
+• **Placa da Viatura:** lista pré-definida (vinda do cadastro de viaturas), obrigatório.
+• **Funcional do Técnico:** numérico/string, obrigatório, preenchimento automático via sistema (usuário logado).
+• **KM Inicial:** numérico decimal positivo, obrigatório, deve ser maior ao último KM registrado.
+• **Data/Hora Retirada:** data e hora válidas, obrigatório, preenchimento automático pelo sistema.
+• **Status de Uso:** booleano/lista (Disponível/Em Uso), obrigatório, atualizado automaticamente para "Em Uso" após o Check-in.
+
+**3. Mensagem de confirmação, erro e aviso definidas:**
+• **Confirmação:**
+    ◦ "Check-in realizado com sucesso. Boa viagem!"
+• **Erro:**
+    ◦ "Viatura já está em uso por outro técnico."
+    ◦ "KM inicial não pode ser menor que o último registro."
+    ◦ "Campos obrigatórios (Viatura e KM) não preenchidos."
+    ◦ "Usuário não autenticado. Realize o login novamente."
+• **Aviso:**
+    ◦ "Deseja iniciar o trajeto com esta viatura?"
+    ◦ "Dados de KM incorretos podem impactar o relatório mensal do SGI."
+
+#### **US-02 - Check-out (Devolver Viatura)**
+
+**Como** técnico do IPEM, **quero** registrar o KM final ao devolver a viatura, p**ara** que o sistema calcule a distância percorrida e libere o veículo para o próximo uso.
+
+**1. Regras de negócio detalhadas:**
+• O sistema deve permitir o fechamento de um Check-in em aberto.
+• **Validação de KM:** O KM final informado **deve ser obrigatoriamente maior** que o KM inicial registrado na retirada.
+• **Cálculo Automático:** O sistema deve subtrair o KM inicial do KM final para gerar a distância percorrida.
+• **Atualização de Status:** Após a confirmação, a viatura deve voltar para o status "Disponível" no sistema.
+• **Vínculo de Horário:** O sistema deve registrar automaticamente a data e hora da devolução.
+• **Campos Obrigatórios:**
+    ◦ KM Final (Numérico decimal positivo).
+    ◦ Identificação da Viatura (Seleção automática baseada no Check-in ativo do usuário).
+
+**2. Dados a armazenar definidos (tipos e validações):**
+• **KM Final:** numérico decimal positivo, obrigatório, deve ser $> KM\_Inicial$.
+• **Distância Percorrida:** numérico decimal, preenchimento automático ($KM\_Final - KM\_Inicial$).
+• **Data/Hora Devolução:** data e hora válidas, preenchimento automático pelo sistema.
+• **Status Final:** booleano/lista, atualizado automaticamente para "Disponível".
+
+**3. Mensagem de confirmação, erro e aviso definidas:**
+• **Confirmação:**
+    ◦ "Devolução realizada com sucesso! Distância percorrida: [X] KM."
+• **Erro:**
+    ◦ "KM final inválido. O valor deve ser maior que o KM inicial ([X])."
+• **Aviso:**
+    ◦ "Deseja finalizar o uso da viatura [Placa]?"
+    ◦ "Lembre-se de verificar o nível de combustível antes de entregar as chaves."
+
+#### **US-03 - Controle de Abastecimento**
+
+**Como** Técnico da IPEM, **quero** ter o controle do abastecimento da viatura, para saber o último abastecimento, e poder registrar quando for abastecer novamente, p**ara** que a gestão tenha controle sobre o consumo e gastos com combustível.
+
+**1. Regras de negócio detalhadas:**
+• O sistema deve permitir o registro de um novo abastecimento vinculado a uma viatura específica.
+• **Histórico Próximo:** Antes de registrar, o sistema deve exibir o KM e a data do último abastecimento realizado naquela viatura.
+• **Vínculo de Posto:** O técnico deve informar o nome ou CNPJ do posto onde o abastecimento foi realizado.
+• **Validação de KM:** O KM no momento do abastecimento não pode ser menor que o último KM registrado para a viatura.
+• **Cálculo de Consumo:** O sistema deve permitir (opcionalmente) o cálculo da média de consumo ($KM / Litros$) se houver dois abastecimentos seguidos de tanque cheio.
+• **Campos Obrigatórios:**
+    ◦ Viatura (Placa).
+    ◦ Tipo de Combustível (Gasolina, Etanol, Diesel).
+    ◦ Quantidade (Litros).
+    ◦ KM no ato do abastecimento.
+• **Campos Opcionais:**
+    ◦ Valor por litro (R$).
+    ◦ Valor total do abastecimento (R$).
+
+**2. Dados a armazenar definidos (tipos e validações):**
+• **Tipo Combustível:** lista pré-definida (Gasolina, Etanol, Diesel, GNV), obrigatório.
+• **Quantidade Litros:** numérico decimal positivo, obrigatório.
+• **KM Abastecimento:** numérico decimal positivo, obrigatório, $\ge$ último KM da viatura.
+• **Posto (Nome/CNPJ):** texto, obrigatório, mínimo 3 caracteres.
+• **Valor Total:** numérico decimal positivo, opcional.
+• **Data/Hora Registro:** data e hora válidas, preenchimento automático.
+
+**3. Mensagem de confirmação, erro e aviso definidas:**
+• **Confirmação:**
+    ◦ "Abastecimento registrado com sucesso!"
+    ◦ "Dados de consumo atualizados."
+• **Erro:**
+    ◦ "KM informado é incompatível com o odômetro atual da viatura."
+    ◦ "Quantidade de litros deve ser um valor positivo."
+    ◦ "Posto não identificado. Preencha o nome do estabelecimento."
+• **Aviso:**
+    ◦ "Deseja salvar os dados de abastecimento?"
+    ◦ "O valor total (R$) não foi preenchido!"
+
+### US-04 - Cadastro de Funcionários e Viaturas
+
+**Como** Gestor do IPEM, **quero** registrar novos funcionários e viaturas, p**ara** que a base de dados esteja sempre atualizada e os técnicos possam realizar seus registros.
+
+### 1. Regras de negócio detalhadas:
+
+- O sistema deve permitir a inclusão de novos usuários e novos veículos de forma independente.
+- **Perfil de Acesso:** Ao cadastrar um funcionário, deve-se definir se ele é **Técnico** ou **Gestor**.
+- **Unicidade de Identificação:** Não permitir o cadastro de funcionários com o mesmo número de funcional.
+- **Placa Única:** Não permitir o cadastro de viaturas com uma placa que já exista no sistema.
+- **Vínculo de Login:** Todo funcionário cadastrado deve obrigatoriamente possuir uma senha inicial para o primeiro acesso.
+- **Campos Obrigatórios:**
+    - **Funcionário:** Nome completo, Funcional (ID), Senha e Cargo (Perfil).
+    - **Viatura:** Placa, Modelo, Marca e KM Atual (Odômetro inicial).
+- Deve ser possível atualizar os dados de KM inicial de uma viatura caso haja erro no cadastro.
+
+### 2. Dados a armazenar definidos (tipos e validações):
+
+- **Nome Funcionário:** texto, obrigatório, mínimo 3 caracteres.
+- **Funcional:** numérico/string, obrigatório, único no sistema.
+- **Senha:** string, obrigatório, mínimo 6 caracteres.
+- **Cargo/Perfil:** lista pré-definida (Gestor, Técnico), obrigatório.
+- **Placa Viatura:** string, obrigatório, formato padrão (AAA-0000 ou Mercosul), única.
+- **Modelo/Marca:** texto, obrigatório, mínimo 2 caracteres.
+- **KM Inicial Cadastro:** numérico decimal positivo, obrigatório.
+
+### 3. Mensagem de confirmação, erro e aviso definidas:
+
+- **Confirmação:**
+    - "Funcionário [Nome] cadastrado com sucesso!"
+    - "Viatura [Placa] adicionada à frota."
+- **Erro:**
+    - "Número de funcional já existente no sistema."
+    - "Placa de viatura já cadastrada."
+    - "Campos obrigatórios não preenchidos."
+- **Aviso:**
+    - "Deseja salvar o novo cadastro?"
+    - "Senhas fracas podem comprometer a segurança dos registros."
+
+---
+
+---
+
+**SPRINT 2**
+
+### US-05 - Controle de Viaturas (Disponibilidade e Uso)
+
+**Como** Gestor do IPEM, **quero** poder ter o controle das viaturas que estão disponíveis e as que estão em uso, p**ara** otimizar a escala de trabalho e saber onde cada veículo se encontra.
+
+### 1. Regras de negócio detalhadas:
+
+- O sistema deve exibir uma lista ou painel com todas as viaturas cadastradas.
+- **Status em Tempo Real:** Cada viatura deve exibir seu estado atual: **Disponível** (verde) ou **Em Uso** (vermelho).
+- **Vínculo de Responsabilidade:** Se a viatura estiver "Em Uso", o sistema deve exibir o nome do Técnico que realizou o Check-in.
+- **Informação de Trajeto:** Deve mostrar o KM inicial registrado no último Check-in aberto.
+- **Filtros de Busca:** O gestor deve conseguir filtrar a lista apenas por viaturas "Disponíveis".
+- **Visualização de Horário:** Deve constar o horário em que a viatura saiu da sede.
+- **Trava de Segurança:** O gestor não pode alterar o status "Em Uso" manualmente sem que o técnico faça o Check-out (exceto em casos de auditoria/ajuste administrativo).
+
+### 2. Dados a armazenar definidos (tipos e validações):
+
+- **Status Atual:** lista pré-definida (Disponível, Em Uso, Manutenção), obrigatório.
+- **Técnico Responsável:** texto, preenchimento automático (vínculo com a US-02).
+- **KM de Saída:** numérico decimal, visualização apenas (vinda do Check-in).
+- **Localização/Chamado:** texto, opcional (se houver integração com ordens de serviço).
+
+### 3. Mensagem de confirmação, erro e aviso definidas:
+
+- **Confirmação:**
+    - "Filtro aplicado com sucesso."
+    - "Status da frota atualizado."
+- **Erro:**
+    - "Erro ao carregar lista de viaturas. Verifique a conexão com o banco/CSV."
+    - "Viatura [Placa] não encontrada nos registros ativos."
+- **Aviso:**
+    - "Existem [X] viaturas em uso no momento."
+    - "A viatura [Placa] está em uso há mais de 12 horas. Deseja verificar?"
+
+**US-06 - Cálculo Automático de Distância**
+**Como** técnico do IPEM, **quero** que o sistema calcule automaticamente a distância percorrida com a viatura, p**ara** evitar erros de cálculo manual e agilizar o preenchimento do relatório.
+
+**1. Regras de negócio detalhadas:**
+• O sistema deve realizar o cálculo matemático no momento em que o **KM Final** (US-03) for inserido.
+• **Fórmula de Cálculo:** O cálculo deve seguir a regra: $Distância = KM_{Final} - KM_{Inicial}$.
+• **Gatilho de Cálculo:** O cálculo deve ser disparado assim que o campo de KM Final perder o foco ou ao clicar em "Finalizar".
+• **Impedimento de Valor Negativo:** O sistema não deve processar o cálculo se o resultado for negativo (indicação de erro de digitação no KM Final).
+• **Exibição em Tempo Real:** O resultado da distância percorrida deve ser exibido em um campo de "Apenas Leitura" (read-only) antes da confirmação final.
+• **Precisão Decimal:** O cálculo deve considerar até duas casas decimais (padrão para odômetros digitais).
+
+**2. Dados a armazenar definidos (tipos e validações):**
+• **KM Inicial:** numérico decimal, recuperado automaticamente do registro de Check-in.
+• **KM Final:** numérico decimal positivo, inserido pelo usuário, deve ser $> KM_{Inicial}$.
+• **Distância Total:** numérico decimal positivo, calculado automaticamente pelo sistema.
+• **Unidade de Medida:** padrão quilômetros (KM).
+
+**3. Mensagem de confirmação, erro e aviso definidas:**
+• **Confirmação:**
+    ◦ "Cálculo realizado: [X] KM percorridos nesta viagem."
+• **Erro:**
+    ◦ "Erro no cálculo: KM final menor que o inicial. Verifique os valores."
+    ◦ "Valor inserido inválido (não numérico)."
+• **Aviso:**
+    ◦ "A distância percorrida parece muito alta ([X] KM). Deseja confirmar?"
+    ◦ "O cálculo depende do KM inicial registrado no Check-in."
+
+### US-07 - Acesso a Documentos e Compilado (Gestor)
+
+**Como** Gestor do IPEM, **quero** ter acesso aos documentos com o compilado de informações de cada viatura e chamados, p**ara** realizar a análise de desempenho da frota e conferir o histórico de uso.
+
+### 1. Regras de negócio detalhadas:
+
+- O sistema deve permitir a visualização de um relatório consolidado (Dashboard ou Tabela) de todos os registros.
+- **Histórico por Viatura:** O gestor deve conseguir selecionar uma viatura específica e ver todo o seu histórico (quem usou, quando, qual KM inicial/final e distância total).
+- **Compilado de Chamados:** Deve exibir uma lista de todos os check-ins e check-outs realizados em um período.
+- **Filtros de Data:** O sistema deve permitir filtrar as informações por dia, semana ou mês.
+- **Informação de Abastecimento:** O relatório deve incluir o histórico de abastecimentos realizados (US-04) junto aos registros de uso.
+- **Exportação para Visualização:** O sistema deve permitir visualizar o documento na tela antes de qualquer ação de exportação (US-11).
+- **Status de Chamado:** Diferenciar registros "Finalizados" de registros "Em Aberto" (veículos que ainda não voltaram).
+
+### 2. Dados a armazenar definidos (tipos e validações):
+
+- **ID do Registro:** numérico/string, gerado automaticamente para cada chamado.
+- **Placa/Modelo:** vindo do cadastro de viaturas (US-05).
+- **Nome do Técnico:** vindo do perfil do usuário logado (US-01).
+- **Métricas Consolidadas:** soma de distância percorrida (Double), total de litros abastecidos (Double).
+- **Data Inicial/Final:** filtros de período válidos.
+
+### 3. Mensagem de confirmação, erro e aviso definidas:
+
+- **Confirmação:**
+    - "Relatório gerado com sucesso para a viatura [Placa]."
+    - "Dados atualizados conforme os últimos registros."
+- **Erro:**
+    - "Nenhum registro encontrado para o período selecionado."
+    - "Erro ao acessar o banco de dados de históricos."
+- **Aviso:**
+    - "O relatório exibirá apenas chamados já finalizados."
+    - "Aguarde enquanto o sistema compila as informações das viaturas."
+    - 
+
+### US-08 - Contato com Suporte de Mecânica
+
+**Como** Técnico do IPEM, **quero** poder contactar o suporte de mecânica caso haja algum problema com a viatura, p**ara** reportar falhas imediatas e receber instruções de como proceder com o veículo.
+
+### 1. Regras de negócio detalhadas:
+
+- O sistema deve oferecer um botão de "Suporte/Emergência" visível durante o trajeto (após o Check-in).
+- **Lista de Contatos:** O sistema deve exibir uma lista de números de telefone ou ramais da oficina/manutenção credenciada.
+- **Abertura de Chamado:** Ao clicar em reportar problema, o sistema deve gerar um log automático de "Alerta de Manutenção" vinculado àquela viatura.
+- **Informação de Localização:** O técnico deve ter um campo para descrever brevemente o problema e sua localização atual.
+- **Mudança de Status:** Caso o problema seja impeditivo, o sistema deve permitir que o técnico altere o status da viatura para **"Em Manutenção"** no momento do encerramento forçado do chamado.
+- **Notificação ao Gestor:** O gestor deve receber um aviso visual ou log de que a viatura [Placa] reportou um problema mecânico.
+
+### 2. Dados a armazenar definidos (tipos e validações):
+
+- **Telefone Suporte:** numérico/string, pré-definido no sistema (apenas visualização).
+- **Descrição do Problema:** texto, obrigatório caso o suporte seja acionado, mínimo 10 caracteres.
+- **Status de Emergência:** booleano (Ativo/Inativo), obrigatório para sinalização no painel do gestor.
+- **Data/Hora do Chamado:** data e hora válidas, preenchimento automático.
+
+### 3. Mensagem de confirmação, erro e aviso definidas:
+
+- **Confirmação:**
+    - "Chamado de suporte enviado! Entre em contato pelo número: [Telefone]."
+    - "O status da viatura foi alterado para 'Em Manutenção'."
+- **Erro:**
+    - "Erro ao registrar chamado de suporte. Tente ligar diretamente para o setor."
+    - "Descrição do problema muito curta. Por favor, detalhe o ocorrido."
+- **Aviso:**
+    - "Deseja realmente solicitar suporte mecânico para esta viatura?"
+    - "Atenção: Use este canal apenas para problemas técnicos ou acidentes."
+
+### US-09 - Comentários sobre o Estado da Viatura
+
+**Como** Técnico da IPEM, **quero** poder fazer comentários sobre o estado da viatura no final do relatório, p**ara** informar a gestão sobre possíveis problemas mecânicos, limpeza ou avarias surgidas durante o uso.
+
+### 1. Regras de negócio detalhadas:
+
+- O sistema deve disponibilizar um campo de texto livre na tela de **Check-out** (US-03).
+- **Opcionalidade:** O preenchimento do comentário não deve ser obrigatório.
+- **Vínculo de Registro:** O comentário deve ser salvo e vinculado diretamente ao ID do chamado/viagem encerrado.
+- **Histórico para o Gestor:** O comentário deve ficar visível para o Gestor no relatório consolidado (US-08).
+- **Edição:** Uma vez finalizado o relatório e enviado, o comentário não poderá ser editado pelo técnico (garantia de integridade).
+- **Limite de Caracteres:** O campo deve suportar um texto descritivo (mínimo 0, máximo 500 caracteres).
+
+### 2. Dados a armazenar definidos (tipos e validações):
+
+- **Texto do Comentário:** texto (String), opcional, máximo 500 caracteres.
+- **ID da Viagem:** numérico/string, obrigatório (chave estrangeira do registro).
+- **Data do Relato:** data e hora válidas, preenchimento automático.
+
+### 3. Mensagem de confirmação, erro e aviso definidas:
+
+- **Confirmação:**
+    - "Comentário salvo com sucesso!"
+- **Erro:**
+    - "O comentário excede o limite de 500 caracteres."
+    - "Erro ao vincular comentário ao registro da viatura."
+- **Aviso:**
+- "Deseja adicionar alguma observação sobre o veículo antes de finalizar?"
+- "Atenção: Relatos de avarias graves devem ser comunicados imediatamente à manutenção."
+
+### US-10 - Cancelar Check-in (Viatura Errada)
+
+**Como** Técnico da IPEM, **quero** poder cancelar um Check-in caso tenha selecionado a viatura errada por engano, antes de iniciar o trajeto, p**ara** que os dados de uso não fiquem incorretos e a viatura seja liberada imediatamente.
+
+### 1. Regras de negócio detalhadas:
+
+- O sistema deve permitir o cancelamento de um Check-in que ainda não teve o Check-out realizado.
+- **Trava de Trajeto:** O cancelamento só deve ser permitido se o técnico **ainda não tiver saído** com o veículo (dentro de um tempo limite de 10 minutos após o Check-in, por exemplo).
+- **Restituição de Status:** Após o cancelamento, a viatura deve retornar automaticamente para o status **"Disponível"**.
+- **Integridade do Histórico:** O registro cancelado não deve ser excluído totalmente, mas marcado com o status "Cancelado" para fins de auditoria (US-13).
+- **Vínculo de Usuário:** Somente o técnico que realizou o Check-in ou um Gestor pode realizar o cancelamento.
+- **Justificativa:** O sistema pode solicitar uma breve justificativa (opcional) para o cancelamento.
+
+### 2. Dados a armazenar definidos (tipos e validações):
+
+- **ID do Check-in:** numérico/string, obrigatório para identificar qual registro anular.
+- **Status do Registro:** lista pré-definida (Ativo, Finalizado, **Cancelado**), obrigatório.
+- **Justificativa de Erro:** texto, opcional, mínimo 3 caracteres (se preenchido).
+- **Data/Hora do Cancelamento:** data e hora válidas, preenchimento automático.
+
+### 3. Mensagem de confirmação, erro e aviso definidas:
+
+- **Confirmação:**
+    - "Check-in cancelado com sucesso. A viatura [Placa] está disponível novamente."
+- **Erro:**
+    - "Não é possível cancelar um Check-in que já possui registro de KM final."
+    - "Tempo limite para cancelamento excedido (10 min). Entre em contato com o Gestor."
+- **Aviso:**
+    - "Tem certeza que deseja cancelar o início desta viagem?"
+    - "Esta ação irá liberar a viatura imediatamente para outros usuários."
+
+### US-11 - Exportação para o SGI (Mensal)
+
+**Como** Gestor da IPEM, **quero** poder enviar o arquivo com os registros da sede ao final do mês, p**ara** envio ao SGI e cumprimento das obrigações administrativas de controle de frota.
+
+### 1. Regras de negócio detalhadas:
+
+- O sistema deve permitir a geração de um arquivo consolidado contendo todos os registros de uso e abastecimento do mês selecionado.
+- **Perfil de Acesso:** Funcionalidade exclusiva para o perfil **Gestor**.
+- **Filtro Temporal:** O usuário deve obrigatoriamente selecionar o **Mês** e o **Ano** de referência antes de gerar o arquivo.
+- **Formato de Saída:** O arquivo gerado deve ser obrigatoriamente no formato **.csv** (compatível com Excel e SGI).
+- **Padronização de Colunas:** O cabeçalho do arquivo deve seguir a ordem exata exigida pelo SGI (ex: Data, Placa, Técnico, KM Inicial, KM Final, Distância).
+- **Integridade:** Somente registros com status "Finalizado" (US-03) devem constar no arquivo mensal. Registros "Em Aberto" ou "Cancelados" devem ser ignorados.
+- **Local de Salvamento:** O sistema deve abrir uma janela de seleção de diretório para o usuário escolher onde salvar o arquivo.
+
+### 2. Dados a armazenar definidos (tipos e validações):
+
+- **Mês de Referência:** numérico/lista (1 a 12), obrigatório.
+- **Ano de Referência:** numérico (YYYY), obrigatório.
+- **Caminho do Arquivo (Path):** string, obrigatório (capturado via seletor de arquivos).
+- **Separador de Dados:** caractere fixo (ponto e vírgula `;` ou vírgula `,`) conforme padrão SGI.
+
+### 3. Mensagem de confirmação, erro e aviso definidas:
+
+- **Confirmação:**
+    - "Arquivo 'Relatorio_SGI_MM_AAAA.csv' gerado com sucesso!"
+    - "Exportação concluída. [X] registros processados."
+- **Erro:**
+    - "Nenhum registro finalizado encontrado para o período selecionado."
+    - "Erro ao gravar o arquivo no disco. Verifique as permissões da pasta."
+    - "Acesso negado. Apenas gestores podem exportar dados para o SGI."
+- **Aviso:**
+    - "A geração do arquivo pode levar alguns segundos. Aguarde..."
+    - "Certifique-se de que todos os técnicos encerraram seus chamados do mês."
+
+### US-12 - Log de Atividades (Auditoria)
+
+**Como** Gestor da IPEM, **quero** um log de atividades (auditoria) para saber quem alterou dados de KM ou de funcionários e quando isso ocorreu, p**ara** garantir a integridade das informações e identificar possíveis erros ou fraudes.
+
+### 1. Regras de negócio detalhadas:
+
+- O sistema deve registrar automaticamente qualquer alteração em campos críticos (KM Inicial/Final, Senhas, Cadastro de Viaturas).
+- **Rastreabilidade:** Cada entrada no log deve conter: Quem alterou (Funcional), O que foi alterado (Campo), Valor Antigo, Valor Novo e o Horário exato.
+- **Imutabilidade:** Os registros de log de auditoria **jamais** podem ser editados ou excluídos, nem mesmo pelo Gestor.
+- **Filtros de Auditoria:** O Gestor deve conseguir filtrar o log por "Data", "Usuário" ou "Viatura".
+- **Visualização de Erros:** Alterações de KM que fujam da média esperada devem ser destacadas visualmente no log.
+- **Acesso Restrito:** Apenas usuários com perfil **Gestor** podem visualizar a tela de Auditoria.
+
+### 2. Dados a armazenar definidos (tipos e validações):
+
+- **ID da Ação:** numérico/string, gerado automaticamente para cada evento.
+- **Usuário Responsável:** texto (Nome/Funcional), capturado automaticamente da sessão ativa.
+- **Tipo de Evento:** lista pré-definida (Edição, Exclusão, Cadastro, Cancelamento).
+- **Descrição da Mudança:** texto livre, detalhando o "De: [X] Para: [Y]".
+- **Data e Hora:** timestamp completo (DD/MM/AAAA HH:MM:SS).
+
+### 3. Mensagem de confirmação, erro e aviso definidas:
+
+- **Confirmação:**
+    - "Filtro de auditoria aplicado. [X] eventos encontrados."
+    - "Relatório de logs gerado para visualização."
+- **Erro:**
+    - "Erro ao gravar log de segurança. A operação foi abortada por precaução."
+    - "Você não tem permissão para acessar os logs de auditoria."
+- **Aviso:**
+    - "Atenção: Alteração manual de KM detectada para a viatura [Placa]."
+    - "O log de auditoria é uma ferramenta de segurança e não pode ser limpo."
+
+### US-13 - Acesso ao GPS (Trajetos)
+
+**Como** técnico da IPEM, **quero** poder acessar o GPS do aplicativo para ter noção do trajeto a ser percorrido no chamado, p**ara** otimizar o tempo de deslocamento e garantir a chegada correta ao local da inspeção/chamado.
+
+### 1. Regras de negócio detalhadas:
+
+- O sistema deve oferecer um botão de "Abrir GPS" na tela de detalhes do chamado ou após o Check-in.
+- **Integração Externa:** O aplicativo não precisa obrigatoriamente ter um mapa próprio, podendo disparar uma intent para abrir aplicativos nativos (Google Maps, Waze).
+- **Vínculo de Endereço:** Se o chamado possuir um endereço cadastrado, o GPS deve ser iniciado já com o destino preenchido.
+- **Modo Offline:** Caso não haja sinal de internet, o sistema deve exibir uma mensagem de aviso, já que o GPS depende de conexão.
+- **Permissões:** O aplicativo deve solicitar permissão de acesso à localização (GPS) do dispositivo no primeiro uso.
+- **Visualização de Rota:** O técnico deve conseguir alternar entre o aplicativo de gestão e o GPS sem perder o registro do Check-in ativo.
+
+### 2. Dados a armazenar definidos (tipos e validações):
+
+- **Coordenadas/Endereço:** texto (String), vindo da base de dados de chamados/sedes.
+- **Status da Conexão:** booleano (Ativo/Inativo), verificado antes de abrir o mapa.
+- **Permissão de Localização:** booleano (Concedida/Negada), validado pelo sistema operacional.
+
+### 3. Mensagem de confirmação, erro e aviso definidas:
+
+- **Confirmação:**
+    - "Abrindo Google Maps/Waze para navegação..."
+- **Erro:**
+    - "Não foi possível detectar sua localização. Verifique se o GPS está ligado."
+    - "Sem conexão com a internet. O mapa não pode ser carregado."
+    - "Endereço de destino não cadastrado para este chamado."
+- **Aviso:**
+    - "Deseja sair do aplicativo para abrir a navegação externa?"
+    - "Lembre-se de fixar o celular no suporte da viatura antes de iniciar o trajeto."
