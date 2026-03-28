@@ -60,7 +60,7 @@
 
 Para acessar as Regras de Negócio detalhadas, Tipos de Dados, Validações e Mensagens de cada funcionalidade, clique no link abaixo:
 
-👉 **[🔍 Acesse aqui o Detalhamento das User Stories](./docs/user_stories.md)**
+👉 **[🔍 Acesse aqui o Detalhamento das User Stories](./docs/processo/DoR/DoR%20Backlog%20do%20Produto)**
 
 <br>
 
@@ -68,7 +68,7 @@ Para acessar as Regras de Negócio detalhadas, Tipos de Dados, Validações e Me
 
 Para garantir que cada User Story entregue cumpre todos os requisitos de qualidade (testes, revisão de código e documentação), mantemos um registro detalhado de cada incremento:
 
-👉 **[📊 Visualizar Relatório de Testes e Evidências](./docs/relatorio_testes.md)** 👉 **[📘 Acessar Documentação Técnica Completa](./docs/index.md)**
+👉 **[📊 Visualizar Relatório de Testes e Evidências](./docs/processo/DoD/README.md)** 👉 **[📘 Acessar Documentação Técnica Completa](./docs/index.md)**
 
 <br>
 
@@ -77,26 +77,9 @@ Para garantir que cada User Story entregue cumpre todos os requisitos de qualida
 
 | Sprint | Período | Entregas | Documentação |
 |--------|---------|----------|:--------------:|
-| 1 | 16/03 a 05/04 | Login, Módulos Administrativos e Funções Técnicas (Check-in/Out). | [Link](./docs/sprint1.md) |
-| 2 | 13/04 a 03/05 | Controle de Disponibilidade, Cálculo de KM e Comentários. | [Link](./docs/sprint2.md) |
-| 3 | 11/05 a 31/05 | Exportação SGI, Suporte Mecânico e Auditoria. | [Link](./docs/sprint3.md) |
-
----
-
-<br>
-
-## 🏆 Definition of Done (DoD)
-
-| Critério | Descrição | Status |
-|-----------|------------|---------|
-| Código desenvolvido e funcional | A funcionalidade foi implementada conforme os critérios de aceitação e está operando corretamente. | [ ] |
-| Código versionado no Git | O código foi commitado seguindo o padrão de mensagens definido (`feat(#id): descrição`). | [ ] |
-| Branch específica criada | A história foi desenvolvida em uma branch própria (`feature/<nome-da-funcionalidade>`). | [ ] |
-| Code Review realizado | O código passou por revisão de pelo menos um membro da equipe via Pull Request. | [ ] |
-| Código limpo e comentado | Não há trechos comentados desnecessariamente e o código segue boas práticas de legibilidade. | [ ] |
-| Testes executados com sucesso | Todos os testes unitários e funcionais previstos foram executados e aprovados. | [ ] |
-| Documentação atualizada | A documentação técnica e/ou de usuário foi atualizada no repositório (`/docs`). | [ ] |
-| Incremento apresentado | A funcionalidade foi demonstrada ao cliente/professor em review de Sprint com vídeo ou demonstração ao vivo. | [ ] |
+| 1 | 16/03 a 05/04 | Login, Módulos Administrativos e Funções Técnicas (Check-in/Out). | [Sprint 1](./docs/processo/sprints/README.md) |
+| 2 | 13/04 a 03/05 | Controle de Disponibilidade, Cálculo de KM e Comentários. | [Sprint 2](./docs/sprint2.md) |
+| 3 | 11/05 a 31/05 | Exportação SGI, Suporte Mecânico e Auditoria. | [Sprint 3](./docs/sprint3.md) |
 
 ---
 
