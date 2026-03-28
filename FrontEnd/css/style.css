@@ -2,7 +2,7 @@
   margin: 0px;
 }
 
-body:not(.pagina-chamados):not(.pagina-telainicial) {
+body{
   margin: 0;
   padding: 0;
   width: 100%;
@@ -26,8 +26,8 @@ body:not(.pagina-chamados):not(.pagina-telainicial) {
 }
 
 img {
-  height: 164px;
-  width: 288px;
+height: 190px;
+  width: auto;
 }
 
 #btn1 {
@@ -221,22 +221,4 @@ button:active {
     padding: 8px;
     font-size: 13px;
   }
-}
-
-/* Overlay com Blur para Sidebar - Funciona em todas as telas */
-.overlay-blur-sidebar {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    backdrop-filter: blur(2px);
-    cursor: pointer;
-}
-
-.overlay-blur-sidebar.active {
-    display: block;
 }
