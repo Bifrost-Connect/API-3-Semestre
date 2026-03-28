@@ -39,35 +39,47 @@
 
 | Rank | Prioridade | User Story | Estimativa | Sprint |
 |------|-------------|-------------|-------------|---------|
-| 1 | Alta | Como Usuário (Técnico ou Gestor), quero **realizar login com minha funcional/senha** para que meus registros sejam vinculados automaticamente ao meu perfil. | 8 | 1 |
-| 2 | Alta |Como Técnico do IPEM, quero **registrar o KM inicial, data e horário** ao retirar o veículo. | 8 | 1 |
-| 3 | Alta | Como técnico do IPEM, quero **registrar o KM final** ao devolver a viatura. | 8 | 1 |
-| 4 | Alta | Como Técnico da IPEM, quero **ter o controle do abastecimento da viatura**, para saber o último abastecimento, e poder registrar quando for abastecer novamente. | 8 | 1 |
-| 5 | Alta | Como Gestor da IPEM, quero **registrar novos funcionários e viaturas** no sistema.| 8 | 1 |
-| 6 | Alta | Como Gestor da IPEM , quero **ter o controle das viaturas que estão disponíveis e as que estão em uso** pelo meu sistema. | 8 | 2 |
-| 7 | Alta | Como Gestor da IPEM, quero **ter acesso aos documentos com o compilado de informações** de cada viatura e chamados. | 5 | 2 |
-| 8 | Média | Como técnico da IPEM, quero que **o sistema calcule automaticamente a distância percorrida** com a viatura. | 3 | 2 |
-| 9 | Média | Como Técnico da IPEM, quero poder **fazer comentários sobre o estado viatura** no final do relatório. | 3 | 2 |
-| 10 | Baixa | Como Técnico da IPEM, quero **cancelar um Check-in caso tenha selecionado a viatura errada por engano**, antes de iniciar o trajeto.| 3 | 2 |
-| 11 | Alta | Como Gestor da IPEM, quero **enviar o arquivo com os registros da sede no ao final do mês**, para envio ao SGI. | 8 | 3 |
-| 12 | Alta | Como Técnico do IPEM, quero **contactar o suporte de mecânica** caso aja algum problema com a viatura. | 5 | 3 |
-| 13 | Média | Como Gestor, quero um **log de atividades (auditoria) para saber quem alterou dados de KM ou de funcionários** e quando isso ocorreu. | 5 | 3 |
-| 14 | Baixa | Como técnico da IPEM, quero **acessar o GPS do aplicativo para ter noção do trajeto** a ser percorrido no chamado.  | 8 | 3 |
-| 15 | Baixa | Como Gestor da IPEM, quero **fazer alterações nos perfis** dos técnicos e de viaturas.  | 3 | 3 |
+| 1| Alta |Como Técnico do IPEM, quero **registrar o KM inicial, data e horário** ao retirar o veículo. | 8 | 1 |
+| 2 | Alta | Como técnico do IPEM, quero **registrar o KM final** ao devolver a viatura. | 8 | 1 |
+| 3 | Alta | Como Técnico da IPEM, quero **ter o controle do abastecimento da viatura**, para saber o último abastecimento, e poder registrar quando for abastecer novamente. | 8 | 1 |
+| 4 | Alta | Como Gestor da IPEM, quero **registrar novos funcionários e viaturas** no sistema.| 8 | 1 |
+| 5 | Alta | Como Gestor da IPEM , quero **ter o controle das viaturas que estão disponíveis e as que estão em uso** pelo meu sistema. | 8 | 2 |
+| 6 | Alta | Como Gestor da IPEM, quero **ter acesso aos documentos com o compilado de informações** de cada viatura e chamados. | 5 | 2 |
+| 7 | Média | Como Técnico da IPEM, quero poder **fazer comentários sobre o estado viatura** no final do relatório. | 3 | 2 |
+| 8 | Baixa | Como Técnico da IPEM, quero **cancelar um Check-in caso tenha selecionado a viatura errada por engano**, antes de iniciar o trajeto.| 3 | 2 |
+| 9 | Alta | Como Gestor da IPEM, quero **enviar o arquivo com os registros da sede no ao final do mês**, para envio ao SGI. | 8 | 3 |
+| 10 | Alta | Como Técnico do IPEM, quero **contactar o suporte de mecânica** caso aja algum problema com a viatura. | 5 | 3 |
+| 11 | Média | Como Gestor, quero um **log de atividades (auditoria) para saber quem alterou dados de KM ou de funcionários** e quando isso ocorreu. | 5 | 3 |
+| 12| Baixa | Como técnico da IPEM, quero **acessar o GPS do aplicativo para ter noção do trajeto** a ser percorrido no chamado.  | 8 | 3 |
+| 13 | Baixa | Como Gestor da IPEM, quero **fazer alterações nos perfis** dos técnicos e de viaturas.  | 3 | 3 |
 
 <br>
 
-## 🏃 Definition of Ready (DoR) 
 
-| Critério | Descrição | Status |
-|-----------|------------|---------|
-|  Título e Descrição claros | A User Story possui um título e uma descrição seguindo o formato: “Como [usuário], quero [funcionalidade] para [benefício]”. | [ ] |
-|  Critérios de Aceitação definidos | Todos os critérios de aceitação foram definidos e validados pelo Product Owner. | [ ] |
-| Sem dependências bloqueadoras | Não há dependências técnicas, funcionais ou externas que impeçam o desenvolvimento da User Story. | [ ] |
-| Compreensão validada pelo time | Todos os membros da equipe compreendem a história e concordam com o esforço estimado. | [ ] |
-| Estimativa de esforço realizada | A história possui uma estimativa de Story Points definida com base em Planning Poker. | [ ] |
-| Artefatos correlatos disponíveis| Foram anexados wireframes, fluxogramas, modelo de dados ou outros artefatos que auxiliem o desenvolvimento. | [ ] |
-|  Estratégia de teste definida | Foram planejados cenários de teste ou estratégias de validação da funcionalidade. | [ ] |
+## 🏃 Detalhamento das User Stories (Definition of Ready Completo)
+
+Para acessar as Regras de Negócio detalhadas, Tipos de Dados, Validações e Mensagens de cada funcionalidade, clique no link abaixo:
+
+👉 **[🔍 Acesse aqui o Detalhamento das User Stories](./docs/user_stories.md)**
+
+<br>
+
+## 🟢 Evidências de Conclusão (DoD)
+
+Para garantir que cada User Story entregue cumpre todos os requisitos de qualidade (testes, revisão de código e documentação), mantemos um registro detalhado de cada incremento:
+
+👉 **[📊 Visualizar Relatório de Testes e Evidências](./docs/relatorio_testes.md)** 👉 **[📘 Acessar Documentação Técnica Completa](./docs/index.md)**
+
+<br>
+
+
+<h2 id='sprints'> 📌 Cronograma de Sprints </h2>
+
+| Sprint | Período | Entregas | Documentação |
+|--------|---------|----------|:--------------:|
+| 1 | 16/03 a 05/04 | Login, Módulos Administrativos e Funções Técnicas (Check-in/Out). | [Link](./docs/sprint1.md) |
+| 2 | 13/04 a 03/05 | Controle de Disponibilidade, Cálculo de KM e Comentários. | [Link](./docs/sprint2.md) |
+| 3 | 11/05 a 31/05 | Exportação SGI, Suporte Mecânico e Auditoria. | [Link](./docs/sprint3.md) |
 
 ---
 

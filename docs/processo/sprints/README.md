@@ -37,7 +37,7 @@ Implementar funcionalidades que aprimorem a coleta de informações sobre os **t
 |História compreendida pela equipe | A equipe compreende o escopo e concorda com a estimativa atribuída. |
 |Estimativa realizada | As histórias foram estimadas com base em Planning Poker. |
 |Artefatos disponíveis | Foram anexados wireframes das telas de chat, solicitação, histórico e cadastro de professores. |
-|Estratégia de testes definida | Foram planejados os testes de envio/recebimento de mensagens, criação de solicitações e cadastro de professores. |
+|Estratégia de testes definida | Foram planejados os testes de envio/recebimento de mensagens, criação de solicitações e cadastro de técnicos. |
 
 ### 🧾 Artefatos Correlatos
 
