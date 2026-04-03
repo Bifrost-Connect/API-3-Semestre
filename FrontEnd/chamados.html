@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -39,10 +39,9 @@
 
     <div id="overlayBlurSidebar" class="overlay-blur-sidebar"></div>
 
-        <div id="sidebar" class="sidebar">
+    <div id="sidebar" class="sidebar">
         <button id="btnx" class="close-btn">×</button>
         <a href="telainicial.html">TELA INICIAL</a>
-        <a href="#">CONTATOS</a>
         <a href="#">DÚVIDAS</a>
         <a href="#">CONFIGURAÇÕES</a>
     </div>
@@ -74,14 +73,14 @@
         <!-- RETIRAR OS DADOS PRÉ-DEFINIDOS QUANDO FOR FAZER O BACKEND -->
 
         <div id="listaVeiculos" class="lista-veiculos">
-            <button class="btn-veiculo" onclick="selecionarVeiculo('Veiculo 1', 'Utilitário', '00000' ,'aaa-1234', 'placa 1', 'Manutenção', '50%', '12000 km',)">
-            Carro 1
+            <button class="btn-veiculo" onclick="selecionarVeiculo('Viatura 1', 'Argo', 'Fiat' ,'Passeio', '00001', 'aaa-1234')">
+            Viatura 1
             </button>
-            <button class="btn-veiculo" onclick="selecionarVeiculo('Veiculo 2', 'Pickup', '11111', 'bbb-5678', 'placa 2', 'Manutenção', '75%', '15000 km')">
-            Carro 2
+            <button class="btn-veiculo" onclick="selecionarVeiculo('Viatura 2', 'Sprinter', 'Mercedes', 'Utilitário', '00002', 'bbb-5678')">
+            Viatura 2
             </button>
-            <button class="btn-veiculo" onclick="selecionarVeiculo('Veiculo 3', 'Utilitário', 'ccc-9012', 'placa 3', 'Manutenção', '20%', '10000 km')">
-            Carro 3
+            <button class="btn-veiculo" onclick="selecionarVeiculo('Viatura 3', 'Ka', 'Ford', 'Passeio', '00003', 'ccc-9012')">
+            Viatura 3
             </button>
         </div>
         </div>
@@ -89,14 +88,17 @@
 
     <div id="modalDetalhesVeiculo" class="sobreposicao">
         <div class="popup-card">
+        <div class="popup-detalhes-layout">
+        <div class="popup-detalhes-info">
         <h2 class="popup-titulo" id="tituloVeiculo">Detalhes do Veículo</h2>
         
         <div class="popup-conteudo" id="conteudoVeiculo">
+            <p><strong>Modelo:</strong> <span id="modeloVeiculo"></span></p>
+            <p><strong>Marca:</strong> <span id="marcaVeiculo"></span></p>
             <p><strong>Tipo de Veículo:</strong> <span id="tipoVeiculo"></span></p>
             <p><strong>Prefixo da Viatura:</strong> <span id="prefixoVeiculo"></span></p>
             <p><strong>Placa:</strong> <span id="placaVeiculo"></span></p>
             <p><strong>Último Serviço:</strong> <span id="ultimoServico"></span></p>
-            <p><strong>Nível de Combustível:</strong> <span id="nivelCombustivel"></span></p>
             <p><strong>Quilometragem:</strong> <span id="quilometragem"></span></p>
         </div>
 
@@ -108,6 +110,21 @@
                 Confirmar
             </button>
         </div>
+        </div>
+        <div class="popup-detalhes-imagem">
+            <img src="img/carro 1.jpg" alt="Imagem do veículo">
+        </div>
+        </div>
+        </div>
+    </div>
+
+    <div id="modalMensagem" class="sobreposicao">
+        <div class="popup-card popup-mensagem">
+            <h2 class="popup-titulo">Aviso</h2>
+            <div class="popup-conteudo">
+                <p id="textoModalMensagem"></p>
+            </div>
+            <button class="btn-aceitar" onclick="fecharModalMensagem()">Fechar</button>
         </div>
     </div>
 

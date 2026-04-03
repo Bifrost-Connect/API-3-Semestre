@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -27,13 +27,12 @@
     </div>
 
     <div class="notificacao-bar" onclick="window.location.href='chamados.html';">
-        <img src="img/bell.png" class="bell">
+        <img src="img/bell.png" class="bell" alt="notificacoes">
         <span>Você possui 1 solicitação de serviço!</span>
         <div class="badge">3</div>
     </div>
 
     <!-- PRECISA ARRUMAR O BACKEND PARA PUXAR OS DADOS E MUDAR O TEXTO (NÃO SEI COMO VÃO FAZER ISSO, SE PRECISAR DE AJUDA DA UM SALVE) -->
-
     <div class="quadros-container">
         <div class="quadro-esquerdo">
             <h3>Informações do Veículo</h3>
@@ -41,15 +40,26 @@
                 <p>Nenhum veículo selecionado.</p>
             </div>
             <div class="campos-adicionais">
-                <label for="quilometragem-atual">Quilometragem Atual:</label>
-                <input type="text" id="quilometragem-atual" placeholder="Digite a quilometragem">
+                <label for="quilometragem-inicial">Quilometragem Inicial:</label>
+                <input type="text" id="quilometragem-inicial" placeholder="Digite a quilometragem inicial">
+
+                <label for="data-inicial">Data:</label>
+                <input type="date" id="data-inicial">
+
+                <label for="horario-inicial">Horário:</label>
+                <input type="time" id="horario-inicial">
+
                 <label for="observacoes">Observações:</label>
                 <textarea id="observacoes" placeholder="Digite observações"></textarea>
-                <button id="check-in-veiculo" onclick="abrirModalConfirmacao()">Fazer check-in</button>
-                <button id="btn-salvar-veiculo">Salvar</button>
-                <button id="btn-abs-veiculo">Abastecimento</button>
+
+                <div class="acoes-veiculo">
+                    <button id="check-in-veiculo" onclick="abrirModalConfirmacao()">Fazer check-in</button>
+                    <button id="btn-salvar-veiculo">Salvar</button>
+                    <button id="btn-abs-veiculo">Abastecimento</button>
+                </div>
             </div>
         </div>
+
         <div class="quadro-direito">
             <h3>Chamado Atual</h3>
             <div id="info-chamado">
@@ -60,7 +70,6 @@
     </div>
 
     <!-- QUANDO APERTAR O BOTÃO CHECK-IN -->
-
     <div id="modalConfirmacao" class="sobreposicao">
         <div class="popup-card">
             <h2 class="popup-titulo">Veículos Disponíveis</h2>
@@ -70,19 +79,18 @@
             </div>
 
             <!-- RETIRAR OS DADOS PRÉ-DEFINIDOS QUANDO FOR FAZER O BACKEND -->
-
             <div id="listaVeiculos" class="lista-veiculos">
                 <button class="btn-veiculo"
-                    onclick="selecionarVeiculo('Veiculo 1', 'Utilitário', '00000' ,'aaa-1234', 'placa 1', 'Manutenção', '50%', '12000 km')">
-                    Carro 1
+                    onclick="selecionarVeiculo('Viatura 1', 'Argo', 'Fiat' ,'Passeio', '00001', 'aaa-1234')">
+                    Viatura 1
                 </button>
                 <button class="btn-veiculo"
-                    onclick="selecionarVeiculo('Veiculo 2', 'Pickup', '11111', 'bbb-5678', 'placa 2', 'Manutenção', '75%', '15000 km')">
-                    Carro 2
+                    onclick="selecionarVeiculo('Viatura 2', 'Sprinter', 'Mercedes', 'Utilitário', '00002', 'bbb-5678')">
+                    Viatura 2
                 </button>
                 <button class="btn-veiculo"
-                    onclick="selecionarVeiculo('Veiculo 3', 'Utilitário', '22222', 'ccc-9012', 'placa 3', 'Manutenção', '20%', '10000 km')">
-                    Carro 3
+                    onclick="selecionarVeiculo('Viatura 3', 'Ka', 'Ford', 'Passeio', '00003', 'ccc-9012')">
+                    Viatura 3
                 </button>
             </div>
         </div>
@@ -90,32 +98,47 @@
 
     <div id="modalDetalhesVeiculo" class="sobreposicao">
         <div class="popup-card">
-        <h2 class="popup-titulo" id="tituloVeiculo">Detalhes do Veículo</h2>
-        
-        <div class="popup-conteudo" id="conteudoVeiculo">
-            <p><strong>Tipo de Veículo:</strong> <span id="tipoVeiculo"></span></p>
-            <p><strong>Prefixo da Viatura:</strong> <span id="prefixoVeiculo"></span></p>
-            <p><strong>Placa:</strong> <span id="placaVeiculo"></span></p>
-            <p><strong>Último Serviço:</strong> <span id="ultimoServico"></span></p>
-            <p><strong>Nível de Combustível:</strong> <span id="nivelCombustivel"></span></p>
-            <p><strong>Quilometragem:</strong> <span id="quilometragem"></span></p>
-        </div>
+            <div class="popup-detalhes-layout">
+                <div class="popup-detalhes-info">
+            <h2 class="popup-titulo" id="tituloVeiculo">Detalhes do Veículo</h2>
 
-        <div class="btn-container">
-            <button class="btn-voltar" onclick="voltarParaVeiculos()">
-                ← Voltar
-            </button>
-            <button class="btn-aceitar" onclick="confirmarVeiculo()">
-                Confirmar
-            </button>
-        </div>
+            <div class="popup-conteudo" id="conteudoVeiculo">
+                <p><strong>Modelo:</strong> <span id="modeloVeiculo"></span></p>
+                <p><strong>Marca:</strong> <span id="marcaVeiculo"></span></p>
+                <p><strong>Tipo de Veículo:</strong> <span id="tipoVeiculo"></span></p>
+                <p><strong>Prefixo da Viatura:</strong> <span id="prefixoVeiculo"></span></p>
+                <p><strong>Placa:</strong> <span id="placaVeiculo"></span></p>
+                <p><strong>Último Serviço:</strong> <span id="ultimoServico"></span></p>
+                <p><strong>Quilometragem:</strong> <span id="quilometragem"></span></p>
+            </div>
+
+            <div class="btn-container">
+                <button class="btn-voltar" onclick="voltarParaVeiculos()">
+                    ← Voltar
+                </button>
+                <button class="btn-aceitar" onclick="confirmarVeiculo()">
+                    Confirmar
+                </button>
+            </div>
+                </div>
+                <div class="popup-detalhes-imagem">
+                    <img src="img/carro 1.jpg" alt="Imagem do veículo">
+                </div>
+            </div>
         </div>
     </div>
 
+    <div id="modalMensagem" class="sobreposicao">
+        <div class="popup-card popup-mensagem">
+            <h2 class="popup-titulo">Aviso</h2>
+            <div class="popup-conteudo">
+                <p id="textoModalMensagem"></p>
+            </div>
+            <button class="btn-aceitar" onclick="fecharModalMensagem()">Fechar</button>
+        </div>
+    </div>
 
     <!-- QUANDO APERTAR O BOTÃO ABASTECIMENTO -->
-
-
     <div id="popupAbastecimento" class="popup">
         <div class="popup-content">
             <h2>Abastecimento:</h2>
@@ -124,16 +147,13 @@
             <p><strong>Horário:</strong> <input type="time" id="hora-abastecimento"></p>
 
             <div class="popup-buttons">
-                <button id="btn-voltar">Voltar</button>
-                <button id="btn-salvar-abastecimento">Salvar</button>
+                <button id="btn-voltar" class="btn-voltar">Voltar</button>
+                <button id="btn-salvar-abastecimento" class="btn-aceitar">Salvar</button>
             </div>
         </div>
     </div>
 
-
-
     <!-- BLUR DA SIDEBAR -->
-
     <div id="overlayBlurSidebar" class="overlay-blur-sidebar"></div>
 
     <div id="sidebar" class="sidebar">

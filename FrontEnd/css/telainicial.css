@@ -1,4 +1,4 @@
-* {
+﻿* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -6,18 +6,26 @@
 }
 
 body {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     margin: 0;
-    background-color: #ffffffff;
-    padding-top: 20px;
-    width: 100%;
-    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background: #f5f5f5;
+    color: #111;
+}
+
+.pagina-telainicial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px 18px 40px;
+}
+
+.top-bar,
+.notificacao-bar,
+.quadros-container {
+    width: 95%;
 }
 
 .top-bar {
-    width: 95%;
     height: 70px;
     background-color: #002080;
     color: white;
@@ -28,26 +36,15 @@ body {
     padding: 0 20px;
 }
 
-
 .left {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.menu {
-    font-size: 26px;
-    cursor: pointer;
-}
-
 .titulo {
     font-size: 18px;
     font-weight: 500;
-}
-
-.logout {
-    font-size: 26px;
-    cursor: pointer;
 }
 
 #btnmenu,
@@ -72,26 +69,21 @@ body {
 }
 
 .notificacao-bar {
-    width: 95%;
     height: 35px;
-
     background-color: #002080;
     color: white;
-
     border-radius: 20px;
-
     margin-top: 15px;
-
     display: flex;
     align-items: center;
-
     padding-left: 15px;
-
     position: relative;
+    cursor: pointer;
 }
 
 .bell {
-    width: 22px;
+    width: 26px;
+    height: 26px;
     margin-right: 8px;
 }
 
@@ -103,15 +95,26 @@ body {
     position: absolute;
     top: 1px;
     left: 22px;
-
     background-color: red;
     color: white;
-
     font-size: 10px;
     font-weight: bold;
-
     padding: 2px 6px;
     border-radius: 50%;
+}
+
+.overlay-blur-sidebar {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.45);
+    z-index: 999;
+    backdrop-filter: blur(2px);
+    cursor: pointer;
+}
+
+.overlay-blur-sidebar.active {
+    display: block;
 }
 
 .sidebar {
@@ -127,21 +130,6 @@ body {
     z-index: 1000;
 }
 
-.sobreposicao {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    backdrop-filter: blur(2px);
-}
-
-
 .sidebar a {
     padding: 10px 20px;
     text-decoration: none;
@@ -153,7 +141,7 @@ body {
 
 .sidebar a:hover {
     background-color: #f0f0f0;
-    color: #002080;
+    color: #12308f;
 }
 
 .sidebar.open {
@@ -167,360 +155,257 @@ body {
     font-size: 28px;
     background: none;
     border: none;
-    color: #002080;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.close-btn:hover {
-    color: #ff4d4d;
-    transform: scale(1.2);
-}
-
-/* Overlay com Blur para Sidebar */
-.overlay-blur-sidebar {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    backdrop-filter: blur(2px);
+    color: #12308f;
     cursor: pointer;
 }
 
-.overlay-blur-sidebar.active {
-    display: block;
-}
-
-/* Estilos para os quadros */
 .quadros-container {
-    width: 95%;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-    gap: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 12px;
+    align-items: stretch;
 }
 
 .quadro-esquerdo,
 .quadro-direito {
-    flex: 1;
     background-color: white;
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    border-radius: 16px;
+    padding: 24px 26px;
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.16);
+    min-height: 455px;
 }
 
 .quadro-esquerdo h3,
 .quadro-direito h3 {
-    margin-bottom: 15px;
-    color: #002080;
+    margin-bottom: 12px;
+    color: #12308f;
+    font-size: 20px;
+}
+
+#info-veiculo,
+#info-chamado {
+    font-size: 18px;
+    line-height: 1.35;
+    font-weight: 700;
+}
+
+#info-veiculo p,
+#info-chamado p {
+    margin-bottom: 2px;
 }
 
 .campos-adicionais {
-    margin-top: 15px;
+    margin-top: 12px;
 }
 
 .campos-adicionais label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    margin-bottom: 6px;
+    font-weight: 700;
+    font-size: 18px;
 }
 
 .campos-adicionais input,
 .campos-adicionais textarea {
     width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 13px 14px;
+    margin-bottom: 12px;
+    border: 1px solid #d7d7d7;
+    border-radius: 4px;
+    background: #fff;
+    font-size: 17px;
 }
 
 .campos-adicionais textarea {
-    height: 80px;
+    height: 90px;
     resize: vertical;
+}
+
+.acoes-veiculo {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
 }
 
 #btn-salvar-veiculo,
 #btn-checkout,
 #btn-abs-veiculo,
 #check-in-veiculo {
-    background-color: #002080;
+    background-color: #12308f;
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
+    min-height: 38px;
+    padding: 9px 14px;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
+    box-shadow: 0 3px 8px rgba(18, 48, 143, 0.2);
 }
 
 #btn-salvar-veiculo:hover,
 #btn-checkout:hover,
 #btn-abs-veiculo:hover,
 #check-in-veiculo:hover {
-    background-color: #0d36b1;
+    background-color: #0e2877;
 }
 
+#btn-checkout {
+    margin-top: 10px;
+}
+
+.sobreposicao,
 .popup {
-    display: none; /* escondido por padrão */
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.6); /* fundo escuro translúcido */
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-/* Caixa do conteúdo */
-.popup-content {
-    background: #fff;
-    padding: 25px;
-    border-radius: 12px;
-    width: 350px;
-    max-width: 90%;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    animation: fadeInScale 0.3s ease;
-}
-
-.popup-content p {
-    display: flex;
-    align-items: center;   /* centraliza verticalmente */
-    justify-content: space-between;
-    margin-bottom: 15px;   /* espaço entre as linhas */
-}
-
-/* Espaço entre o título e a linha de separação */
-.popup-content h2 {
-    margin-top: 0;
-    margin-bottom: 15px; /* afasta o título dos inputs */
-    font-size: 20px;
-    color: #333;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
-}
-
-.popup-content p strong {
-    flex: 1;               /* ocupa espaço fixo */
-    margin-right: 10px;    /* dá espaço antes do input */
-}
-
-.popup-content p input {
-    flex: 2;               /* ocupa mais espaço */
-    padding: 6px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-}
-
-/* Inputs */
-.popup-content input {
-    margin-left: 10px;
-    padding: 6px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    width: 60%;
-}
-
-/* Botões */
-.popup-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.popup-buttons button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.2s ease;
-}
-
-#btn-voltar {
-    background: #ccc;
-    color: #333;
-}
-
-#btn-voltar:hover {
-    background: #bbb;
-}
-
-#btn-salvar-abastecimento {
-    background: #007bff;
-    color: #fff;
-}
-
-#btn-salvar-abastecimento:hover {
-    background: #0056b3;
-}
-
-.sobreposicao {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
     align-items: center;
     justify-content: center;
     z-index: 1000;
     backdrop-filter: blur(2px);
 }
 
-.chamado-card {
-    background-color: white;
-    border-radius: 15px;
-    padding: 70px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    max-width: 800px;
-    width: 90%;
-    margin-top: 20px;
-    animation: slideIn 0.3s ease-out;
-}
-
-.chamado-titulo {
-    color: #002080;
-    font-size: 28px;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
-
-.chamado-conteudo {
-    color: #333;
-    font-size: 20px;
-    line-height: 1.6;
-    margin-bottom: 25px;
-}
-
-.chamado-conteudo p {
-    margin-bottom: 10px;
-}
-
-/* Modal/Caracteristicas ds Popups */
-.popup-card {
+.popup-card,
+.popup-content {
     background-color: white;
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    max-width: 600px;
-    width: 90%;
-    animation: slideIn 0.3s ease-out;
+    width: min(90%, 560px);
 }
 
-.popup-titulo {
-    color: #002080;
+.popup-titulo,
+.popup-content h2 {
+    color: #12308f;
     font-size: 28px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     font-weight: bold;
 }
 
-.popup-conteudo {
+.popup-conteudo,
+.popup-content {
     color: #333;
-    font-size: 20px;
-    line-height: 1.6;
-    margin-bottom: 25px;
+    font-size: 18px;
+    line-height: 1.5;
 }
 
-.popup-conteudo p {
+.popup-conteudo p,
+.popup-content p {
     margin-bottom: 10px;
 }
 
-.btn-aceitar {
+.popup-detalhes-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) 220px;
+    gap: 24px;
+    align-items: start;
+}
+
+.popup-detalhes-info {
+    min-width: 0;
+}
+
+.popup-detalhes-imagem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-detalhes-imagem img {
     width: 100%;
-    padding: 12px;
-    background-color: #002080;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
+    max-width: 220px;
+    border-radius: 14px;
+    object-fit: cover;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
 }
 
-.btn-aceitar:hover {
-    background-color: #0d36b1;
-    box-shadow: 0 5px 20px rgba(0, 32, 128, 0.3);
-    transform: translateY(-2px);
-}
-
-.btn-aceitar:active {
-    transform: translateY(0);
+.popup-mensagem {
+    max-width: 420px;
 }
 
 .lista-veiculos {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-top: 14px;
 }
 
-.btn-veiculo {
+.btn-veiculo,
+.btn-aceitar,
+.btn-voltar {
     width: 100%;
-    padding: 15px;
-    background-color: #f0f0f0;
-    color: #002080;
-    border: 2px solid #002080;
-    border-radius: 10px;
+    padding: 15px 16px;
+    border-radius: 12px;
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
+}
+
+.btn-veiculo {
+    background-color: white;
+    color: #002080;
+    border: 2px solid #002080;
     text-align: left;
 }
 
-.btn-veiculo:hover {
-    background-color: #002080;
+.btn-aceitar {
+    background-color: #12308f;
     color: white;
-    transform: translateX(5px);
+    border: none;
 }
 
-.btn-veiculo:active {
-    transform: translateX(3px);
+.btn-veiculo:hover {
+    background-color: #f4f7ff;
 }
 
-/* BOTÕES DE VOLTAR E CONFIRMAR */
-.btn-container {
+.btn-aceitar:hover {
+    background-color: #0e2877;
+}
+
+.btn-container,
+.popup-buttons {
     display: flex;
     gap: 10px;
-    width: 100%;
+    margin-top: 16px;
 }
 
 .btn-voltar {
-    flex: 1;
-    padding: 12px;
-    background-color: #cccccc;
+    background-color: #d8d8d8;
     color: #333;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
+    flex: 1;
 }
 
-.btn-voltar:hover {
-    background-color: #999999;
-    color: white;
-    transform: translateY(-2px);
+.popup-buttons .btn-voltar,
+.popup-buttons .btn-aceitar {
+    width: auto;
+    flex: 1;
 }
 
-.btn-voltar:active {
-    transform: translateY(0);
+.popup-content input {
+    width: 100%;
+    margin-top: 5px;
+    padding: 12px;
+    border: 1px solid #d7d7d7;
+    border-radius: 4px;
+    font-size: 17px;
 }
 
-/* Animação suave */
-@keyframes fadeInScale {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
+@media (max-width: 980px) {
+    .quadros-container {
+        grid-template-columns: 1fr;
     }
-    to {
-        opacity: 1;
-        transform: scale(1);
+
+    .quadro-esquerdo,
+    .quadro-direito {
+        min-height: auto;
+    }
+
+    .popup-detalhes-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .popup-detalhes-imagem img {
+        max-width: 180px;
     }
 }
