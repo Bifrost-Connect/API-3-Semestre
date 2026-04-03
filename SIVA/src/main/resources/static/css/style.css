@@ -1,0 +1,119 @@
+* {
+  margin: 0px;
+  box-sizing: border-box; /* Garante que padding não aumente o tamanho das caixas */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #1F255F;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quadrado {
+  background-color: #ffffff;
+  height: 500px;
+  width: 750px;
+  margin: 0px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+
+img {
+  height: 190px;
+  width: auto;
+}
+
+#btn1 {
+  padding: 12.5px 30px;
+  border: 0;
+  border-radius: 100px;
+  background-color: #002080;
+  color: #ffffff;
+  font-weight: Bold;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+button:active {
+  background-color: #2654dd;
+  transform: scale(0.98);
+}
+
+.inputGroup1, .inputGroup2 {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 1em 0;
+  width: 300px; /* Largura fixa igual para ambos */
+  position: relative;
+}
+
+.inputGroup1 input, .inputGroup2 input {
+  font-size: 100%;
+  padding: 0.8em;
+  outline: none;
+  border: 2px solid #2F4D98;
+  background-color: transparent;
+  border-radius: 20px;
+  width: 100%;
+}
+
+/* Espaço extra no texto da senha para não bater no ícone */
+.inputGroup2 input {
+  padding-right: 45px;
+}
+
+.inputGroup1 label, .inputGroup2 label {
+  font-size: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0.8em;
+  margin-left: 0.5em;
+  pointer-events: none;
+  transition: 0.3s ease;
+  color: #2F4D98;
+}
+
+.inputGroup1 input:focus~label, .inputGroup1 input:valid~label,
+.inputGroup2 input:focus~label, .inputGroup2 input:valid~label {
+  transform: translateY(-50%) scale(.9);
+  margin-left: 1.3em;
+  padding: 0.4em;
+  background-color: #ffffff;
+}
+
+/* Posicionamento do Olho */
+.eye-wrapper {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.esenha p {
+  color: #2F4D98;
+}
+
+.esenha {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .quadrado { width: 80%; height: auto; padding: 20px; }
+  img { width: 140px; }
+  .inputGroup1, .inputGroup2 { width: 100%; }
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bifrost Connect - Gestor</title>
+    <link rel="stylesheet" href="css/telainicial-gestor.css">
+</head>
+
+<body class="pagina-telainicial">
+
+<div class="top-bar">
+    <div class="left">
+        <button id="btnmenu">
+            <img src="img/menu.png" alt="icone menu">
+        </button>
+        <span class="titulo">Bem vindo, <span id="nome-usuario-logado"></span>!</span>
+    </div>
+
+    <div class="logout">
+        <button id="btnlogout" onclick="btnlogout()">
+            <img src="img/logout.png" alt="icone logout">
+        </button>
+    </div>
+</div>
+
+<section class="card-historico">
+    <header class="card-historico-titulo">Histórico de Chamados</header>
+
+    <div class="lista-chamados">
+        <article class="item-chamado">
+            <div>
+                <span class="chamado-numero">N° 7345</span>
+                <div class="dados-veiculo">Veículo: Ford Ka Sedan | Prefixo: 1234 | Serviço: Verificação de bomba de combustível</div>
+            </div>
+            <button class="btn-status status-indicar">indicar técnico</button>
+        </article>
+        <article class="item-chamado">
+            <div>
+                <span class="chamado-numero">N° 7344</span>
+                <div class="dados-veiculo">Veículo: VW Gol | Prefixo: 5678 | Serviço: Fiscalização de GNV</div>
+            </div>
+            <button class="btn-status status-andamento">acompanhar serviço</button>
+        </article>
+        <article class="item-chamado">
+            <div>
+                <span class="chamado-numero">N° 7343</span>
+                <div class="dados-veiculo">Veículo: Fiat Mobi | Prefixo: 9012 | Serviço:Manutenção preventiva de radar</div>
+            </div>
+            <button class="btn-status status-finalizado">visualizar informações</button>
+        </article>
+        <article class="item-chamado">
+            <div>
+                <span class="chamado-numero">N° 7342</span>
+                <div class="dados-veiculo">Veículo: Chevrolet Onix | Prefixo: 3456 | Serviço: Fiscalização de produtos perigosos</div>
+            </div>
+            <button class="btn-status status-finalizado">visualizar informações</button>
+        </article>
+        <article class="item-chamado">
+            <div>
+                <span class="chamado-numero">N° 7341</span>
+                <div class="dados-veiculo">Veículo: Toyota Hilux | Prefixo: 7890 | Serviço: Verificação de cronotacógrafos</div>
+            </div>
+            <button class="btn-status status-andamento">acompanhar serviço</button>
+        </article>
+        <article class="item-chamado">
+            <div>
+                <span class="chamado-numero">N° 7340</span>
+                <div class="dados-veiculo">Veículo: Nissan Frontier | Prefixo: 1122 | Serviço: Manutenção de radar com defeito</div>
+            </div>
+            <button class="btn-status status-indicar">indicar técnico</button>
+        </article>
+        <article class="item-chamado">
+            <div>
+                <span class="chamado-numero">N° 7339</span>
+                <div class="dados-veiculo">Veículo: Renault Duster | Prefixo: 3344 | Serviço: Manutenção preventiva de radar</div>
+            </div>
+            <button class="btn-status status-finalizado">visualizar informações</button>
+        </article>
+        <article class="item-chamado">
+            <div>
+                <span class="chamado-numero">N° 7338</span>
+                <div class="dados-veiculo">Veículo: Hyundai HR | Prefixo: 5566 | Serviço: Manutenção preventiva de radar</div>
+            </div>
+            <button class="btn-status status-andamento">acompanhar serviço</button>
+        </article>
+    </div>
+
+    <button class="btn-historico-completo">Visualizar histórico completo</button>
+</section>
+
+<div id="overlayBlurSidebar" class="overlay-blur-sidebar"></div>
+
+<div id="sidebar" class="sidebar">
+    <button id="btnx" class="close-btn">×</button>
+    <a href="cadastrousuarios.html">CADASTRO DE USUÁRIOS</a>
+    <a href="cadastroveiculos.html">CADASTRO DE VEÍCULOS</a>
+    <a href="historicochamados.html">HISTÓRICO DE CHAMADOS</a>
+    <a href="#">DÚVIDAS</a>
+    <a href="#">CONFIGURAÇÕES</a>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+
+</html>

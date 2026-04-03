@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bifrost Connect</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="quadrado">
+    <div class="image">
+        <img src="img/logosiva.png" alt="logo do sistema">
+    </div>
+
+    <div class="emailsenha">
+        <div class="email">
+            <div class="inputGroup1">
+                <input type="email" id="email" name="username" required autocomplete="email">
+                <label for="email">E-mail</label>
+            </div>
+        </div>
+
+        <div class="senha">
+            <div class="inputGroup2">
+                <input type="password" id="senha" name="password" required autocomplete="current-password">
+                <label for="senha">Senha</label>
+                <div id="toggleSenha" onclick="togglePassword()" class="eye-wrapper">
+                    <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2F4D98" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="esenha">
+            <p style="cursor: pointer;">Esqueceu a senha? Clique aqui</p>
+        </div>
+    </div>
+
+    <div class="btnentrar">
+        <button id="btn1" onclick="btnindex()">
+            Entrar
+        </button>
+    </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
