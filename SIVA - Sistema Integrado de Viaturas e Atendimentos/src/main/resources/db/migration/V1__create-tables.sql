@@ -1,8 +1,8 @@
 CREATE TABLE tipo_carro (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    marca VARCHAR(100),
-    modelo VARCHAR(100),
-    ano INT,
+    marca VARCHAR(100) NOT NULL,
+    modelo VARCHAR(100) NOT NULL,
+    ano INT NOT NULL,
     categoria ENUM('passeio', 'utilidades'),
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -20,7 +20,7 @@ CREATE TABLE usuarios (
 
 CREATE TABLE carros (
     prefixo VARCHAR(20) PRIMARY KEY,
-    placa VARCHAR(10),
+    placa VARCHAR(10) NOT NULL,
     tip_id INT,
     combustivel VARCHAR(20),
     km_atual FLOAT,
@@ -52,7 +52,7 @@ CREATE TABLE servicos (
 CREATE TABLE registros (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     servico_id BIGINT,
-    tipo_registro ENUM('CHECK_IN', 'CHECK_OUT', 'ABASTECIMENTO', 'OCORRENCIA'),
+    tipo_registro ENUM('CHECK_IN', 'CHECK_OUT', 'ABASTECIMENTO', 'OCORRENCIA') NOT NULL,
     data_registro DATETIME,
     km_registro FLOAT,
     anotacao VARCHAR(255),
@@ -63,7 +63,7 @@ CREATE TABLE registros (
 
 CREATE TABLE abastecimentos (
     registro_id BIGINT PRIMARY KEY,
-    litros FLOAT,
+    litros FLOAT NOT NULL,
     preco_litro DOUBLE,
     valor_total DOUBLE,
     nota_fiscal VARCHAR(50),
