@@ -204,7 +204,8 @@ body {
     gap: 15px;
 }
 
-.quadro-esquerdo, .quadro-direito {
+.quadro-esquerdo,
+.quadro-direito {
     flex: 1;
     background-color: white;
     border-radius: 15px;
@@ -212,7 +213,8 @@ body {
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
-.quadro-esquerdo h3, .quadro-direito h3 {
+.quadro-esquerdo h3,
+.quadro-direito h3 {
     margin-bottom: 15px;
     color: #002080;
 }
@@ -227,7 +229,8 @@ body {
     font-weight: bold;
 }
 
-.campos-adicionais input, .campos-adicionais textarea {
+.campos-adicionais input,
+.campos-adicionais textarea {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
@@ -240,7 +243,10 @@ body {
     resize: vertical;
 }
 
-#btn-salvar-veiculo, #btn-checkout {
+#btn-salvar-veiculo,
+#btn-checkout,
+#btn-abs-veiculo,
+#check-in-veiculo {
     background-color: #002080;
     color: white;
     border: none;
@@ -250,6 +256,271 @@ body {
     font-size: 14px;
 }
 
-#btn-salvar-veiculo:hover, #btn-checkout:hover {
+#btn-salvar-veiculo:hover,
+#btn-checkout:hover,
+#btn-abs-veiculo:hover,
+#check-in-veiculo:hover {
     background-color: #0d36b1;
+}
+
+.popup {
+    display: none; /* escondido por padrão */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6); /* fundo escuro translúcido */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Caixa do conteúdo */
+.popup-content {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    width: 350px;
+    max-width: 90%;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    animation: fadeInScale 0.3s ease;
+}
+
+.popup-content p {
+    display: flex;
+    align-items: center;   /* centraliza verticalmente */
+    justify-content: space-between;
+    margin-bottom: 15px;   /* espaço entre as linhas */
+}
+
+/* Espaço entre o título e a linha de separação */
+.popup-content h2 {
+    margin-top: 0;
+    margin-bottom: 15px; /* afasta o título dos inputs */
+    font-size: 20px;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.popup-content p strong {
+    flex: 1;               /* ocupa espaço fixo */
+    margin-right: 10px;    /* dá espaço antes do input */
+}
+
+.popup-content p input {
+    flex: 2;               /* ocupa mais espaço */
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* Inputs */
+.popup-content input {
+    margin-left: 10px;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 60%;
+}
+
+/* Botões */
+.popup-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.popup-buttons button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s ease;
+}
+
+#btn-voltar {
+    background: #ccc;
+    color: #333;
+}
+
+#btn-voltar:hover {
+    background: #bbb;
+}
+
+#btn-salvar-abastecimento {
+    background: #007bff;
+    color: #fff;
+}
+
+#btn-salvar-abastecimento:hover {
+    background: #0056b3;
+}
+
+.sobreposicao {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(2px);
+}
+
+.chamado-card {
+    background-color: white;
+    border-radius: 15px;
+    padding: 70px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    width: 90%;
+    margin-top: 20px;
+    animation: slideIn 0.3s ease-out;
+}
+
+.chamado-titulo {
+    color: #002080;
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.chamado-conteudo {
+    color: #333;
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.chamado-conteudo p {
+    margin-bottom: 10px;
+}
+
+/* Modal/Caracteristicas ds Popups */
+.popup-card {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 90%;
+    animation: slideIn 0.3s ease-out;
+}
+
+.popup-titulo {
+    color: #002080;
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.popup-conteudo {
+    color: #333;
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.popup-conteudo p {
+    margin-bottom: 10px;
+}
+
+.btn-aceitar {
+    width: 100%;
+    padding: 12px;
+    background-color: #002080;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-aceitar:hover {
+    background-color: #0d36b1;
+    box-shadow: 0 5px 20px rgba(0, 32, 128, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-aceitar:active {
+    transform: translateY(0);
+}
+
+.lista-veiculos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.btn-veiculo {
+    width: 100%;
+    padding: 15px;
+    background-color: #f0f0f0;
+    color: #002080;
+    border: 2px solid #002080;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: left;
+}
+
+.btn-veiculo:hover {
+    background-color: #002080;
+    color: white;
+    transform: translateX(5px);
+}
+
+.btn-veiculo:active {
+    transform: translateX(3px);
+}
+
+/* BOTÕES DE VOLTAR E CONFIRMAR */
+.btn-container {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.btn-voltar {
+    flex: 1;
+    padding: 12px;
+    background-color: #cccccc;
+    color: #333;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-voltar:hover {
+    background-color: #999999;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-voltar:active {
+    transform: translateY(0);
+}
+
+/* Animação suave */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }

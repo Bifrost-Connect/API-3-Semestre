@@ -27,9 +27,6 @@ overlayBlurSidebar.addEventListener("click", () => {
     overlayBlurSidebar.classList.remove("active");
 });
 
-const modalConfirmacao = document.getElementById("modalConfirmacao");
-const modalDetalhesVeiculo = document.getElementById("modalDetalhesVeiculo");
-
 // Variável para armazenar o veículo selecionado
 let veiculoSelecionado = {};
 
@@ -54,7 +51,7 @@ function selecionarVeiculo(titulo, tipo, prefixo, placa, info, ultimoServico, ni
         nivelCombustivel: nivelCombustivel,
         quilometragem: quilometragem
     };
-    
+
     // Preencher os dados no modal de detalhes
     document.getElementById("tituloVeiculo").textContent = titulo;
     document.getElementById("tipoVeiculo").textContent = tipo;
@@ -63,7 +60,7 @@ function selecionarVeiculo(titulo, tipo, prefixo, placa, info, ultimoServico, ni
     document.getElementById("ultimoServico").textContent = ultimoServico;
     document.getElementById("nivelCombustivel").textContent = nivelCombustivel;
     document.getElementById("quilometragem").textContent = quilometragem;
-    
+
     // Esconder lista de veículos e mostrar detalhes
     modalConfirmacao.style.display = "none";
     modalDetalhesVeiculo.style.display = "flex";
@@ -93,19 +90,6 @@ function confirmarVeiculo() {
     window.location.href = "telainicial.html";
 }
 
-// Fechar modal ao clicar fora do card
-
-modalConfirmacao.addEventListener("click", (event) => {
-    if (event.target === modalConfirmacao) {
-        fecharTodosModais();
-    }
-});
-
-modalDetalhesVeiculo.addEventListener("click", (event) => {
-    if (event.target === modalDetalhesVeiculo) {
-        fecharTodosModais();
-    }
-});
 
 // Funções para a tela inicial
 function carregarDadosTelaInicial() {
@@ -160,13 +144,74 @@ function checkoutChamado() {
     alert('Chamado encerrado!');
 }
 
+
+let modalConfirmacao;
+let modalDetalhesVeiculo;
+
 // Adicionar event listeners se os elementos existirem
-document.addEventListener('DOMContentLoaded', function() {
-    if (document.getElementById('btn-salvar-veiculo')) {
-        document.getElementById('btn-salvar-veiculo').addEventListener('click', salvarVeiculoInfo);
+document.addEventListener('DOMContentLoaded', function () {
+    modalConfirmacao = document.getElementById("modalConfirmacao");
+    modalDetalhesVeiculo = document.getElementById("modalDetalhesVeiculo");
+    // Sidebar
+    const btnmenu = document.getElementById("btnmenu");
+    const sidebar = document.getElementById("sidebar");
+    const closeBtn = document.getElementById("btnx");
+    const overlayBlurSidebar = document.getElementById("overlayBlurSidebar");
+
+    if (btnmenu && sidebar && closeBtn && overlayBlurSidebar) {
+        btnmenu.addEventListener("click", () => {
+            sidebar.classList.add("open");
+            overlayBlurSidebar.classList.add("active");
+        });
+        closeBtn.addEventListener("click", () => {
+            sidebar.classList.remove("open");
+            overlayBlurSidebar.classList.remove("active");
+        });
+        overlayBlurSidebar.addEventListener("click", () => {
+            sidebar.classList.remove("open");
+            overlayBlurSidebar.classList.remove("active");
+        });
     }
-    if (document.getElementById('btn-checkout')) {
-        document.getElementById('btn-checkout').addEventListener('click', checkoutChamado);
+
+    // Pop-up abastecimento
+    const btnAbs = document.getElementById("btn-abs-veiculo");
+    const popup = document.getElementById("popupAbastecimento");
+    const btnVoltar = document.getElementById("btn-voltar");
+    const btnSalvar = document.getElementById("btn-salvar-abastecimento");
+
+    if (btnAbs && popup && btnVoltar && btnSalvar) {
+        btnAbs.addEventListener("click", () => popup.style.display = "flex");
+        btnVoltar.addEventListener("click", () => popup.style.display = "none");
+        btnSalvar.addEventListener("click", () => {
+            const valor = document.getElementById("valor-abastecimento").value;
+            const data = document.getElementById("data-abastecimento").value;
+            const hora = document.getElementById("hora-abastecimento").value;
+            console.log("Abastecimento salvo:", { valor, data, hora });
+            popup.style.display = "none";
+        });
     }
+
+    // Botões da tela inicial
+    const btnSalvarVeiculo = document.getElementById('btn-salvar-veiculo');
+    const btnCheckout = document.getElementById('btn-checkout');
+    if (btnSalvarVeiculo) btnSalvarVeiculo.addEventListener('click', salvarVeiculoInfo);
+    if (btnCheckout) btnCheckout.addEventListener('click', checkoutChamado);
+
     carregarDadosTelaInicial();
 });
+
+if (modalConfirmacao) {
+    modalConfirmacao.addEventListener("click", (event) => {
+        if (event.target === modalConfirmacao) {
+            fecharTodosModais();
+        }
+    });
+}
+
+if (modalDetalhesVeiculo) {
+    modalDetalhesVeiculo.addEventListener("click", (event) => {
+        if (event.target === modalDetalhesVeiculo) {
+            fecharTodosModais();
+        }
+    });
+}
