@@ -1,323 +1,345 @@
-﻿function btnindex() {
-    window.location.href = "telainicial.html";
-}
+﻿// ============================================================
+// 1. NAVEGAÇÃO E AUTENTICAÇÃO (LOGIN / LOGOUT)
+// ============================================================
 
-function btnlogout() {
+/**
+ * Realiza o login integrando com o Backend e redireciona conforme a permissão.
+ * Se não houver campos de login (ex: em outras telas), redireciona para a tela inicial.
+ */
+window.btnindex = async function() {
+    const emailField = document.getElementById("email");
+    const senhaField = document.getElementById("senha");
+
+    // Se não estiver na tela de login, apenas volta para a home
+    if (!emailField || !senhaField) {
+        window.location.href = "telainicial.html";
+        return;
+    }
+
+    const email = emailField.value.trim();
+    const senha = senhaField.value.trim();
+
+    if (!email || !senha) return alert("Preencha e-mail e senha.");
+
+    try {
+        const response = await fetch("http://localhost:8080/usuario/login", {
+            method: "POST", 
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, senha })
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            // Salva dados do usuário para personalização da interface
+            localStorage.setItem("usuarioNome", data.nome);
+            localStorage.setItem("usuarioPermissao", data.permissao);
+            
+            // Redirecionamento condicional baseado no cargo
+            window.location.href = data.permissao === "ADMINISTRADOR" ? "telainicial-gestor.html" : "telainicial.html";
+        } else { 
+            alert("Login inválido. Verifique suas credenciais."); 
+        }
+    } catch (e) { 
+        alert("Erro de conexão com o servidor."); 
+    }
+};
+
+/**
+ * Limpa todos os dados de sessão e desconecta o usuário.
+ */
+window.btnlogout = () => {
+    localStorage.clear();
     window.location.href = "index.html";
-}
+};
 
-const btnmenu = document.getElementById("btnmenu");
-const sidebar = document.getElementById("sidebar");
-const closeBtn = document.getElementById("btnx");
-const overlayBlurSidebar = document.getElementById("overlayBlurSidebar");
+// ============================================================
+// 2. CONTROLE DA SIDEBAR (MENU LATERAL) E INTERFACE
+// ============================================================
 
-if (btnmenu && sidebar && closeBtn && overlayBlurSidebar) {
-    btnmenu.addEventListener("click", () => {
-        sidebar.classList.add("open");
-        overlayBlurSidebar.classList.add("active");
-    });
-
-    closeBtn.addEventListener("click", () => {
-        sidebar.classList.remove("open");
-        overlayBlurSidebar.classList.remove("active");
-    });
-
-    overlayBlurSidebar.addEventListener("click", () => {
-        sidebar.classList.remove("open");
-        overlayBlurSidebar.classList.remove("active");
-    });
-}
-
-let veiculoSelecionado = {};
-let modalConfirmacao;
-let modalDetalhesVeiculo;
-let modalMensagem;
-
-function abrirModalConfirmacao() {
-    modalConfirmacao.style.display = "flex";
-}
-
-function abrirModalMensagem(mensagem) {
-    const textoModalMensagem = document.getElementById("textoModalMensagem");
-    if (textoModalMensagem) {
-        textoModalMensagem.textContent = mensagem;
-    }
-
-    if (modalMensagem) {
-        modalMensagem.style.display = "flex";
-    }
-}
-
-function fecharModalMensagem() {
-    if (modalMensagem) {
-        modalMensagem.style.display = "none";
-    }
-}
-
-function fecharTodosModais() {
-    modalConfirmacao.style.display = "none";
-    modalDetalhesVeiculo.style.display = "none";
-}
-
-function fecharPopupPorOverlay(overlay) {
-    if (!overlay) return;
-
-    if (overlay.id === "modalMensagem") {
-        fecharModalMensagem();
-        return;
-    }
-
-    overlay.style.display = "none";
-}
-
-function selecionarVeiculo(titulo, arg2, arg3, arg4, arg5, arg6, arg7, arg8) {
-    let modelo = "";
-    let marca = "";
-    let tipo;
-    let prefixo;
-    let placa;
-    let info;
-    let ultimoServico;
-    let nivelCombustivel;
-    let quilometragem;
-
-    if (arguments.length === 6) {
-        modelo = arg2;
-        marca = arg3;
-        tipo = arg4;
-        prefixo = arg5;
-        placa = arg6;
-        info = "";
-        ultimoServico = "";
-        nivelCombustivel = "";
-        quilometragem = localStorage.getItem("quilometragemInicial") || "";
-    } else if (arguments.length === 5) {
-        modelo = arg2;
-        marca = arg3;
-        tipo = arg4;
-        prefixo = "";
-        placa = arg5;
-        info = "";
-        ultimoServico = "";
-        nivelCombustivel = "";
-        quilometragem = localStorage.getItem("quilometragemInicial") || "";
-    } else {
-        modelo = titulo;
-        marca = "";
-        tipo = arg2;
-        prefixo = arg3;
-        placa = arg4;
-        info = arg5;
-        ultimoServico = arg6;
-        nivelCombustivel = arg7;
-        quilometragem = localStorage.getItem("quilometragemInicial") || arg8 || "";
-    }
-
-    veiculoSelecionado = {
-        titulo: titulo,
-        modelo: modelo,
-        marca: marca,
-        tipo: tipo,
-        prefixo: prefixo,
-        placa: placa,
-        info: info,
-        ultimoServico: ultimoServico,
-        nivelCombustivel: nivelCombustivel,
-        quilometragem: quilometragem
-    };
-
-    const tituloVeiculo = document.getElementById("tituloVeiculo");
-    const modeloVeiculo = document.getElementById("modeloVeiculo");
-    const marcaVeiculo = document.getElementById("marcaVeiculo");
-    const tipoVeiculo = document.getElementById("tipoVeiculo");
-    const prefixoVeiculo = document.getElementById("prefixoVeiculo");
-    const placaVeiculo = document.getElementById("placaVeiculo");
-    const ultimoServicoEl = document.getElementById("ultimoServico");
-    const nivelCombustivelEl = document.getElementById("nivelCombustivel");
-    const quilometragemEl = document.getElementById("quilometragem");
-
-    if (tituloVeiculo) tituloVeiculo.textContent = titulo;
-    if (modeloVeiculo) modeloVeiculo.textContent = modelo || "";
-    if (marcaVeiculo) marcaVeiculo.textContent = marca || "";
-    if (tipoVeiculo) tipoVeiculo.textContent = tipo || "";
-    if (prefixoVeiculo) prefixoVeiculo.textContent = prefixo || "";
-    if (placaVeiculo) placaVeiculo.textContent = placa || "";
-    if (ultimoServicoEl) ultimoServicoEl.textContent = ultimoServico || "";
-    if (nivelCombustivelEl) nivelCombustivelEl.textContent = nivelCombustivel || "";
-    if (quilometragemEl) quilometragemEl.textContent = quilometragem || "";
-
-    modalConfirmacao.style.display = "none";
-    modalDetalhesVeiculo.style.display = "flex";
-}
-
-function voltarParaVeiculos() {
-    modalDetalhesVeiculo.style.display = "none";
-    modalConfirmacao.style.display = "flex";
-}
-
-function confirmarVeiculo() {
-    localStorage.setItem("veiculoSelecionado", JSON.stringify(veiculoSelecionado));
-    const chamadoAtual = {
-        id: "",
-        tipoServico: "",
-        cliente: "",
-        endereco: ""
-    };
-    localStorage.setItem("chamadoAtual", JSON.stringify(chamadoAtual));
-    fecharTodosModais();
-    localStorage.setItem("mensagemPendente", "O chamado foi aceito");
-    window.location.href = "telainicial.html";
-}
-
-function carregarDadosTelaInicial() {
-    const veiculo = JSON.parse(localStorage.getItem("veiculoSelecionado"));
-    const infoVeiculo = document.getElementById("info-veiculo");
-    const quilometragemInicialInput = document.getElementById("quilometragem-inicial");
-    const dataInicialInput = document.getElementById("data-inicial");
-    const horarioInicialInput = document.getElementById("horario-inicial");
-    const observacoesInput = document.getElementById("observacoes");
-
-    if (veiculo) {
-        if (infoVeiculo) {
-            infoVeiculo.innerHTML = `
-                <p><strong>Modelo:</strong> ${veiculo.modelo || veiculo.tipo}</p>
-                <p><strong>Marca:</strong> ${veiculo.marca || veiculo.titulo}</p>
-                <p><strong>Placa:</strong> ${veiculo.placa}</p>
-                <p><strong>Prefixo da Viatura:</strong> ${veiculo.prefixo}</p>
-            `;
-        }
-
-        const quilometragemInicial = localStorage.getItem("quilometragemInicial") || "";
-        const dataInicial = localStorage.getItem("dataInicial") || "";
-        const horarioInicial = localStorage.getItem("horarioInicial") || "";
-        const observacoes = localStorage.getItem("observacoes") || "";
-        if (quilometragemInicialInput) quilometragemInicialInput.value = quilometragemInicial;
-        if (dataInicialInput) dataInicialInput.value = dataInicial;
-        if (horarioInicialInput) horarioInicialInput.value = horarioInicial;
-        if (observacoesInput) observacoesInput.value = observacoes;
-    }
-
-    const chamado = JSON.parse(localStorage.getItem("chamadoAtual"));
-    const infoChamado = document.getElementById("info-chamado");
-    if (chamado) {
-        if (infoChamado) {
-            infoChamado.innerHTML = `
-                <p><strong>ID:</strong> ${chamado.id}</p>
-                <p><strong>Tipo de Serviço:</strong> ${chamado.tipoServico}</p>
-                <p><strong>Cliente:</strong> ${chamado.cliente}</p>
-                <p><strong>Endereço:</strong> ${chamado.endereco}</p>
-            `;
-        }
-    }
-}
-
-function salvarVeiculoInfo() {
-    const quilometragemInicial = document.getElementById("quilometragem-inicial").value;
-    const dataInicial = document.getElementById("data-inicial").value;
-    const horarioInicial = document.getElementById("horario-inicial").value;
-    const observacoes = document.getElementById("observacoes").value;
-    localStorage.setItem("quilometragemInicial", quilometragemInicial);
-    localStorage.setItem("dataInicial", dataInicial);
-    localStorage.setItem("horarioInicial", horarioInicial);
-    localStorage.setItem("observacoes", observacoes);
-    abrirModalMensagem("Informações salvas!");
-}
-
-function checkoutChamado() {
-    const quilometragemInicial = document.getElementById("quilometragem-inicial").value.trim();
-    const dataInicial = document.getElementById("data-inicial").value.trim();
-    const horarioInicial = document.getElementById("horario-inicial").value.trim();
-
-    if (!quilometragemInicial || !dataInicial || !horarioInicial) {
-        abrirModalMensagem("É necessário preencher as informações antes de fazer chackout");
-        return;
-    }
-
-    localStorage.removeItem("chamadoAtual");
-    localStorage.removeItem("veiculoSelecionado");
-    localStorage.removeItem("quilometragemInicial");
-    localStorage.removeItem("dataInicial");
-    localStorage.removeItem("horarioInicial");
-    localStorage.removeItem("observacoes");
-    document.getElementById("info-veiculo").innerHTML = "<p>Nenhum veículo selecionado.</p>";
-    document.getElementById("info-chamado").innerHTML = "<p>Nenhum chamado ativo.</p>";
-    document.getElementById("quilometragem-inicial").value = "";
-    document.getElementById("data-inicial").value = "";
-    document.getElementById("horario-inicial").value = "";
-    document.getElementById("observacoes").value = "";
-    abrirModalMensagem("Checkout realizado com sucesso!");
-}
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    modalConfirmacao = document.getElementById("modalConfirmacao");
-    modalDetalhesVeiculo = document.getElementById("modalDetalhesVeiculo");
-    modalMensagem = document.getElementById("modalMensagem");
-
-    const btnAbs = document.getElementById("btn-abs-veiculo");
-    const popup = document.getElementById("popupAbastecimento");
-    const btnVoltar = document.getElementById("btn-voltar");
-    const btnSalvar = document.getElementById("btn-salvar-abastecimento");
-
-    if (btnAbs && popup && btnVoltar && btnSalvar) {
-        btnAbs.addEventListener("click", () => popup.style.display = "flex");
-        btnVoltar.addEventListener("click", () => popup.style.display = "none");
-        btnSalvar.addEventListener("click", () => {
-            const valor = document.getElementById("valor-abastecimento").value;
-            const data = document.getElementById("data-abastecimento").value;
-            const hora = document.getElementById("hora-abastecimento").value;
-            console.log("Abastecimento salvo:", { valor, data, hora });
-            popup.style.display = "none";
-        });
-        popup.addEventListener("click", (event) => {
-            if (event.target === popup) {
-                popup.style.display = "none";
-            }
-        });
-    }
-
-    const btnSalvarVeiculo = document.getElementById("btn-salvar-veiculo");
-    const btnCheckout = document.getElementById("btn-checkout");
-    if (btnSalvarVeiculo) btnSalvarVeiculo.addEventListener("click", salvarVeiculoInfo);
-    if (btnCheckout) btnCheckout.addEventListener("click", checkoutChamado);
-
+document.addEventListener('DOMContentLoaded', () => {
+    // Inicializa dados da tela assim que o DOM carrega
     carregarDadosTelaInicial();
 
-    const mensagemPendente = localStorage.getItem("mensagemPendente");
-    if (mensagemPendente) {
-        abrirModalMensagem(mensagemPendente);
+    const btnMenu = document.getElementById("btnmenu");
+    const sidebar = document.getElementById("sidebar");
+    const closeBtn = document.getElementById("btnx");
+    const overlay = document.getElementById("overlayBlurSidebar");
+
+    // Abre o menu lateral
+    if (btnMenu && sidebar) {
+        btnMenu.onclick = () => { 
+            sidebar.classList.add("open"); 
+            overlay?.classList.add("active"); 
+        };
+    }
+
+    // Fecha o menu lateral (no X ou no clique fora/overlay)
+    const fecharSidebar = () => {
+        sidebar?.classList.remove("open");
+        overlay?.classList.remove("active");
+    };
+
+    if (closeBtn) closeBtn.onclick = fecharSidebar;
+    if (overlay) overlay.onclick = fecharSidebar;
+});
+
+// ============================================================
+// 3. GERENCIAMENTO DE MODAIS
+// ============================================================
+
+let modalConfirmacao, modalDetalhesVeiculo, modalMensagem;
+
+/**
+ * Abre o modal de listagem/confirmação inicial.
+ */
+window.abrirModalConfirmacao = () => {
+    modalConfirmacao = document.getElementById("modalConfirmacao");
+    if (modalConfirmacao) modalConfirmacao.style.display = "flex";
+};
+
+/**
+ * Exibe uma mensagem genérica de feedback ao usuário.
+ */
+window.abrirModalMensagem = (mensagem) => {
+    const texto = document.getElementById("textoModalMensagem");
+    modalMensagem = document.getElementById("modalMensagem");
+    if (texto) texto.textContent = mensagem;
+    if (modalMensagem) modalMensagem.style.display = "flex";
+};
+
+window.fecharModalMensagem = () => {
+    modalMensagem = document.getElementById("modalMensagem");
+    if (modalMensagem) modalMensagem.style.display = "none";
+};
+
+/**
+ * Fecha todos os modais de seleção de uma vez.
+ */
+window.fecharTodosModais = () => {
+    if (modalConfirmacao) modalConfirmacao.style.display = "none";
+    if (modalDetalhesVeiculo) modalDetalhesVeiculo.style.display = "none";
+};
+
+window.voltarParaVeiculos = () => {
+    document.getElementById("modalDetalhesVeiculo").style.display = "none";
+    document.getElementById("modalConfirmacao").style.display = "flex";
+};
+
+// ============================================================
+// 4. SELEÇÃO E CONFIRMAÇÃO DE VEÍCULO (CHAMADOS)
+// ============================================================
+
+let veiculoSelecionado = {};
+
+/**
+ * Função inteligente que lida com diferentes formatos de entrada de dados do veículo.
+ */
+window.selecionarVeiculo = function(titulo, arg2, arg3, arg4, arg5, arg6, arg7, arg8) {
+    let dados = {
+        titulo: titulo,
+        modelo: "", marca: "", tipo: "", prefixo: "", placa: "",
+        ultimoServico: "", nivelCombustivel: "", 
+        quilometragem: localStorage.getItem("quilometragemInicial") || ""
+    };
+
+    // Lógica adaptativa conforme a quantidade de argumentos passados (do Tipo 1)
+    if (arguments.length === 6) {
+        dados.modelo = arg2; dados.marca = arg3; dados.tipo = arg4; dados.prefixo = arg5; dados.placa = arg6;
+    } else if (arguments.length === 5) {
+        dados.modelo = arg2; dados.marca = arg3; dados.tipo = arg4; dados.placa = arg5;
+    } else {
+        dados.modelo = titulo; dados.tipo = arg2; dados.prefixo = arg3; dados.placa = arg4;
+        dados.ultimoServico = arg6; dados.nivelCombustivel = arg7;
+    }
+
+    veiculoSelecionado = dados;
+
+    // Atualiza os elementos visuais do modal de detalhes
+    const campos = ["titulo", "modelo", "marca", "tipo", "prefixo", "placa", "ultimoServico", "nivelCombustivel"];
+    campos.forEach(campo => {
+        const el = document.getElementById(`${campo}Veiculo`) || document.getElementById(campo);
+        if (el) el.textContent = dados[campo] || "";
+    });
+
+    document.getElementById("modalConfirmacao").style.display = "none";
+    document.getElementById("modalDetalhesVeiculo").style.display = "flex";
+};
+
+/**
+ * Finaliza a escolha do veículo, salva localmente e prepara o chamado.
+ */
+window.confirmarVeiculo = () => {
+    if (!veiculoSelecionado.placa) return alert("Erro: Selecione o veículo novamente.");
+    
+    localStorage.setItem("veiculoSelecionado", JSON.stringify(veiculoSelecionado));
+    
+    // Inicializa estrutura de chamado vazio para ser preenchida
+    const chamadoAtual = { id: "CH" + Date.now(), tipoServico: "Padrão", cliente: "Interno", endereco: "Base" };
+    localStorage.setItem("chamadoAtual", JSON.stringify(chamadoAtual));
+    
+    localStorage.setItem("mensagemPendente", "O chamado foi aceito e o veículo vinculado!");
+    window.location.href = "telainicial.html";
+};
+
+// ============================================================
+// 5. SINCRONIZAÇÃO DE DADOS E CHECKOUT (API)
+// ============================================================
+
+/**
+ * Salva as informações de quilometragem e observações no LocalStorage e no Backend.
+ */
+window.salvarVeiculoInfo = async function() {
+    const km = document.getElementById("quilometragem-inicial")?.value || document.getElementById("quilometragem-atual")?.value;
+    const dataIni = document.getElementById("data-inicial")?.value;
+    const horaIni = document.getElementById("horario-inicial")?.value;
+    const obs = document.getElementById("observacoes")?.value;
+
+    // Persistência Local
+    localStorage.setItem("quilometragemInicial", km);
+    localStorage.setItem("dataInicial", dataIni);
+    localStorage.setItem("horarioInicial", horaIni);
+    localStorage.setItem("observacoes", obs);
+
+    const v = JSON.parse(localStorage.getItem('veiculoSelecionado'));
+    if (!v) return alert("Nenhum veículo em atendimento para salvar no servidor.");
+
+    try {
+        const r = await fetch(`http://localhost:8080/veiculo/${v.prefixo}/atualizar-dados`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ quilometragem: parseFloat(km) || 0, observacoes: obs || "" })
+        });
+        if (r.ok) abrirModalMensagem("Informações sincronizadas com sucesso!");
+        else alert("Salvo localmente, mas houve erro ao sincronizar com o servidor.");
+    } catch (e) { 
+        abrirModalMensagem("Informações salvas localmente (Modo Offline)."); 
+    }
+};
+
+/**
+ * Limpa todos os dados de serviço ativo.
+ */
+window.checkoutChamado = function() {
+    if (!localStorage.getItem('veiculoSelecionado')) return alert("Não há chamado ativo.");
+
+    if (confirm("Deseja finalizar o serviço e realizar o Checkout?")) {
+        const chavesParaRemover = ["chamadoAtual", "veiculoSelecionado", "quilometragemInicial", "dataInicial", "horarioInicial", "observacoes"];
+        chavesParaRemover.forEach(k => localStorage.removeItem(k));
+        
+        alert("Checkout realizado com sucesso!");
+        window.location.reload();
+    }
+};
+
+// ============================================================
+// 6. CARREGAMENTO DE DADOS (TELA INICIAL)
+// ============================================================
+
+function carregarDadosTelaInicial() {
+    // 6.1 Identificação do Usuário
+    const nome = localStorage.getItem('usuarioNome');
+    const spanBoasVindas = document.getElementById('boas-vindas');
+    const tituloBarra = document.querySelector('.top-bar .titulo');
+    if (nome) {
+        if (spanBoasVindas) spanBoasVindas.textContent = nome;
+        if (tituloBarra) tituloBarra.innerHTML = `Bem vindo, ${nome}!`;
+    }
+
+    // 6.2 Preenchimento do Veículo Ativo
+    const veiculo = JSON.parse(localStorage.getItem("veiculoSelecionado"));
+    const infoVeiculoDiv = document.getElementById("info-veiculo");
+    if (veiculo && infoVeiculoDiv) {
+        infoVeiculoDiv.innerHTML = `
+            <p><strong>Modelo/Tipo:</strong> ${veiculo.modelo || veiculo.tipo}</p>
+            <p><strong>Marca:</strong> ${veiculo.marca || 'N/A'}</p>
+            <p><strong>Placa:</strong> ${veiculo.placa} | <strong>Prefixo:</strong> ${veiculo.prefixo}</p>
+        `;
+    }
+
+    // 6.3 Preenchimento de Inputs de Formulário
+    const inputs = {
+        "quilometragem-inicial": "quilometragemInicial",
+        "data-inicial": "dataInicial",
+        "horario-inicial": "horarioInicial",
+        "observacoes": "observacoes"
+    };
+    for (let id in inputs) {
+        const el = document.getElementById(id);
+        if (el) el.value = localStorage.getItem(inputs[id]) || "";
+    }
+
+    // 6.4 Mensagens Pendentes (Toast)
+    const msg = localStorage.getItem("mensagemPendente");
+    if (msg) {
+        abrirModalMensagem(msg);
         localStorage.removeItem("mensagemPendente");
     }
+}
 
-    if (modalConfirmacao) {
-        modalConfirmacao.addEventListener("click", (event) => {
-            if (event.target === modalConfirmacao) {
-                fecharTodosModais();
-            }
-        });
-    }
+// ============================================================
+// 7. GESTÃO (ADMINISTRATIVO) - CADASTROS
+// ============================================================
 
-    if (modalDetalhesVeiculo) {
-        modalDetalhesVeiculo.addEventListener("click", (event) => {
-            if (event.target === modalDetalhesVeiculo) {
-                fecharTodosModais();
-            }
+window.cadastrarUsuario = async function() {
+    const inputs = document.querySelectorAll('input');
+    const payload = {
+        nome: inputs[0]?.value,
+        matricula: inputs[1]?.value,
+        email: inputs[2]?.value,
+        senha: inputs[3]?.value,
+        permissao: "TECNICO"
+    };
+    try {
+        const r = await fetch("http://localhost:8080/usuario/cadastrar", {
+            method: "POST", headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
         });
-    }
+        if (r.ok) { alert("Usuário cadastrado!"); window.location.href = "telainicial-gestor.html"; }
+    } catch (e) { alert("Erro ao conectar ao servidor."); }
+};
 
-    if (modalMensagem) {
-        modalMensagem.addEventListener("click", (event) => {
-            if (event.target === modalMensagem) {
-                fecharModalMensagem();
-            }
+window.cadastrarVeiculo = async function() {
+    const inputs = document.querySelectorAll('input');
+    const payload = {
+        prefixo: inputs[1]?.value,
+        placa: inputs[2]?.value,
+        combustivel: inputs[3]?.value,
+        kmAtual: 0, disponivel: true
+    };
+    try {
+        const r = await fetch("http://localhost:8080/veiculo/cadastrar", {
+            method: "POST", headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
         });
-    }
+        if (r.ok) { alert("Veículo cadastrado!"); window.location.href = "telainicial-gestor.html"; }
+    } catch (e) { alert("Erro de rede."); }
+};
 
-    document.querySelectorAll(".sobreposicao, .popup").forEach((overlay) => {
-        overlay.addEventListener("click", (event) => {
-            if (event.target === overlay) {
-                fecharPopupPorOverlay(overlay);
-            }
-        });
+// ============================================================
+// 8. UTILITÁRIOS E EVENTOS GLOBAIS
+// ============================================================
+
+/**
+ * Alterna visibilidade de senhas em inputs.
+ */
+window.togglePassword = () => {
+    document.querySelectorAll('input[type="password"], .senha-input').forEach(i => {
+        i.type = i.type === "password" ? "text" : "password";
     });
+};
+
+/**
+ * Atalho para login com a tecla Enter.
+ */
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && document.getElementById('email')) window.btnindex();
+});
+
+/**
+ * Fecha modais ao clicar na área escura (overlay).
+ */
+document.addEventListener("click", (e) => {
+    if (e.target.classList.contains('sobreposicao') || e.target.classList.contains('popup')) {
+        e.target.style.display = "none";
+    }
 });

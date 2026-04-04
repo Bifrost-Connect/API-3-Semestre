@@ -54,8 +54,9 @@
 
                 <div class="acoes-veiculo">
                     <button id="check-in-veiculo" onclick="abrirModalConfirmacao()">Fazer check-in</button>
-                    <button id="btn-salvar-veiculo">Salvar</button>
-                    <button id="btn-abs-veiculo">Abastecimento</button>
+                    <button id="btn-checkout" style="display: none;">Fazer check-out</button>
+                    <button id="btn-salvar-veiculo" style="display: none;">Salvar</button>
+                    <button id="btn-abs-veiculo" style="display: none;">Abastecimento</button>
                 </div>
             </div>
         </div>
@@ -65,7 +66,6 @@
             <div id="info-chamado">
                 <p>Nenhum chamado ativo.</p>
             </div>
-            <button id="btn-checkout">Checkout</button>
         </div>
     </div>
 
@@ -100,26 +100,26 @@
         <div class="popup-card">
             <div class="popup-detalhes-layout">
                 <div class="popup-detalhes-info">
-            <h2 class="popup-titulo" id="tituloVeiculo">Detalhes do Veículo</h2>
+                    <h2 class="popup-titulo" id="tituloVeiculo">Detalhes do Veículo</h2>
 
-            <div class="popup-conteudo" id="conteudoVeiculo">
-                <p><strong>Modelo:</strong> <span id="modeloVeiculo"></span></p>
-                <p><strong>Marca:</strong> <span id="marcaVeiculo"></span></p>
-                <p><strong>Tipo de Veículo:</strong> <span id="tipoVeiculo"></span></p>
-                <p><strong>Prefixo da Viatura:</strong> <span id="prefixoVeiculo"></span></p>
-                <p><strong>Placa:</strong> <span id="placaVeiculo"></span></p>
-                <p><strong>Último Serviço:</strong> <span id="ultimoServico"></span></p>
-                <p><strong>Quilometragem:</strong> <span id="quilometragem"></span></p>
-            </div>
+                    <div class="popup-conteudo" id="conteudoVeiculo">
+                        <p><strong>Modelo:</strong> <span id="modeloVeiculo"></span></p>
+                        <p><strong>Marca:</strong> <span id="marcaVeiculo"></span></p>
+                        <p><strong>Tipo de Veículo:</strong> <span id="tipoVeiculo"></span></p>
+                        <p><strong>Prefixo da Viatura:</strong> <span id="prefixoVeiculo"></span></p>
+                        <p><strong>Placa:</strong> <span id="placaVeiculo"></span></p>
+                        <p><strong>Último Serviço:</strong> <span id="ultimoServico"></span></p>
+                        <p><strong>Quilometragem:</strong> <span id="quilometragem"></span></p>
+                    </div>
 
-            <div class="btn-container">
-                <button class="btn-voltar" onclick="voltarParaVeiculos()">
-                    ← Voltar
-                </button>
-                <button class="btn-aceitar" onclick="confirmarVeiculo()">
-                    Confirmar
-                </button>
-            </div>
+                    <div class="btn-container">
+                        <button class="btn-voltar" onclick="voltarParaVeiculos()">
+                            ← Voltar
+                        </button>
+                        <button class="btn-aceitar" onclick="confirmarVeiculo()">
+                            Confirmar
+                        </button>
+                    </div>
                 </div>
                 <div class="popup-detalhes-imagem">
                     <img src="img/carro 1.jpg" alt="Imagem do veículo">
