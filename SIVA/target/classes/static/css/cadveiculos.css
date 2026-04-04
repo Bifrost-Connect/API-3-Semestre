@@ -383,8 +383,9 @@ label {
 }
 
 @media (max-width: 768px) {
-    .form-container {
+    .chamado-conteudo {
         flex-direction: column;
         align-items: center;
+        gap: 20px;
     }
 }

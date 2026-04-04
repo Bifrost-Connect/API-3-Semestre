@@ -14,8 +14,9 @@ public class AutenticacaoService implements UserDetailsService {
     private UsuarioRepository repository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return repository.findByEmail(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
+    public UserDetails loadUserByUsername(String matricula) throws UsernameNotFoundException {
+        // Trocado para buscar por matrícula
+        return (UserDetails) repository.findByMatricula(matricula)
+                .orElseThrow(() -> new UsernameNotFoundException("Matrícula não encontrada: " + matricula));
     }
 }

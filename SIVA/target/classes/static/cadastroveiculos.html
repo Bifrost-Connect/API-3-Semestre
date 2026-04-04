@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bifrost Connect</title>
+    <title>Bifrost Connect - Cadastro de Veículos</title>
     <link rel="stylesheet" href="css/cadveiculos.css">
 </head>
 
@@ -15,7 +15,7 @@
         <button id="btnmenu">
             <img src="img/menu.png" alt="icone menu">
         </button>
-        <span class="titulo">Bem vindo, <span id="nome-usuario-logado">fulano</span>!</span>
+        <span class="titulo">Bem vindo, <span id="nome-usuario-logado"></span>!</span>
     </div>
 
     <div class="logout">
@@ -35,9 +35,11 @@
 
 <div id="sidebar" class="sidebar">
     <button id="btnx" class="close-btn">×</button>
-    <a href="telainicial.html">TELA INICIAL</a>
-    <a href="chamados.html">CHAMADOS</a>
+    <a href="telainicial-gestor.html">TELA INICIAL</a>
+    <a href="historicochamados.html">HISTÓRICO DE CHAMADOS</a>
     <a href="cadastrousuarios.html">CADASTRO DE USUÁRIOS</a>
+    <a href="duvidas.html">DÚVIDAS</a>
+    <a href="configuracoes.html">CONFIGURAÇÕES</a>
 </div>
 
 <div class="chamado-card">
@@ -46,48 +48,49 @@
     <div class="chamado-conteudo">
         <div class="coluna">
             <div class="group">
-                <input required="" type="text" class="input" id="modeloVeiculo">
-                <span class="highlight"></span>
+                <input required type="text" class="input" id="cad-marca">
+                <span class="bar"></span>
+                <label>Marca:</label>
+            </div>
+            <div class="group">
+                <input required type="text" class="input" id="cad-modelo">
                 <span class="bar"></span>
                 <label>Modelo:</label>
             </div>
-
             <div class="group">
-                <input required="" type="text" class="input" id="placaVeiculo">
-                <span class="highlight"></span>
+                <input required type="text" class="input" id="cad-tipo">
                 <span class="bar"></span>
-                <label>Placa:</label>
+                <label>Tipo de Veículo:</label>
             </div>
         </div>
 
         <div class="coluna">
             <div class="group">
-                <input required="" type="text" class="input" id="prefixoVeiculo">
-                <span class="highlight"></span>
+                <input required type="text" class="input" id="cad-placa">
                 <span class="bar"></span>
-                <label>Prefixo (ex: CAR006):</label>
+                <label>Placa:</label>
             </div>
-
             <div class="group">
-                <input required="" type="text" class="input" id="combustivelVeiculo">
-                <span class="highlight"></span>
+                <input required type="text" class="input" id="cad-prefixo">
                 <span class="bar"></span>
-                <label>Combustível:</label>
+                <label>Prefixo:</label>
             </div>
         </div>
     </div>
 
-    <button class="btn-aceitar" onclick="cadastrarVeiculo()">
+    <button class="btn-aceitar" onclick="abrirModalConfirmacao()">
         Cadastrar
     </button>
 </div>
 
 <div id="modalConfirmacao" class="sobreposicao">
     <div class="popup-card">
-        <h2 class="popup-titulo">Concluido!</h2>
+        <button class="close-btn" onclick="fecharTodosModais()" style="position: absolute; right: 10px; top: 10px; background: none; border: none; font-size: 20px; cursor: pointer;">×</button>
+        <h2 class="popup-titulo">Concluído!</h2>
         <div class="popup-conteudo">
-            <p><strong>Veículo cadastrado com sucesso!</strong></p>
+            <p style="text-align: center;"><strong>Veículo cadastrado com sucesso!</strong></p>
         </div>
+        <button class="btn-aceitar" onclick="fecharTodosModais()" style="margin-top: 20px;">OK</button>
     </div>
 </div>
 

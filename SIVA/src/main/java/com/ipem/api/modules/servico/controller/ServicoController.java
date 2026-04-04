@@ -1,6 +1,5 @@
 package com.ipem.api.modules.servico.controller;
 
-// Importando a classe Servico da pasta model
 import com.ipem.api.modules.servico.model.Servico;
 import com.ipem.api.modules.servico.service.ServicoService;
 import lombok.RequiredArgsConstructor;

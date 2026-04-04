@@ -10,108 +10,96 @@
 
 <body class="pagina-chamados">
 
-    <!-- BARRA SUPERIOR QUE TEM O LOGOUT E O MENU HAMBURGUER -->
-
-    <div class="top-bar">
-        <div class="left">
-            <button id="btnmenu">
-                <img src="img/menu.png" alt="icone menu">
-            </button>
-            <span class="titulo">Bem vindo, fulano!</span>
-        </div>
-
-        <div class="logout">
-            <button id="btnlogout" onclick="btnlogout()">
-                <img src="img/logout.png" alt="icone logout">
-            </button>
-        </div>
+<div class="top-bar">
+    <div class="left">
+        <button id="btnmenu">
+            <img src="img/menu.png" alt="icone menu">
+        </button>
+        <span class="titulo" id="boas-vindas-titulo">Bem vindo, fulano!</span>
     </div>
 
-    <!-- MUDAR AQUI PARA ALGO QUE PUXE A QUANTIDADE DE CHAMADOS -->
-
-    <div class="notificacao-bar">
-        <img src="img/bell.png" class="bell">
-        <span>Você possui 1 solicitação de serviço!</span>
-        <div class="badge">3</div>
-    </div>
-
-    <!-- BLUR DA SIDEBAR -->
-
-    <div id="overlayBlurSidebar" class="overlay-blur-sidebar"></div>
-
-        <div id="sidebar" class="sidebar">
-        <button id="btnx" class="close-btn">×</button>
-        <a href="telainicial.html">TELA INICIAL</a>
-        <a href="#">CONTATOS</a>
-        <a href="#">DÚVIDAS</a>
-        <a href="#">CONFIGURAÇÕES</a>
-    </div>
-
-    <div class="chamado-card">
-        <h2 class="chamado-titulo">Chamado Exemplo</h2>
-
-        <!-- PRECISA FAZER O BACKEND PARA PREENCHER OS DADOS -->
-
-        <div class="chamado-conteudo">
-            <p><strong>Tipo de serviço:</strong> </p>
-            <p><strong>Cliente:</strong> </p>
-            <p><strong>Endereço:</strong> </p>
-        </div>
-
-        <button class="btn-aceitar" onclick="abrirModalConfirmacao()">
-            Aceitar chamado
+    <div class="logout">
+        <button id="btnlogout" onclick="btnlogout()">
+            <img src="img/logout.png" alt="icone logout">
         </button>
     </div>
+</div>
 
-    <div id="modalConfirmacao" class="sobreposicao">
-        <div class="popup-card">
+<div class="notificacao-bar">
+    <img src="img/bell.png" class="bell">
+    <span>Você possui 1 solicitação de serviço!</span>
+    <div class="badge">3</div>
+</div>
+
+<div id="overlayBlurSidebar" class="overlay-blur-sidebar"></div>
+
+<div id="sidebar" class="sidebar">
+    <button id="btnx" class="close-btn">×</button>
+    <a href="telainicial.html">TELA INICIAL</a>
+    <a href="#">CONTATOS</a>
+    <a href="#">DÚVIDAS</a>
+    <a href="#">CONFIGURAÇÕES</a>
+</div>
+
+<div class="chamado-card">
+    <h2 class="chamado-titulo">Chamado Exemplo</h2>
+
+    <div class="chamado-conteudo">
+        <p><strong>Tipo de serviço:</strong> Manutenção Corretiva</p>
+        <p><strong>Cliente:</strong> Condomínio Solar</p>
+        <p><strong>Endereço:</strong> Rua das Flores, 123</p>
+    </div>
+
+    <button class="btn-aceitar" onclick="abrirModalConfirmacao()">
+        Aceitar chamado
+    </button>
+</div>
+
+<div id="modalConfirmacao" class="sobreposicao">
+    <div class="popup-card">
         <h2 class="popup-titulo">Veículos Disponíveis</h2>
-        
+
         <div class="popup-conteudo">
             <p><strong>Selecione um veículo para visualizar informações:</strong></p>
         </div>
-        
-        <!-- RETIRAR OS DADOS PRÉ-DEFINIDOS QUANDO FOR FAZER O BACKEND -->
 
         <div id="listaVeiculos" class="lista-veiculos">
-            <button class="btn-veiculo" onclick="selecionarVeiculo('Veiculo 1', 'Utilitário', '00000' ,'aaa-1234', 'placa 1', 'Manutenção', '50%', '12000 km',)">
-            Carro 1
+            <button class="btn-veiculo" onclick="selecionarVeiculo('Viatura 1', 'Argo', 'Fiat', 'Passeio', '00001', 'aaa-1234')">
+                Carro 1
             </button>
-            <button class="btn-veiculo" onclick="selecionarVeiculo('Veiculo 2', 'Pickup', '11111', 'bbb-5678', 'placa 2', 'Manutenção', '75%', '15000 km')">
-            Carro 2
+            <button class="btn-veiculo" onclick="selecionarVeiculo('Viatura 2', 'Sprinter', 'Mercedes', 'Utilitário', '00002', 'bbb-5678')">
+                Carro 2
             </button>
-            <button class="btn-veiculo" onclick="selecionarVeiculo('Veiculo 3', 'Utilitário', 'ccc-9012', 'placa 3', 'Manutenção', '20%', '10000 km')">
-            Carro 3
+            <button class="btn-veiculo" onclick="selecionarVeiculo('Viatura 3', 'Ka', 'Ford', 'Passeio', '00003', 'ccc-9012')">
+                Carro 3
             </button>
-        </div>
         </div>
     </div>
+</div>
 
-    <div id="modalDetalhesVeiculo" class="sobreposicao">
-        <div class="popup-card">
+<div id="modalDetalhesVeiculo" class="sobreposicao">
+    <div class="popup-card">
         <h2 class="popup-titulo" id="tituloVeiculo">Detalhes do Veículo</h2>
-        
-        <div class="popup-conteudo" id="conteudoVeiculo">
-            <p><strong>Tipo de Veículo:</strong> <span id="tipoVeiculo"></span></p>
-            <p><strong>Prefixo da Viatura:</strong> <span id="prefixoVeiculo"></span></p>
-            <p><strong>Placa:</strong> <span id="placaVeiculo"></span></p>
-            <p><strong>Último Serviço:</strong> <span id="ultimoServico"></span></p>
-            <p><strong>Nível de Combustível:</strong> <span id="nivelCombustivel"></span></p>
-            <p><strong>Quilometragem:</strong> <span id="quilometragem"></span></p>
+
+        <div class="popup-detalhes-layout" style="display: flex; gap: 20px; align-items: center;">
+            <div class="popup-detalhes-imagem">
+                <img id="fotoVeiculo" src="" alt="Foto do Veículo" style="max-width: 150px; border-radius: 8px;">
+            </div>
+            <div class="popup-conteudo" id="conteudoVeiculo">
+                <p><strong>Modelo:</strong> <span id="modeloVeiculo"></span></p>
+                <p><strong>Marca:</strong> <span id="marcaVeiculo"></span></p>
+                <p><strong>Placa:</strong> <span id="placaVeiculo"></span></p>
+                <p><strong>Prefixo:</strong> <span id="prefixoVeiculo"></span></p>
+            </div>
         </div>
 
-        <div class="btn-container">
-            <button class="btn-voltar" onclick="voltarParaVeiculos()">
-                ← Voltar
-            </button>
-            <button class="btn-aceitar" onclick="confirmarVeiculo()">
-                Confirmar
-            </button>
-        </div>
+        <div class="btn-container" style="margin-top: 25px; display: flex; gap: 10px;">
+            <button class="btn-voltar" onclick="voltarParaVeiculos()">Voltar</button>
+            <button class="btn-aceitar" onclick="confirmarVeiculo()">Confirmar Check-in</button>
         </div>
     </div>
+</div>
 
-    <script src="js/script.js"></script>
+<script src="js/script.js"></script>
 </body>
-
 </html>

@@ -14,9 +14,8 @@ import lombok.*;
 public class Usuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Crucial para o erro 1833 e Default Value
     @Column(name = "num_registro")
-    private Integer id;
+    private Integer id; // Este é o seu 10001
 
     @Column(name = "nome", nullable = false)
     private String nome;

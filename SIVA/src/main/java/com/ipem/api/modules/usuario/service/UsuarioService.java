@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 public class UsuarioService {
     private final UsuarioRepository repository;
 
-    public boolean autenticar(String email, String senha) {
-        return repository.findByEmail(email)
+    public boolean autenticar(String matricula, String senha) {
+        return repository.findByMatricula(matricula)
                 .map(user -> user.getSenha().equals(senha))
                 .orElse(false);
     }
