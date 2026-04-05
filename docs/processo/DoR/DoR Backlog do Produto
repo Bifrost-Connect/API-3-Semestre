@@ -24,15 +24,10 @@
 
 **3. Mensagem de confirmação, erro e aviso definidas:**
 • **Confirmação:**
-    ◦ "Check-in realizado com sucesso. Boa viagem!"
+    ◦ "Dados salvos!"
+    ◦ "Aviso! O chamado foi aceito e o veículo vinculado!"
 • **Erro:**
     ◦ "Viatura já está em uso por outro técnico."
-    ◦ "KM inicial não pode ser menor que o último registro."
-    ◦ "Campos obrigatórios (Viatura e KM) não preenchidos."
-    ◦ "Usuário não autenticado. Realize o login novamente."
-• **Aviso:**
-    ◦ "Deseja iniciar o trajeto com esta viatura?"
-    ◦ "Dados de KM incorretos podem impactar o relatório mensal do SGI."
 
 #### **US-02 - Check-out (Devolver Viatura)**
 
@@ -56,11 +51,9 @@
 
 **3. Mensagem de confirmação, erro e aviso definidas:**
 • **Confirmação:**
-    ◦ "Devolução realizada com sucesso! Distância percorrida: [X] KM."
-• **Erro:**
-    ◦ "KM final inválido. O valor deve ser maior que o KM inicial ([X])."
+    ◦ "Check-out feito com sucesso!"
 • **Aviso:**
-    ◦ "Deseja finalizar o uso da viatura [Placa]?"
+    ◦ "Deseja fazer o check out?"
     ◦ "Lembre-se de verificar o nível de combustível antes de entregar as chaves."
 
 #### **US-03 - Controle de Abastecimento**
@@ -93,14 +86,9 @@
 **3. Mensagem de confirmação, erro e aviso definidas:**
 • **Confirmação:**
     ◦ "Abastecimento registrado com sucesso!"
-    ◦ "Dados de consumo atualizados."
 • **Erro:**
     ◦ "KM informado é incompatível com o odômetro atual da viatura."
     ◦ "Quantidade de litros deve ser um valor positivo."
-    ◦ "Posto não identificado. Preencha o nome do estabelecimento."
-• **Aviso:**
-    ◦ "Deseja salvar os dados de abastecimento?"
-    ◦ "O valor total (R$) não foi preenchido!"
 
 ### US-04 - Cadastro de Funcionários e Viaturas
 
@@ -131,15 +119,12 @@
 ### 3. Mensagem de confirmação, erro e aviso definidas:
 
 - **Confirmação:**
-    - "Funcionário [Nome] cadastrado com sucesso!"
-    - "Viatura [Placa] adicionada à frota."
+    ◦ "Concluído! Usuário cadastrado com sucesso!"
+    ◦ "Concluído! Veículo cadastrado com sucesso!"
 - **Erro:**
-    - "Número de funcional já existente no sistema."
-    - "Placa de viatura já cadastrada."
-    - "Campos obrigatórios não preenchidos."
+    ◦ "Erro ao cadastrar: " + erroMsg
 - **Aviso:**
-    - "Deseja salvar o novo cadastro?"
-    - "Senhas fracas podem comprometer a segurança dos registros."
+    ◦ "Preencha todos os campos!"
 
 ---
 
