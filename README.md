@@ -68,7 +68,7 @@ Para acessar as Regras de Negócio detalhadas, Tipos de Dados, Validações e Me
 
 Para garantir que cada User Story entregue cumpre todos os requisitos de qualidade (testes, revisão de código e documentação), mantemos um registro detalhado de cada incremento:
 
-👉 **[📊 Visualizar Relatório de Testes e Evidências](./docs/processo/DoD/README.md)** 👉 **[📘 Acessar Documentação Técnica Completa](./docs/index.md)**
+👉 **[📊 Visualizar Relatório de Testes e Evidências](./docs/processo/DoD/README.md)**
 
 <br>
 
@@ -84,15 +84,79 @@ Para garantir que cada User Story entregue cumpre todos os requisitos de qualida
 ---
 
 <br>
+<h2 id='manual-instalacao'> 📘 Manual de Instalação </h2>
+
+Este guia fornece as instruções detalhadas para configurar o ambiente de desenvolvimento e executar o projeto **Bifrost Connect** em sua máquina local.
+
+
+## 🛠️ 1. Pré-requisitos
+
+Antes de iniciar, certifique-se de ter os seguintes programas instalados:
+
+* **Git:** Sistema de controle de versão distribuído, usado para gerenciar o código.
+    * 📥 **Instalação:** Acesse [Download Git](https://git-scm.com/downloads), escolha a versão para seu SO e siga as instruções.
+    * ✅ **Verificação:** Abra o terminal e digite: <br>`git --version`
+* **Java JDK (24 ou superior):** Necessário para rodar o backend e ferramentas como o Maven.
+    * 📥 **Instalação:** Acesse [Download Java JDK](https://www.oracle.com/java/technologies/downloads/), baixe o instalador e configure a variável de ambiente `JAVA_HOME`.
+    * ✅ **Verificação:** Abra o terminal e digite:<br> `java -version`
+* **Maven:** Ferramenta de automação e gerenciamento de dependências para projetos Java.
+    * 📥 **Instalação:** Baixe em [Download Maven](https://maven.apache.org/download.cgi), extraia em uma pasta (ex: `C:\apache-maven`) e adicione a pasta `bin` ao seu `PATH`.
+    * ✅ **Verificação:** Abra o terminal e digite:<br> `mvn -version`
+* **Visual Studio Code (VS Code):** Editor de código recomendado.
+    * 📥 **Instalação:** Baixe em [Download VS Code](https://code.visualstudio.com/).
+    * 🔌 **Extensões Recomendadas:** Instale o *Java Extension Pack*, *Maven for Java* e a extensão *MySQL*.
+* **MySQL Workbench:** Interface gráfica para gerenciar o banco de dados MySQL.
+    * 📥 **Instalação:** Baixe em [Download MySQL Workbench](https://dev.mysql.com/downloads/workbench/) e configure uma conexão local.
+    * ✅ **Verificação:** Teste a conexão e execute: <br>`SELECT VERSION();`
+
+---
+
+### 🚀 2. Configuração e Execução do Projeto
+
+Siga os passos abaixo para colocar a aplicação em funcionamento:
+
+1.  **Clonar o Repositório:**
+    Abra o terminal na pasta desejada e execute:
+    ```bash
+    git clone [https://github.com/SEU_USUARIO/API_3-_semestre.git](https://github.com/SEU_USUARIO/API_3-_semestre.git)
+    cd API_3-_semestre
+    ```
+
+2.  **Configurar o Banco de Dados:**
+    * Abra o **MySQL Workbench** e conecte-se ao seu servidor local.
+    * Crie o schema: `CREATE DATABASE ipem_db;`
+    * Localize o script SQL em `/docs/database/` e execute-o para criar as tabelas de usuários e viaturas.
+    * **Atenção:** No seu código Java (classe de conexão JDBC), certifique-se de que a URL, o usuário e a senha coincidem com as suas configurações locais.
+
+3.  **Abrir no VS Code:**
+    * Abra a pasta raiz do projeto no VS Code.
+    * Aguarde o Maven baixar as dependências automaticamente (verifique o ícone de progresso no canto inferior).
+
+4.  **Rodar a Aplicação:**
+    * Você pode clicar com o botão direito na classe principal (`App.java` ou `Main.java`) e selecionar **Run**.
+    * Ou utilizar o terminal do VS Code:
+    ```bash
+    mvn clean compile javafx:run
+    ```
+
+---
+
+### 🛠️ 3. Solução de Problemas (FAQ)
+
+* **Erro de Driver MySQL:** Verifique se a dependência do `mysql-connector-j` está correta no arquivo `pom.xml`.
+* **Variáveis de Ambiente:** Se os comandos `java` ou `mvn` não funcionarem, revise se os caminhos foram adicionados corretamente ao `PATH` do sistema.
+* **Conexão Recusada:** Verifique se o serviço do MySQL está rodando (no Windows, procure por "Serviços" e veja se o MySQL está "Em Execução").
+
+---
 
 <h2 id='membros'> 👥 Membros </h2>
 
 | Foto | Nome | Função | Github |
 | :---------: | :---------: | :---------------------: | :-----------------: |
 | <img src="https://avatars.githubusercontent.com/u/73396751?s=400&u=e44a85b1956ab445b8ac2751ae194d29d74b9632&v=4" width=50px> | Daniel Natan | Product Owner | <a href="https://github.com/danieldanka"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a>|
-| <img src="" width=50px> | Samir | Scrum Master | <a href="https://share.google/yripwQuvg7AHkaXP0"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a> |
-| <img src="https://media.licdn.com/dms/image/v2/D4D03AQEvcTc_ydKXOQ/profile-displayphoto-scale_400_400/B4DZjt2eeqG8Ao-/0/1756337140235?e=1773878400&v=beta&t=FEJwlOv1Amuv234X7KEPpYaKI7XjmxkY5iR9oDKgQIs" width=50px> | Guilherme Gomes | Desenvolvedor | <a href="https://github.com/guilhermegcris"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a>  |
-| <img src="" width=50px> | João Gabriel | Desenvolvedor | <a href="https://github.com/jjoaoGabriel"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a> |
+| <img src="https://avatars.githubusercontent.com/u/264030764?v=4" width=50px> | Samir | Scrum Master | <a href="https://share.google/yripwQuvg7AHkaXP0"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a> |
+| <img src="https://avatars.githubusercontent.com/u/180232646?v=4" width = 50> | Guilherme Gomes | Desenvolvedor | <a href="https://github.com/guilhermegcris"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a>  |
+| <img src="https://avatars.githubusercontent.com/u/180231525?v=4" width=50px> | João Gabriel | Desenvolvedor | <a href="https://github.com/jjoaoGabriel"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a> |
 | <img src="https://avatars.githubusercontent.com/u/184759398?v=4" width=50px> | Leonardo Graciano | Desenvolvedor | <a href="https://github.com/LeonardoGracianoOliveira"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a> |
 | <img src="https://avatars.githubusercontent.com/u/179888153?v=4" width=50px> | Luan | Desenvolvedor | <a href="https://github.com/SantoszLuan"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a> |
 | <img src="https://avatars.githubusercontent.com/u/162627331?v=4" width=50px> | Niuan Souza | Desenvolvedor | <a href="https://github.com/NiuanSouza"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a> |
