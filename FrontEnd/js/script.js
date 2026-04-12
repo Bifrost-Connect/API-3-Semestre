@@ -343,3 +343,23 @@ document.addEventListener("click", (e) => {
         e.target.style.display = "none";
     }
 });
+
+/**
+ * pesquisa veículos.
+ */
+
+function filtrarVeiculos() {
+    const input = document.getElementById('inputPesquisa');
+    const filtro = input.value.toLowerCase();
+    const lista = document.getElementById('listaVeiculos');
+    const botoes = lista.getElementsByTagName('button');
+
+    for (let i = 0; i < botoes.length; i++) {
+        let texto = botoes[i].textContent || botoes[i].innerText;
+        if (texto.toLowerCase().indexOf(filtro) > -1) {
+            botoes[i].style.display = "";
+        } else {
+            botoes[i].style.display = "none";
+        }
+    }
+}

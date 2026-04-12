@@ -41,7 +41,10 @@
             </div>
             <div class="campos-adicionais">
                 <label for="quilometragem-inicial">Quilometragem Inicial:</label>
+                <label for="quilometragem-inicial" style="display: none;">Quilometragem Final:</label>
                 <input type="text" id="quilometragem-inicial" placeholder="Digite a quilometragem inicial">
+                <input type="text" id="quilometragem-inicial" placeholder="Digite a quilometragem final"
+                    style="display: none;">
 
                 <label for="data-inicial">Data:</label>
                 <input type="date" id="data-inicial">
@@ -53,9 +56,10 @@
                 <textarea id="observacoes" placeholder="Digite observações"></textarea>
 
                 <div class="acoes-veiculo">
-                    <button id="check-in-veiculo" onclick="abrirModalConfirmacao()">Fazer check-in</button>
-                    <button id="btn-checkout" style="display: none;">Fazer check-out</button>
-                    <button id="btn-salvar-veiculo" style="display: none;">Salvar</button>
+                    <button id="check-in-veiculo" onclick="abrirModalConfirmacao()">Selecionar Veículo</button>
+                    <button id="btn-checkout" style="display: none;">Cancelar</button>
+                    <button id="btn-salvar-veiculo" style="display: none;">Fazer Check-In</button>
+                    <button id="btn-checkout" style="display: none;">Fazer Check-Out</button>
                     <button id="btn-abs-veiculo" style="display: none;">Abastecimento</button>
                 </div>
             </div>
@@ -69,32 +73,35 @@
         </div>
     </div>
 
-    <!-- QUANDO APERTAR O BOTÃO CHECK-IN -->
-    <div id="modalConfirmacao" class="sobreposicao">
-        <div class="popup-card">
-            <h2 class="popup-titulo">Veículos Disponíveis</h2>
+    <!-- QUANDO APERTAR O BOTÃO SELECIONAR VEÍCULO -->
+<div id="modalConfirmacao" class="sobreposicao">
+    <div class="popup-card">
+        <h2 class="popup-titulo">Veículos Disponíveis</h2>
 
-            <div class="popup-conteudo">
-                <p><strong>Selecione um veículo para visualizar informações:</strong></p>
-            </div>
-
-            <!-- RETIRAR OS DADOS PRÉ-DEFINIDOS QUANDO FOR FAZER O BACKEND -->
-            <div id="listaVeiculos" class="lista-veiculos">
-                <button class="btn-veiculo"
-                    onclick="selecionarVeiculo('Viatura 1', 'Argo', 'Fiat' ,'Passeio', '00001', 'aaa-1234')">
-                    Viatura 1
-                </button>
-                <button class="btn-veiculo"
-                    onclick="selecionarVeiculo('Viatura 2', 'Sprinter', 'Mercedes', 'Utilitário', '00002', 'bbb-5678')">
-                    Viatura 2
-                </button>
-                <button class="btn-veiculo"
-                    onclick="selecionarVeiculo('Viatura 3', 'Ka', 'Ford', 'Passeio', '00003', 'ccc-9012')">
-                    Viatura 3
+        <div class="popup-conteudo">
+            <p><strong>Selecione um veículo para visualizar informações:</strong></p>
+            
+            <div class="container-pesquisa">
+                <input type="text" id="inputPesquisa" placeholder="Pesquisar veículo..." onkeyup="filtrarVeiculos()">
+                <button class="btn-filtro" title="Filtrar">
+                    <img src="https://cdn-icons-png.flaticon.com/512/57/57164.png" alt="Filtro">
                 </button>
             </div>
         </div>
+
+        <div id="listaVeiculos" class="lista-veiculos">
+            <button class="btn-veiculo" onclick="selecionarVeiculo('Viatura 1', 'Argo', 'Fiat' ,'Passeio', '00001', 'aaa-1234')">
+                Viatura 1
+            </button>
+            <button class="btn-veiculo" onclick="selecionarVeiculo('Viatura 2', 'Sprinter', 'Mercedes', 'Utilitário', '00002', 'bbb-5678')">
+                Viatura 2
+            </button>
+            <button class="btn-veiculo" onclick="selecionarVeiculo('Viatura 3', 'Ka', 'Ford', 'Passeio', '00003', 'ccc-9012')">
+                Viatura 3
+            </button>
+        </div>
     </div>
+</div>
 
     <div id="modalDetalhesVeiculo" class="sobreposicao">
         <div class="popup-card">
