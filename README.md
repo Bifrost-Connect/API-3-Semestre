@@ -39,19 +39,18 @@
 
 | Rank | Prioridade | User Story | Estimativa | Sprint |
 |------|-------------|-------------|-------------|---------|
-| 1| Alta |Como Técnico do IPEM, quero **registrar o KM inicial, data e horário** ao retirar o veículo. | 8 | 1 |
-| 2 | Alta | Como técnico do IPEM, quero **registrar o KM final** ao devolver a viatura. | 8 | 1 |
-| 3 | Alta | Como Técnico da IPEM, quero **ter o controle do abastecimento da viatura**, para saber o último abastecimento, e poder registrar quando for abastecer novamente. | 8 | 1 |
-| 4 | Alta | Como Gestor da IPEM, quero **registrar novos funcionários e viaturas** no sistema.| 8 | 1 |
-| 5 | Alta | Como Gestor da IPEM , quero **ter o controle das viaturas que estão disponíveis e as que estão em uso** pelo meu sistema. | 8 | 2 |
-| 6 | Alta | Como Gestor da IPEM, quero **ter acesso aos documentos com o compilado de informações** de cada viatura e chamados. | 5 | 2 |
-| 7 | Média | Como Técnico da IPEM, quero poder **fazer comentários sobre o estado viatura** no final do relatório. | 3 | 2 |
-| 8 | Baixa | Como Técnico da IPEM, quero **cancelar um Check-in caso tenha selecionado a viatura errada por engano**, antes de iniciar o trajeto.| 3 | 2 |
-| 9 | Alta | Como Gestor da IPEM, quero **enviar o arquivo com os registros da sede no ao final do mês**, para envio ao SGI. | 8 | 3 |
-| 10 | Alta | Como Técnico do IPEM, quero **contactar o suporte de mecânica** caso aja algum problema com a viatura. | 5 | 3 |
-| 11 | Média | Como Gestor, quero um **log de atividades (auditoria) para saber quem alterou dados de KM ou de funcionários** e quando isso ocorreu. | 5 | 3 |
-| 12| Baixa | Como técnico da IPEM, quero **acessar o GPS do aplicativo para ter noção do trajeto** a ser percorrido no chamado.  | 8 | 3 |
-| 13 | Baixa | Como Gestor da IPEM, quero **fazer alterações nos perfis** dos técnicos e de viaturas.  | 3 | 3 |
+| 1| Alta |Como Técnico do IPEM, **quero ter o KM inicial, data e horário ao retirar registrados ao retirar o veículo**, para que a jornada de uso da viatura seja iniciada com dados precisos.. | 8 | 1 |
+| 2 | Alta | Como técnico do IPEM, **quero registrar o KM final ao devolver a viatura**, para que o sistema encerre o ciclo de uso e atualize a quilometragem total do veículo. | 8 | 1 |
+| 3 | Alta | Como Técnico da IPEM, **quero ter o controle e o registro do abastecimento da viatura**, para que o histórico de consumo seja mantido e os custos de combustível sejam monitorados. | 8 | 1 |
+| 4 | Alta | Como Gestor da IPEM, **quero registrar novos funcionários e viaturas no sistema**, para que a base de usuários e a frota estejam sempre atualizadas para a operação.| 8 | 1 |
+| 5 | Alta | Como Gestor da IPEM , **quero ter o controle das viaturas que estão disponíveis e as que estão em uso** ,para que eu possa gerenciar a alocação da frota em tempo real. | 8 | 2 |
+| 6 | Alta | Como Gestor da IPEM, **quero ter acesso aos documentos com o compilado de informações** de cada viatura e chamados,para que eu possa auditar o histórico de uso de forma organizada. | 5 | 2 |
+| 7 | Média | Como Técnico da IPEM, **quero cancelar um Check-in caso tenha selecionado a viatura errada por engano**, antes de iniciar o trajeto,para que o histórico de registros não contenha dados incorretos por falha operacional.| 3 | 2 |
+| 8 | Alta | Como Gestor da IPEM, **quero enviar o arquivo com os registros da sede no ao final do mês**,para que o envio dos dados ao SGI seja realizado de forma automatizada e sem erros manuais.| 8 | 3 |
+| 9 | Alta | Como Técnico do IPEM, **quero contactar o suporte de mecânica** caso aja algum problema com a viatura,para que problemas emergenciais com a viatura sejam resolvidos com agilidade durante o chamado. | 5 | 3 |
+| 10 | Média | Como Gestor, quero um **log de atividades (auditoria) para saber quem alterou dados de KM ou de funcionários**,para que eu possa identificar quem alterou dados críticos e garantir a integridade das informações do sistema.. | 5 | 3 |
+| 11 | Baixa | Como técnico da IPEM, **quero acessar o GPS do aplicativo para ter noção do trajeto**,para que eu tenha auxílio na navegação e otimização do trajeto a ser percorrido.  | 8 | 3 |
+| 12 | Baixa | Como Gestor da IPEM, **quero poder editar os perfis de técnicos e viaturas**, para que informações desatualizadas ou incorretas sejam corrigidas rapidamente.  | 3 | 3 |
 
 <br>
 

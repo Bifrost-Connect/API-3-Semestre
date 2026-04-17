@@ -6,7 +6,7 @@
 
 
 
- **Status da Sprint:** Em andamento  
+ **Status da Sprint:** Concluída 
 
 
 # 🥇 Desafio  
