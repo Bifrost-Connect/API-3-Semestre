@@ -363,3 +363,70 @@ function filtrarVeiculos() {
         }
     }
 }
+
+function filtrarVeiculos() {
+    // Pega os valores dos filtros
+    const termoPesquisa = document.getElementById('inputPesquisa').value.toUpperCase();
+    const categoriaSelecionada = document.getElementById('filtroCategoria').value.toUpperCase();
+    
+    // Pega todos os botões de veículos
+    const listaVeiculos = document.getElementById('listaVeiculos');
+    const botoes = listaVeiculos.getElementsByClassName('btn-veiculo');
+
+    for (let i = 0; i < botoes.length; i++) {
+        const btn = botoes[i];
+        const nomeVeiculo = btn.textContent || btn.innerText;
+        const tipoVeiculo = btn.getAttribute('data-tipo').toUpperCase();
+
+        // Lógica: Se o nome contém a pesquisa E (a categoria é 'TODOS' ou igual ao tipo do veículo)
+        const correspondeNome = nomeVeiculo.toUpperCase().indexOf(termoPesquisa) > -1;
+        const correspondeCategoria = (categoriaSelecionada === "TODOS" || tipoVeiculo === categoriaSelecionada);
+
+        if (correspondeNome && correspondeCategoria) {
+            btn.style.display = ""; // Mostra
+        } else {
+            btn.style.display = "none"; // Esconde
+        }
+    }
+}
+
+// / Funções para abrir/fechar o modal de filtro
+function abrirModalFiltro() {
+    document.getElementById('modalFiltroAvancado').style.display = 'flex';
+}
+
+function fecharModalFiltro() {
+    document.getElementById('modalFiltroAvancado').style.display = 'none';
+}
+
+function aplicarFiltros() {
+    const pesquisa = document.getElementById('inputPesquisa').value.toUpperCase();
+    const tipo = document.getElementById('filtroTipo').value.toUpperCase();
+    const marca = document.getElementById('filtroMarca').value.toUpperCase();
+    
+    const botoes = document.querySelectorAll('.btn-veiculo');
+
+    botoes.forEach(btn => {
+        const txtBotao = btn.textContent.toUpperCase();
+        const vTipo = btn.getAttribute('data-tipo').toUpperCase();
+        const vMarca = btn.getAttribute('data-marca').toUpperCase();
+
+        // Checa todas as condições simultaneamente
+        const batePesquisa = txtBotao.includes(pesquisa);
+        const bateTipo = (tipo === "TODOS" || vTipo === tipo);
+        const bateMarca = (marca === "TODOS" || vMarca === marca);
+
+        if (batePesquisa && bateTipo && bateMarca) {
+            btn.style.display = "block";
+        } else {
+            btn.style.display = "none";
+        }
+    });
+
+    fecharModalFiltro(); // Fecha após aplicar
+}
+
+// Vincula a pesquisa por texto para rodar a mesma lógica
+function filtrarVeiculos() {
+    aplicarFiltros(); 
+}
