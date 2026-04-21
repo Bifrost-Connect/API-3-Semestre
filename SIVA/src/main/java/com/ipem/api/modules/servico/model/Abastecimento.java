@@ -11,14 +11,16 @@ import java.math.BigDecimal;
 public class Abastecimento extends BaseEntity {
     @Id
     private Long registroId;
+
     @OneToOne
     @MapsId
     @JoinColumn(name = "registro_id")
     private Registro registro;
+
     private Float litros;
-    @Column(precision = 10, scale = 3)
-    private BigDecimal precoLitro;
-    @Column(precision = 10, scale = 2)
-    private BigDecimal valorTotal;
+    private Double preco_litro;
+    private Double valor_total;
+
+    @Column(name = "nota_fiscal")
     private String notaFiscal;
 }

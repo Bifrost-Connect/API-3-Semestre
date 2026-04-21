@@ -1,59 +1,74 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bifrost Connect - Home</title>
+    <title>SIVA - Início</title>
     <link rel="stylesheet" href="css/telainicial.css">
 </head>
+
 <body class="pagina-telainicial">
 
 <div class="top-bar">
     <div class="left">
-        <button id="btnmenu"><img src="img/menu.png" alt="menu"></button>
+        <button id="btnmenu">
+            <img src="img/menu.png" alt="icone menu">
+        </button>
         <span class="titulo" id="boas-vindas-titulo">Bem vindo!</span>
     </div>
+
     <div class="logout">
-        <button id="btnlogout" onclick="btnlogout()"><img src="img/logout.png" alt="logout"></button>
+        <button id="btnlogout" onclick="btnlogout()">
+            <img src="img/logout.png" alt="icone logout">
+        </button>
     </div>
 </div>
 
 <div class="notificacao-bar" onclick="window.location.href='chamados.html';">
     <img src="img/bell.png" class="bell" alt="notificacoes">
-    <span>Você possui solicitações de serviço!</span>
-    <div class="badge">1</div>
+    <span>Você possui 1 solicitação de serviço!</span>
+    <div class="badge">3</div>
 </div>
 
 <div class="quadros-container">
     <div class="quadro-esquerdo">
         <h3>Informações do Veículo</h3>
 
-        <div id="container-checkin-botao" style="margin-top: 20px;">
-            <button id="check-in-veiculo" onclick="abrirModalConfirmacao()">Fazer check-in</button>
+        <div id="info-veiculo">
+            <p>Nenhum veículo selecionado.</p>
         </div>
 
-        <div id="info-veiculo-dados" style="display: none; margin-bottom: 20px;">
-            <p><strong>Modelo:</strong> <span id="display-modelo"></span></p>
-            <p><strong>Placa:</strong> <span id="display-placa"></span> | <strong>Prefixo:</strong> <span id="display-prefixo"></span></p>
-        </div>
+        <div class="campos-adicionais">
 
-        <div class="campos-adicionais" id="secao-pos-checkin" style="display: none;">
-            <label>Quilometragem Inicial:</label>
+            <label for="quilometragem-inicial">Quilometragem Inicial:</label>
+            <label for="quilometragem-final" style="display: none;">Quilometragem Final:</label>
+
             <input type="text" id="quilometragem-inicial" placeholder="Digite a quilometragem inicial">
+            <input type="text" id="quilometragem-final" placeholder="Digite a quilometragem final" style="display: none;">
 
-            <label>Data:</label>
+            <label for="data-inicial">Data:</label>
             <input type="date" id="data-inicial">
 
-            <label>Horário:</label>
+            <label for="horario-inicial">Horário:</label>
             <input type="time" id="horario-inicial">
 
-            <label>Observações:</label>
+            <label for="observacoes">Observações:</label>
             <textarea id="observacoes" placeholder="Digite observações"></textarea>
 
             <div class="acoes-veiculo">
-                <button id="btn-salvar-veiculo" onclick="salvarVeiculoInfo()">Salvar</button>
-                <button id="btn-abs-veiculo" onclick="abrirPopupAbastecimento()">Abastecimento</button>
-                <button id="btn-checkout" onclick="checkoutChamado()">Fazer check-out</button>
+                <button id="check-in-veiculo" onclick="abrirModalConfirmacao()">Selecionar Veículo</button>
+
+                <!-- CANCELAR (MANTIDO) -->
+                <button id="btn-checkout" style="display: none;">Cancelar</button>
+
+                <!-- BOTÃO PRINCIPAL -->
+                <button id="btn-salvar-veiculo" style="display: none;">Fazer Check-In</button>
+
+                <!-- ❌ REMOVIDO BOTÃO DUPLICADO QUE QUEBRAVA TUDO -->
+                <!-- <button id="btn-checkout-secundario" style="display: none;">Fazer Check-Out</button> -->
+
+                <button id="btn-abs-veiculo" style="display: none;">Abastecimento</button>
             </div>
         </div>
     </div>
@@ -66,61 +81,128 @@
     </div>
 </div>
 
+<!-- MODAL VEÍCULOS -->
 <div id="modalConfirmacao" class="sobreposicao">
     <div class="popup-card">
         <h2 class="popup-titulo">Veículos Disponíveis</h2>
-        <p><strong>Selecione um veículo:</strong></p>
+
+        <div class="container-pesquisa">
+            <input type="text" id="inputPesquisa" placeholder="Pesquisar por nome ou placa..."
+                   onkeyup="filtrarVeiculos()">
+            <button class="btn-filtro-abrir" onclick="abrirModalFiltro()" title="Filtros Avançados">
+                <img src="https://cdn-icons-png.flaticon.com/512/57/57164.png" alt="Filtro">
+            </button>
+        </div>
+
         <div id="listaVeiculos" class="lista-veiculos">
-            <button class="btn-veiculo" onclick="selecionarVeiculo('Viatura 1', 'Argo', 'Fiat', 'Passeio', '00001', 'aaa-1234')">Viatura 1 - Argo</button>
-            <button class="btn-veiculo" onclick="selecionarVeiculo('Viatura 2', 'Sprinter', 'Mercedes', 'Utilitário', '00002', 'bbb-5678')">Viatura 2 - Sprinter</button>
-            <button class="btn-veiculo" onclick="selecionarVeiculo('Viatura 3', 'Ka', 'Ford', 'Passeio', '00003', 'ccc-9012')">Viatura 3 - Ka</button>
+            <button class="btn-veiculo" data-tipo="PASSEIO" data-marca="FIAT"
+                    onclick="selecionarVeiculo('Viatura 1', 'Argo', 'Fiat' ,'Passeio', '00001', 'aaa-1234')">
+                Viatura 1 - Argo
+            </button>
+
+            <button class="btn-veiculo" data-tipo="UTILITÁRIO" data-marca="MERCEDES"
+                    onclick="selecionarVeiculo('Viatura 2', 'Sprinter', 'Mercedes', 'Utilitário', '00002', 'bbb-5678')">
+                Viatura 2 - Sprinter
+            </button>
+
+            <button class="btn-veiculo" data-tipo="PASSEIO" data-marca="FORD"
+                    onclick="selecionarVeiculo('Viatura 3', 'Ka', 'Ford', 'Passeio', '00003', 'ccc-9012')">
+                Viatura 3 - Ka
+            </button>
         </div>
     </div>
 </div>
 
+<!-- FILTROS -->
+<div id="modalFiltroAvancado" class="sobreposicao">
+    <div class="popup-card popup-filtro-menor">
+        <h2 class="popup-titulo">Filtros</h2>
+
+        <div class="grupo-filtro">
+            <label>Tipo de Veículo</label>
+            <select id="filtroTipo">
+                <option value="TODOS">Todos os tipos</option>
+                <option value="PASSEIO">Passeio</option>
+                <option value="UTILITÁRIO">Utilitário</option>
+            </select>
+        </div>
+
+        <div class="grupo-filtro">
+            <label>Marca</label>
+            <select id="filtroMarca">
+                <option value="TODOS">Todas as marcas</option>
+                <option value="FIAT">Fiat</option>
+                <option value="MERCEDES">Mercedes</option>
+                <option value="FORD">Ford</option>
+            </select>
+        </div>
+
+        <div class="btn-container">
+            <button class="btn-voltar" onclick="fecharModalFiltro()">Cancelar</button>
+            <button class="btn-aceitar" onclick="aplicarFiltros()">Aplicar Filtros</button>
+        </div>
+    </div>
+</div>
+
+<!-- DETALHES VEÍCULO -->
 <div id="modalDetalhesVeiculo" class="sobreposicao">
     <div class="popup-card">
-        <h2 class="popup-titulo" id="tituloVeiculo">Detalhes do Veículo</h2>
-
         <div class="popup-detalhes-layout">
+            <div class="popup-detalhes-info">
+                <h2 class="popup-titulo" id="tituloVeiculo">Detalhes do Veículo</h2>
+
+                <div class="popup-conteudo" id="conteudoVeiculo">
+                    <p><strong>Modelo:</strong> <span id="modeloVeiculo"></span></p>
+                    <p><strong>Marca:</strong> <span id="marcaVeiculo"></span></p>
+                    <p><strong>Tipo de Veículo:</strong> <span id="tipoVeiculo"></span></p>
+                    <p><strong>Prefixo da Viatura:</strong> <span id="prefixoVeiculo"></span></p>
+                    <p><strong>Placa:</strong> <span id="placaVeiculo"></span></p>
+                    <p><strong>Último Serviço:</strong> <span id="ultimoServico"></span></p>
+                    <p><strong>Quilometragem:</strong> <span id="quilometragem"></span></p>
+                </div>
+
+                <div class="btn-container">
+                    <button class="btn-voltar" onclick="voltarParaVeiculos()">← Voltar</button>
+                    <button class="btn-aceitar" onclick="confirmarVeiculo()">Confirmar</button>
+                </div>
+            </div>
             <div class="popup-detalhes-imagem">
-                <img id="fotoVeiculo" src="" alt="Foto do Veículo">
+                <img src="img/carro 1.jpg" alt="Imagem do veículo">
             </div>
-            <div class="popup-conteudo">
-                <p><strong>Modelo:</strong> <span id="modeloVeiculo"></span></p>
-                <p><strong>Marca:</strong> <span id="marcaVeiculo"></span></p>
-                <p><strong>Placa:</strong> <span id="placaVeiculo"></span></p>
-                <p><strong>Prefixo:</strong> <span id="prefixoVeiculo"></span></p>
-            </div>
-        </div>
-
-        <div class="btn-container" style="margin-top: 20px; display: flex; gap: 10px;">
-            <button class="btn-cancelar" onclick="voltarParaVeiculos()">Voltar</button>
-            <button id="btn-confirmar-modal" class="btn-aceitar" onclick="confirmarVeiculo()">Confirmar Check-in</button>
         </div>
     </div>
 </div>
 
-<div id="popupAbastecimento" class="sobreposicao">
-    <div class="popup-card">
-        <h2 class="popup-titulo">Abastecimento</h2>
-        <input type="text" id="valor-abastecimento" placeholder="R$ 0,00" style="width:100%; padding:10px; margin-bottom:10px;">
-        <input type="date" id="data-abastecimento" style="width:100%; padding:10px; margin-bottom:10px;">
-        <button class="btn-aceitar" onclick="fecharAbastecimento()">Salvar</button>
-    </div>
-</div>
-
-<div id="modalAvisoCheckout" class="sobreposicao" style="display: none;">
-    <div class="popup-card">
+<!-- MODAL MENSAGEM -->
+<div id="modalMensagem" class="sobreposicao">
+    <div class="popup-card popup-mensagem">
         <h2 class="popup-titulo">Aviso</h2>
-        <p style="margin-bottom: 20px;">Checkout realizado com sucesso!</p>
-        <button class="btn-aceitar" style="width: 100%;" onclick="finalizarCheckout()">Fechar</button>
+        <div class="popup-conteudo">
+            <p id="textoModalMensagem"></p>
+        </div>
+        <button class="btn-aceitar" onclick="fecharModalMensagem()">Fechar</button>
     </div>
 </div>
+
+<!-- ABASTECIMENTO -->
+<div id="popupAbastecimento" class="popup">
+    <div class="popup-content">
+        <h2>Abastecimento:</h2>
+        <p><strong>Valor:</strong> <input type="text" id="valor-abastecimento"></p>
+        <p><strong>Data:</strong> <input type="date" id="data-abastecimento"></p>
+        <p><strong>Horário:</strong> <input type="time" id="hora-abastecimento"></p>
+
+        <div class="popup-buttons">
+            <button id="btn-voltar" class="btn-voltar">Voltar</button>
+            <button id="btn-salvar-abastecimento" class="btn-aceitar">Salvar</button>
+        </div>
+    </div>
+</div>
+
+<div id="overlayBlurSidebar" class="overlay-blur-sidebar"></div>
 
 <div id="sidebar" class="sidebar">
     <button id="btnx" class="close-btn">×</button>
-    <a href="telainicial.html">HOME</a>
     <a href="chamados.html">CHAMADOS</a>
     <a href="#">DÚVIDAS</a>
     <a href="#">CONFIGURAÇÕES</a>

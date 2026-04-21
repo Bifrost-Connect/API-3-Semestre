@@ -52,10 +52,6 @@ document.addEventListener('keydown', (event) => {
             event.preventDefault();
             btnindex();
         }
-        if (focado.id === 'quilometragem-inicial' || focado.id === 'observacoes') {
-            event.preventDefault();
-            salvarVeiculoInfo();
-        }
     }
 });
 
@@ -83,47 +79,112 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById("btnx")) document.getElementById("btnx").onclick = () => sidebar.style.width = "0";
 });
 
-// 5. MODAIS GERAIS
+// 5. MODAIS GERAIS E FILTRO (FUNÇÕES DE FECHAMENTO GARANTIDAS)
 window.abrirModalConfirmacao = () => {
     const modal = document.getElementById("modalConfirmacao");
     if (modal) modal.style.display = "flex";
 };
+
+window.abrirModalFiltro = () => {
+    const modal = document.getElementById("modalFiltroAvancado");
+    if (modal) modal.style.display = "flex";
+};
+
+window.fecharModalFiltro = () => {
+    const modal = document.getElementById("modalFiltroAvancado");
+    if (modal) modal.style.display = "none";
+};
+
+window.fecharModalMensagem = () => {
+    const modal = document.getElementById("modalMensagem");
+    if (modal) modal.style.display = "none";
+};
+
 window.fecharTodosModais = () => {
-    ["modalConfirmacao", "modalDetalhesVeiculo", "popupAbastecimento", "modalAvisoCheckout"].forEach(id => {
+    ["modalConfirmacao", "modalDetalhesVeiculo", "popupAbastecimento", "modalAvisoCheckout", "modalFiltroAvancado", "modalMensagem"].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.style.display = "none";
     });
 };
+
 window.voltarParaVeiculos = () => {
     if (document.getElementById("modalDetalhesVeiculo")) document.getElementById("modalDetalhesVeiculo").style.display = "none";
     if (document.getElementById("modalConfirmacao")) document.getElementById("modalConfirmacao").style.display = "flex";
 };
 
-// 6. SELEÇÃO DE VEÍCULO
+// 6. LÓGICA DE FILTRAGEM (TEXTO E AVANÇADA)
+window.filtrarVeiculos = () => {
+    const input = document.getElementById("inputPesquisa").value.toLowerCase();
+    const botoes = document.querySelectorAll(".btn-veiculo");
+
+    botoes.forEach(btn => {
+        const texto = btn.textContent.toLowerCase();
+        btn.style.display = texto.includes(input) ? "" : "none";
+    });
+};
+
+window.aplicarFiltros = () => {
+    const tipoFiltro = document.getElementById("filtroTipo").value;
+    const marcaFiltro = document.getElementById("filtroMarca").value;
+    const botoes = document.querySelectorAll(".btn-veiculo");
+
+    botoes.forEach(btn => {
+        const btnTipo = btn.getAttribute("data-tipo");
+        const btnMarca = btn.getAttribute("data-marca");
+
+        const bateTipo = (tipoFiltro === "TODOS" || btnTipo === tipoFiltro);
+        const bateMarca = (marcaFiltro === "TODOS" || btnMarca === marcaFiltro);
+
+        btn.style.display = (bateTipo && bateMarca) ? "" : "none";
+    });
+    fecharModalFiltro();
+};
+
+// 7. SELEÇÃO DE VEÍCULO
 let veiculoTemp = {};
 window.selecionarVeiculo = (titulo, modelo, marca, tipo, prefixo, placa) => {
     veiculoTemp = { titulo, modelo, marca, tipo, prefixo, placa };
-    if (document.getElementById("fotoVeiculo")) document.getElementById("fotoVeiculo").src = "img/carro 1.jpg";
     if (document.getElementById("modeloVeiculo")) document.getElementById("modeloVeiculo").textContent = modelo;
     if (document.getElementById("marcaVeiculo")) document.getElementById("marcaVeiculo").textContent = marca;
     if (document.getElementById("placaVeiculo")) document.getElementById("placaVeiculo").textContent = placa;
     if (document.getElementById("prefixoVeiculo")) document.getElementById("prefixoVeiculo").textContent = prefixo;
+    if (document.getElementById("tipoVeiculo")) document.getElementById("tipoVeiculo").textContent = tipo;
     if (document.getElementById("modalConfirmacao")) document.getElementById("modalConfirmacao").style.display = "none";
     if (document.getElementById("modalDetalhesVeiculo")) document.getElementById("modalDetalhesVeiculo").style.display = "flex";
 };
 
-// 7. CONFIRMAR CHECK-IN
+// 8. CONFIRMAR CHECK-IN
 window.confirmarVeiculo = () => {
     localStorage.setItem("veiculoSelecionado", JSON.stringify(veiculoTemp));
     fecharTodosModais();
-    if (window.location.pathname.includes("chamados.html")) {
-        window.location.href = "telainicial.html";
-    } else {
-        carregarDadosTelaInicial();
+
+    const infoVeiculo = document.getElementById("info-veiculo");
+    if (infoVeiculo) {
+        infoVeiculo.innerHTML = `
+            <p><strong>Modelo:</strong> ${veiculoTemp.modelo}</p>
+            <p><strong>Placa:</strong> ${veiculoTemp.placa}</p>
+            <p><strong>Prefixo:</strong> ${veiculoTemp.prefixo}</p>
+        `;
     }
+
+    const btnInicial = document.getElementById("btn-selecionar-inicial");
+    const btnSelecionar = document.getElementById("check-in-veiculo");
+    const btnSalvarCheckin = document.getElementById("btn-salvar-veiculo");
+    const btnAbastecimento = document.getElementById("btn-abs-veiculo");
+    const btnCancelar = document.getElementById("btn-checkout");
+
+    if (btnInicial) btnInicial.style.display = "none";
+    if (btnSelecionar) btnSelecionar.style.display = "none";
+    if (btnSalvarCheckin) btnSalvarCheckin.style.display = "inline-block";
+    if (btnAbastecimento) btnAbastecimento.style.display = "inline-block";
+    if (btnCancelar) btnCancelar.style.display = "inline-block";
+
+    // 🔥 MOSTRA CAMPOS
+    const campos = document.getElementById("campos-veiculo");
+    if (campos) campos.style.display = "block";
 };
 
-// 8. ABASTECIMENTO
+// 9. ABASTECIMENTO
 window.abrirPopupAbastecimento = () => {
     if (document.getElementById("popupAbastecimento")) document.getElementById("popupAbastecimento").style.display = "flex";
 };
@@ -131,73 +192,85 @@ window.fecharAbastecimento = () => {
     if (document.getElementById("popupAbastecimento")) document.getElementById("popupAbastecimento").style.display = "none";
 };
 
-// 9. SALVAR INFORMAÇÕES DO VEÍCULO (API)
-window.salvarVeiculoInfo = async function() {
-    const km = document.getElementById("quilometragem-inicial")?.value;
-    const obs = document.getElementById("observacoes")?.value;
-    localStorage.setItem("km", km);
-    localStorage.setItem("obs", obs);
-    const v = JSON.parse(localStorage.getItem('veiculoSelecionado'));
-    if (v && v.prefixo) {
-        try {
-            await fetch(`http://localhost:8080/veiculo/${v.prefixo}/atualizar-dados`, {
-                method: 'PATCH',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ quilometragem: km, observacoes: obs })
-            });
-            alert("Dados salvos!");
-        } catch (e) { alert("Salvo localmente."); }
+// --- 10. CHECK-OUT E CANCELAR ---
+
+window.checkoutChamado = () => {
+    // 1. Alterna os campos de quilometragem no formulário
+    const campoInicial = document.getElementById("quilometragem-inicial");
+    const campoFinal = document.querySelector('input[placeholder="Digite a quilometragem final"]');
+    const labelInicial = document.querySelector('label[for="quilometragem-inicial"]');
+    const labelFinal = document.querySelectorAll('label[for="quilometragem-inicial"]')[1];
+
+    if (campoInicial && campoFinal) {
+        // Esconde os campos de entrada (Check-in)
+        campoInicial.style.display = "none";
+        labelInicial.style.display = "none";
+
+        // Mostra os campos de saída (Check-out)
+        campoFinal.style.display = "block";
+        labelFinal.style.display = "block";
+
+        // Atualiza o botão de ação principal
+        const btnSalvar = document.getElementById("btn-salvar-veiculo");
+        if (btnSalvar) {
+            btnSalvar.textContent = "Finalizar Check-out";
+            btnSalvar.onclick = window.executarFinalizacaoCheckout;
+        }
     }
 };
 
-// 10. FAZER CHECK-OUT
-window.checkoutChamado = () => {
+// Função para cancelar tudo e voltar ao estado zero
+window.cancelarOperacao = () => {
     localStorage.removeItem("veiculoSelecionado");
-    localStorage.removeItem("km");
-    localStorage.removeItem("obs");
-    if (document.getElementById("modalAvisoCheckout")) document.getElementById("modalAvisoCheckout").style.display = "flex";
+    // Em vez de alert, usamos o seu modal de mensagem para confirmar a ação se necessário,
+    // ou apenas recarregamos a página para resetar a UI para o estado inicial.
+    window.location.reload();
 };
-window.finalizarCheckout = () => { window.location.reload(); };
 
-// 11. CARREGAR DADOS TELA INICIAL (NOME E VEICULO)
+// Executa a gravação final do Check-out no Docker
+window.executarFinalizacaoCheckout = async () => {
+    const campoFinal = document.querySelector('input[placeholder="Digite a quilometragem final"]');
+    const vData = JSON.parse(localStorage.getItem('veiculoSelecionado'));
+
+    if (!campoFinal || !campoFinal.value) {
+        window.abrirModalMensagem("Atenção", "Digite a quilometragem final para encerrar.");
+        return;
+    }
+
+    try {
+        const res = await fetch(`http://localhost:8080/veiculo/${vData.prefixo}/checkout`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ quilometragemFinal: campoFinal.value })
+        });
+
+        if (res.ok) {
+            window.abrirModalMensagem("Sucesso", "Check-out realizado. Viatura liberada.");
+            setTimeout(() => window.location.reload(), 2000);
+        }
+    } catch (err) {
+        window.abrirModalMensagem("Erro", "Falha ao conectar com o servidor.");
+    }
+};
+
+window.finalizarCheckout = () => {
+    window.location.reload();
+};
+
+// 11. CARREGAR DADOS INICIAIS
 function carregarDadosTelaInicial() {
     const nome = localStorage.getItem('usuarioNome');
     const elTecnico = document.getElementById('boas-vindas-titulo');
-    const elGestor = document.getElementById('nome-usuario-logado');
-
-    if (nome) {
-        if (elTecnico) elTecnico.textContent = `Bem vindo, ${nome}!`;
-        if (elGestor) elGestor.textContent = nome;
-    }
+    if (nome && elTecnico) elTecnico.textContent = `Bem vindo, ${nome}!`;
 
     const veiculo = JSON.parse(localStorage.getItem("veiculoSelecionado"));
-    const secaoForm = document.getElementById("secao-pos-checkin");
-    if (veiculo && secaoForm) {
-        if (document.getElementById("container-checkin-botao")) document.getElementById("container-checkin-botao").style.display = "none";
-        if (document.getElementById("info-veiculo-dados")) document.getElementById("info-veiculo-dados").style.display = "block";
-        secaoForm.style.display = "block";
-        document.getElementById("display-modelo").textContent = veiculo.modelo;
-        document.getElementById("display-placa").textContent = veiculo.placa;
-        document.getElementById("display-prefixo").textContent = veiculo.prefixo;
-        document.getElementById("quilometragem-inicial").value = localStorage.getItem("km") || "";
-        document.getElementById("observacoes").value = localStorage.getItem("obs") || "";
+    if (veiculo) {
+        veiculoTemp = veiculo;
+        confirmarVeiculo();
     }
 }
 
-// 12. VISUALIZAR SENHA (OLHINHO)
-window.togglePassword = function() {
-    const s = document.getElementById("senha");
-    const l = document.getElementById("eyeLine");
-    if (s.type === "password") {
-        s.type = "text";
-        if(l) l.style.display = "block";
-    } else {
-        s.type = "password";
-        if(l) l.style.display = "none";
-    }
-};
-
-// 13. CADASTRAR USUÁRIO
+// 12. CADASTRAR USUÁRIO
 window.cadastrarUsuario = async function() {
     const nome = document.getElementById("cadNome")?.value;
     const email = document.getElementById("cadEmail")?.value;
@@ -209,15 +282,7 @@ window.cadastrarUsuario = async function() {
         return;
     }
 
-    // O objeto deve seguir EXATAMENTE os nomes dos atributos da classe Usuario.java
-    const payload = {
-        id: parseInt(matricula), // Mapeia para o @Id private Integer id
-        nome: nome,
-        matricula: matricula,    // Mapeia para private String matricula
-        email: email,
-        senha: senha,
-        permissao: "TECNICO"     // Deve ser string que o Enum.valueOf consiga ler
-    };
+    const payload = { id: parseInt(matricula), nome, matricula, email, senha, permissao: "TECNICO" };
 
     try {
         const response = await fetch("http://localhost:8080/usuario/cadastrar", {
@@ -225,19 +290,185 @@ window.cadastrarUsuario = async function() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)
         });
+        if (response.ok) alert("Cadastrado com sucesso!");
+    } catch (e) { console.error(e); }
+};
 
-        if (response.ok) {
-            abrirModalConfirmacao();
-            // Limpa os campos após sucesso
-            ["cadNome", "cadEmail", "cadMatricula", "cadSenha"].forEach(id => {
-                document.getElementById(id).value = "";
-            });
-        } else {
-            const erroMsg = await response.text();
-            alert("Erro ao cadastrar: " + erroMsg);
+// 13. GERENCIADOR DE INTERFACE INTEGRADO
+document.addEventListener('click', async function (event) {
+    const el = event.target.closest('button'); // 🔥 CORREÇÃO PRINCIPAL
+
+    if (!el) return;
+
+    // --- 1. AÇÃO: SELECIONAR VEÍCULO (ABRIR LISTA) ---
+    if (el.id === 'check-in-veiculo' || el.textContent.trim() === 'Selecionar Veículo') {
+        window.abrirModalConfirmacao();
+        return;
+    }
+
+    // --- 2. AÇÃO: CANCELAR ---
+    if (el.textContent.trim() === 'Cancelar') {
+        localStorage.removeItem("veiculoSelecionado");
+        window.location.reload();
+        return;
+    }
+
+    // --- 3. AÇÃO: SALVAR CHECK-IN (ENTRADA) ---
+    if (el.id === 'btn-salvar-veiculo' && el.textContent.includes('Check-In')) {
+        const kmInput = document.getElementById("quilometragem-inicial");
+        const vData = localStorage.getItem('veiculoSelecionado');
+
+        if (!kmInput || !kmInput.value) {
+            window.abrirModalMensagem("Atenção", "Digite a quilometragem de entrada!");
+            return;
         }
-    } catch (e) {
-        console.error("Erro na conexão:", e);
-        alert("Erro de conexão com o servidor.");
+
+        const v = JSON.parse(vData);
+        try {
+            const res = await fetch(`http://localhost:8080/veiculo/${v.prefixo}/checkin`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    quilometragemInicial: kmInput.value,
+                    observacoes: document.getElementById("observacoes")?.value
+                })
+            });
+
+            if (res.ok) {
+                // 🔥 CHECK-IN → CHECK-OUT
+                el.textContent = "Fazer Check-Out";
+                el.className = "btn-aceitar";
+
+                const campoFinal = document.querySelectorAll('input[placeholder*="quilometragem"]')[1];
+                const labels = document.querySelectorAll('label[for="quilometragem-inicial"]');
+
+                if (kmInput) {
+                    kmInput.style.display = "none";
+                    if (labels[0]) labels[0].style.display = "none";
+                }
+
+                if (campoFinal) {
+                    campoFinal.style.display = "block";
+                    if (labels[1]) labels[1].style.display = "block";
+                }
+
+                window.abrirModalMensagem("Sucesso", "Check-in realizado!");
+            } else {
+                window.abrirModalMensagem("Erro", "Falha ao salvar no servidor.");
+            }
+        } catch (err) {
+            window.abrirModalMensagem("Erro", "Sem conexão com o Docker.");
+        }
+        return;
+    }
+
+    // --- 4. AÇÃO: CLIQUE NO "FAZER CHECK-OUT" ---
+    if (el.id === 'btn-salvar-veiculo' && el.textContent.trim() === "Fazer Check-Out") {
+        const campoInicial = document.getElementById("quilometragem-inicial");
+        const todosInputsKM = document.querySelectorAll('input[placeholder*="quilometragem"]');
+        const campoFinal = todosInputsKM[1];
+        const labels = document.querySelectorAll('label[for="quilometragem-inicial"]');
+
+        if (campoFinal) {
+            if (campoInicial) campoInicial.style.display = "none";
+            if (labels[0]) labels[0].style.display = "none";
+
+            campoFinal.style.display = "block";
+            if (labels[1]) labels[1].style.display = "block";
+
+            el.textContent = "Confirmar Checkout";
+            el.className = "btn-aceitar";
+        }
+        return;
+    }
+
+    // --- 5. AÇÃO: CONFIRMAR CHECKOUT ---
+    if (el.id === 'btn-salvar-veiculo' && el.textContent.trim() === "Confirmar Checkout") {
+        const todosInputsKM = document.querySelectorAll('input[placeholder*="quilometragem"]');
+        const kmFinal = todosInputsKM[1]?.value;
+
+        if (!kmFinal) {
+            window.abrirModalMensagem("Atenção", "Informe a quilometragem final!");
+            return;
+        }
+
+        window.abrirModalMensagem("Sucesso", "Checkout feito!");
+
+        setTimeout(() => {
+            localStorage.removeItem("veiculoSelecionado");
+            window.location.reload();
+        }, 2000);
+        return;
+    }
+
+    // --- 6. ABASTECIMENTO ---
+    if (el.id === 'btn-abs-veiculo' || el.textContent.includes('Abastecimento')) {
+        const popupAbs = document.getElementById("popupAbastecimento");
+        if (popupAbs) popupAbs.style.display = "flex";
+        return;
+    }
+
+    // --- 7. BOTÕES DE FECHAR / VOLTAR ---
+    if (el.classList.contains('btn-voltar') || el.textContent.trim() === 'Fechar' || el.textContent.trim() === 'Voltar') {
+        window.fecharTodosModais();
+        return;
+    }
+
+   // --- 8. SALVAR ABASTECIMENTO ---
+   if (el.id === 'btn-salvar-abastecimento') {
+
+       const valor = document.getElementById("valor-abastecimento")?.value;
+       const data = document.getElementById("data-abastecimento")?.value;
+       const hora = document.getElementById("hora-abastecimento")?.value;
+
+       const vData = JSON.parse(localStorage.getItem('veiculoSelecionado'));
+
+       if (!valor || !data || !hora) {
+           window.abrirModalMensagem("Atenção", "Preencha todos os campos do abastecimento!");
+           return;
+       }
+
+       if (!vData) {
+           window.abrirModalMensagem("Erro", "Nenhum veículo selecionado!");
+           return;
+       }
+
+       try {
+           const res = await fetch(`http://localhost:8080/veiculo/${vData.prefixo}/abastecimento`, {
+               method: 'POST',
+               headers: { 'Content-Type': 'application/json' },
+               body: JSON.stringify({
+                   valor: valor,
+                   data: data,
+                   hora: hora
+               })
+           });
+
+           if (res.ok) {
+               window.abrirModalMensagem("Sucesso", "Abastecimento salvo com sucesso!");
+
+               const popup = document.getElementById("popupAbastecimento");
+               if (popup) popup.style.display = "none";
+
+           } else {
+               window.abrirModalMensagem("Erro", "Erro ao salvar abastecimento.");
+           }
+
+       } catch (err) {
+           window.abrirModalMensagem("Erro", "Sem conexão com o servidor.");
+       }
+
+       return;
+   }
+});
+// 14 - Modal
+window.abrirModalMensagem = (titulo, texto) => {
+    const m = document.getElementById("modalMensagem");
+    if (m) {
+        const t = m.querySelector(".popup-titulo") || m.querySelector("h2");
+        const p = document.getElementById("textoModalMensagem") || m.querySelector("p");
+        if (t) t.textContent = titulo;
+        if (p) p.textContent = texto;
+        m.style.display = "flex";
     }
 };

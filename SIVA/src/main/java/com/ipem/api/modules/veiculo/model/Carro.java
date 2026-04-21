@@ -22,5 +22,5 @@ public class Carro extends BaseEntity {
     private Boolean disponivel;
 
     @Column(columnDefinition = "TEXT")
-    private String observacoes; // Adicionado para salvar o que vem do front-end
+    private String observacoes;
 }
