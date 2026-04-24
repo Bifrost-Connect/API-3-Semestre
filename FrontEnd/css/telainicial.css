@@ -103,12 +103,17 @@ body {
     border-radius: 50%;
 }
 
+.hidden {
+    display: none !important;
+}
+
 .overlay-blur-sidebar {
     display: none;
     position: fixed;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.45);
     z-index: 999;
+    -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
     cursor: pointer;
 }
@@ -259,6 +264,7 @@ body {
     align-items: center;
     justify-content: center;
     z-index: 1000;
+    -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
 }
 
@@ -540,7 +546,7 @@ body {
 
     .quadro-esquerdo,
     .quadro-direito {
-        min-height: auto;
+        min-height: 0;
     }
 
     .popup-detalhes-layout {

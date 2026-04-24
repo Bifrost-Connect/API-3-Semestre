@@ -15,7 +15,7 @@
             <button id="btnmenu">
                 <img src="img/menu.png" alt="icone menu">
             </button>
-            <span class="titulo">Bem-vindo, gestor!</span>
+
         </div>
 
         <div class="logout">
@@ -28,7 +28,6 @@
     <section class="historico-dashboard">
         <div class="historico-dashboard-topo">
             <div>
-                <span class="dashboard-tag">Histórico operacional</span>
                 <h1>Painel completo de chamados</h1>
                 <p>Acompanhe os atendimentos finalizados e em andamento com dados de prazo, viatura, responsável, prioridade e observações.</p>
             </div>
@@ -62,7 +61,6 @@
     <section class="painel-historico">
         <div class="painel-historico-topo">
             <div>
-                <span class="secao-eyebrow">Registros detalhados</span>
                 <h2>Histórico de chamados realizados</h2>
                 <p>Os cards abaixo apresentam um resumo executivo de cada chamado para facilitar triagem e auditoria.</p>
             </div>
@@ -71,6 +69,35 @@
                 <span class="filtro-chip filtro-ativo">Período: abril/2026</span>
                 <span class="filtro-chip">Base: todas</span>
                 <span class="filtro-chip">Prioridade: todas</span>
+            </div>
+        </div>
+
+        <div class="historico-filtro-panel">
+            <div class="historico-filtro-grid">
+                <div class="campo-filtro">
+                    <label for="filtroDia">Dia</label>
+                    <input id="filtroDia" type="number" min="1" max="31" placeholder="DD">
+                </div>
+                <div class="campo-filtro">
+                    <label for="filtroMes">Mês</label>
+                    <input id="filtroMes" type="number" min="1" max="12" placeholder="MM">
+                </div>
+                <div class="campo-filtro">
+                    <label for="filtroAno">Ano</label>
+                    <input id="filtroAno" type="number" min="2000" max="2099" placeholder="AAAA">
+                </div>
+                <div class="campo-filtro">
+                    <label for="filtroPrefixo">Prefixo da viatura</label>
+                    <input id="filtroPrefixo" type="text" placeholder="1234">
+                </div>
+                <div class="campo-filtro">
+                    <label for="filtroTecnico">Técnico responsável</label>
+                    <input id="filtroTecnico" type="text" placeholder="Nome do técnico">
+                </div>
+                <div class="historico-filtro-acoes">
+                    <button type="button" class="btn-acao-filtrar" onclick="aplicarFiltrosHistorico()">Aplicar filtros</button>
+                    <button type="button" class="btn-limpar-filtro" onclick="limparFiltrosHistorico()">Limpar</button>
+                </div>
             </div>
         </div>
 
@@ -294,9 +321,8 @@
         <a href="telainicial-gestor.html">TELA INICIAL</a>
         <a href="cadastrousuarios.html">CADASTRO DE USUÁRIOS</a>
         <a href="cadastroveiculos.html">CADASTRO DE VEÍCULOS</a>
-        <a href="historicochamados.html">HISTÓRICO DE CHAMADOS</a>
         <a href="#">DÚVIDAS</a>
-        <a href="#">CONFIGURAÇÕES</a>
+        <a href="configuracoes-gestor.html">CONFIGURAÇÕES</a>
     </div>
 
     <script src="js/script.js"></script>

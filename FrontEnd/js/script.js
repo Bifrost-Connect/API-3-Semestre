@@ -59,6 +59,7 @@ window.btnlogout = () => {
 document.addEventListener('DOMContentLoaded', () => {
     // Inicializa dados da tela assim que o DOM carrega
     carregarDadosTelaInicial();
+    if (window.carregarPerfilConfiguracao) carregarPerfilConfiguracao();
 
     const btnMenu = document.getElementById("btnmenu");
     const sidebar = document.getElementById("sidebar");
@@ -379,6 +380,78 @@ function carregarDadosTelaInicial() {
     }
 }
 
+window.carregarPerfilConfiguracao = function() {
+    const role = document.body.dataset.role;
+    if (!role) return;
+
+    const storageKey = `perfil-${role}`;
+    const perfil = JSON.parse(localStorage.getItem(storageKey) || '{}');
+
+    const nome = localStorage.getItem('usuarioNome') || (role === 'gestor' ? 'Gestor' : 'Técnico');
+    const tituloBarra = document.querySelector('.top-bar .titulo');
+    if (tituloBarra) tituloBarra.innerHTML = `Bem-vindo, ${nome}!`;
+
+    const nomePerfil = document.getElementById('perfilNome');
+    if (nomePerfil) nomePerfil.textContent = nome;
+
+    if (perfil.email) document.getElementById('perfilEmail').value = perfil.email;
+    if (perfil.senha) document.getElementById('perfilSenha').value = perfil.senha;
+    if (perfil.telefone) document.getElementById('perfilTelefone').value = perfil.telefone;
+    if (perfil.cnhCategoria) document.getElementById('perfilCNH').value = perfil.cnhCategoria;
+
+    const previewFoto = document.getElementById('previewFoto');
+    const placeholder = document.getElementById('avatarPlaceholder');
+    if (perfil.fotoBase64 && previewFoto) {
+        previewFoto.src = perfil.fotoBase64;
+        previewFoto.style.display = 'block';
+        if (placeholder) placeholder.style.display = 'none';
+    } else if (previewFoto) {
+        previewFoto.style.display = 'none';
+        if (placeholder) placeholder.style.display = 'block';
+    }
+};
+
+window.salvarConfiguracoesPerfil = function() {
+    const role = document.body.dataset.role;
+    if (!role) return;
+
+    const email = document.getElementById('perfilEmail').value.trim();
+    const senha = document.getElementById('perfilSenha').value;
+    const telefone = document.getElementById('perfilTelefone').value.trim();
+    const cnhCategoria = document.getElementById('perfilCNH').value;
+    const previewFoto = document.getElementById('previewFoto');
+
+    if (!email) return abrirModalMensagem('Informe um e-mail válido.');
+
+    const perfil = {
+        email,
+        senha,
+        telefone,
+        cnhCategoria,
+        fotoBase64: previewFoto && previewFoto.src && !previewFoto.src.includes('undefined') ? previewFoto.src : ''
+    };
+
+    localStorage.setItem(`perfil-${role}`, JSON.stringify(perfil));
+    abrirModalMensagem('Configurações salvas com sucesso.');
+};
+
+window.atualizarPreviewFoto = function(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(loadEvent) {
+        const previewFoto = document.getElementById('previewFoto');
+        const placeholder = document.getElementById('avatarPlaceholder');
+        if (previewFoto) {
+            previewFoto.src = loadEvent.target.result;
+            previewFoto.style.display = 'block';
+        }
+        if (placeholder) placeholder.style.display = 'none';
+    };
+    reader.readAsDataURL(file);
+};
+
 // ============================================================
 // 7. GESTÃO (ADMINISTRATIVO) - CADASTROS
 // ============================================================
@@ -464,22 +537,6 @@ document.addEventListener("click", (e) => {
  */
 
 function filtrarVeiculos() {
-    const input = document.getElementById('inputPesquisa');
-    const filtro = input.value.toLowerCase();
-    const lista = document.getElementById('listaVeiculos');
-    const botoes = lista.getElementsByTagName('button');
-
-    for (let i = 0; i < botoes.length; i++) {
-        let texto = botoes[i].textContent || botoes[i].innerText;
-        if (texto.toLowerCase().indexOf(filtro) > -1) {
-            botoes[i].style.display = "";
-        } else {
-            botoes[i].style.display = "none";
-        }
-    }
-}
-
-function filtrarVeiculos() {
     // Pega os valores dos filtros
     const termoPesquisa = document.getElementById('inputPesquisa').value.toUpperCase();
     const categoriaSelecionada = document.getElementById('filtroCategoria').value.toUpperCase();
@@ -541,7 +598,55 @@ function aplicarFiltros() {
     fecharModalFiltro(); // Fecha após aplicar
 }
 
-// Vincula a pesquisa por texto para rodar a mesma lógica
-function filtrarVeiculos() {
-    aplicarFiltros(); 
-}
+// ============================================================
+// FILTROS DE HISTÓRICO DE CHAMADOS
+// ============================================================
+
+window.aplicarFiltrosHistorico = function() {
+    const diaRaw = document.getElementById('filtroDia').value.trim();
+    const mesRaw = document.getElementById('filtroMes').value.trim();
+    const dia = diaRaw ? diaRaw.padStart(2, '0') : '';
+    const mes = mesRaw ? mesRaw.padStart(2, '0') : '';
+    const ano = document.getElementById('filtroAno').value.trim();
+    const prefixo = document.getElementById('filtroPrefixo').value.trim().toUpperCase();
+    const tecnico = document.getElementById('filtroTecnico').value.trim().toUpperCase();
+
+    const itens = document.querySelectorAll('.historico-item');
+    itens.forEach(item => {
+        const texto = item.textContent.toUpperCase();
+        let visivel = true;
+
+        if (dia) {
+            const regexDia = new RegExp(`\\b${dia}\/`, 'i');
+            visivel = visivel && regexDia.test(texto);
+        }
+        if (mes) {
+            const regexMes = new RegExp(`\/${mes}\/`, 'i');
+            visivel = visivel && regexMes.test(texto);
+        }
+        if (ano) {
+            const regexAno = new RegExp(`\/${ano}\\b`, 'i');
+            visivel = visivel && regexAno.test(texto);
+        }
+        if (prefixo) {
+            visivel = visivel && texto.includes(`PREFIXO ${prefixo}`);
+        }
+        if (tecnico) {
+            visivel = visivel && texto.includes(tecnico);
+        }
+
+        item.style.display = visivel ? '' : 'none';
+    });
+};
+
+window.limparFiltrosHistorico = function() {
+    document.getElementById('filtroDia').value = '';
+    document.getElementById('filtroMes').value = '';
+    document.getElementById('filtroAno').value = '';
+    document.getElementById('filtroPrefixo').value = '';
+    document.getElementById('filtroTecnico').value = '';
+
+    document.querySelectorAll('.historico-item').forEach(item => {
+        item.style.display = '';
+    });
+};

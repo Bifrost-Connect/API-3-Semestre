@@ -17,7 +17,6 @@
             <button id="btnmenu">
                 <img src="img/menu.png" alt="icone menu">
             </button>
-            <span class="titulo">Bem vindo, fulano!</span>
         </div>
 
         <div class="logout">
@@ -27,13 +26,14 @@
         </div>
     </div>
 
-    <!-- MUDAR AQUI PARA ALGO QUE PUXE A QUANTIDADE DE CHAMADOS -->
-
+  <!-- MUDAR AQUI PARA ALGO QUE PUXE A QUANTIDADE DE CHAMADOS -->
+    <!-- 
     <div class="notificacao-bar">
-        <img src="img/bell.png" class="bell">
+        <img src="img/bell.png" class="bell" alt="Notificações">
         <span>Você possui 1 solicitação de serviço!</span>
         <div class="badge">3</div>
     </div>
+    -->
 
     <!-- BLUR DA SIDEBAR -->
 
@@ -45,7 +45,7 @@
         <a href="historicochamados.html">HISTÓRICO DE CHAMADOS</a>
         <a href="cadastroveiculos.html">CADASTRO DE VEÍCULOS</a>
         <a href="duvidas.html">DÚVIDAS</a>
-        <a href="configuracoes.html">CONFIGURAÇÕES</a>
+        <a href="configuracoes-gestor.html">CONFIGURAÇÕES</a>
     </div>
 
     <div class="chamado-card">
@@ -58,18 +58,18 @@
             <div class="coluna">
 
                 <div class="group">
-                    <input required="" type="text" class="input">
+                    <input id="usuario-nome" required type="text" class="input" placeholder=" ">
                     <span class="highlight"></span>
                     <span class="bar"></span>
-                    <label>Nome:</label>
+                    <label for="usuario-nome">Nome:</label>
                 </div>
 
 
                 <div class="group">
-                    <input required="" type="text" class="input">
+                    <input id="usuario-email" required type="email" class="input" placeholder=" ">
                     <span class="highlight"></span>
                     <span class="bar"></span>
-                    <label>E-mail:</label>
+                    <label for="usuario-email">E-mail:</label>
                 </div>
 
             </div>
@@ -77,18 +77,18 @@
             <div class="coluna">
 
                 <div class="group">
-                    <input required="" type="text" class="input">
+                    <input id="usuario-matricula" required type="text" class="input" placeholder=" ">
                     <span class="highlight"></span>
                     <span class="bar"></span>
-                    <label>Matrícula:</label>
+                    <label for="usuario-matricula">Matrícula:</label>
                 </div>
 
 
                 <div class="group">
-                    <input required="" type="text" class="input">
+                    <input id="usuario-senha" required type="password" class="input" placeholder=" ">
                     <span class="highlight"></span>
                     <span class="bar"></span>
-                    <label>Senha:</label>
+                    <label for="usuario-senha">Senha:</label>
                 </div>
 
             </div>

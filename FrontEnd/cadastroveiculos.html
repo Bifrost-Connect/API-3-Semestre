@@ -17,7 +17,6 @@
             <button id="btnmenu">
                 <img src="img/menu.png" alt="icone menu">
             </button>
-            <span class="titulo">Bem vindo, fulano!</span>
         </div>
 
         <div class="logout">
@@ -28,12 +27,13 @@
     </div>
 
     <!-- MUDAR AQUI PARA ALGO QUE PUXE A QUANTIDADE DE CHAMADOS -->
-
+    <!-- 
     <div class="notificacao-bar">
-        <img src="img/bell.png" class="bell">
+        <img src="img/bell.png" class="bell" alt="Notificações">
         <span>Você possui 1 solicitação de serviço!</span>
         <div class="badge">3</div>
     </div>
+    -->
 
     <!-- BLUR DA SIDEBAR -->
 
@@ -45,7 +45,7 @@
         <a href="historicochamados.html">HISTÓRICO DE CHAMADOS</a>
         <a href="cadastrousuarios.html">CADASTRO DE USUÁRIOS</a>
         <a href="duvidas.html">DÚVIDAS</a>
-        <a href="configuracoes.html">CONFIGURAÇÕES</a>
+        <a href="configuracoes-gestor.html">CONFIGURAÇÕES</a>
     </div>
 
     <div class="chamado-card">
@@ -54,32 +54,32 @@
         <div class="chamado-conteudo">
             <div class="coluna">
                 <div class="group">
-                    <input required type="text" class="input">
+                    <input id="veiculo-marca" required type="text" class="input" placeholder=" ">
                     <span class="bar"></span>
-                    <label>Marca:</label>
+                    <label for="veiculo-marca">Marca:</label>
                 </div>
                 <div class="group">
-                    <input required type="text" class="input">
+                    <input id="veiculo-modelo" required type="text" class="input" placeholder=" ">
                     <span class="bar"></span>
-                    <label>Modelo:</label>
+                    <label for="veiculo-modelo">Modelo:</label>
                 </div>
                 <div class="group">
-                    <input required type="text" class="input">
+                    <input id="veiculo-tipo" required type="text" class="input" placeholder=" ">
                     <span class="bar"></span>
-                    <label>Tipo de Veículo:</label>
+                    <label for="veiculo-tipo">Tipo de Veículo:</label>
                 </div>
             </div>
 
             <div class="coluna">
                 <div class="group">
-                    <input required type="text" class="input">
+                    <input id="veiculo-placa" required type="text" class="input" placeholder=" ">
                     <span class="bar"></span>
-                    <label>Placa:</label>
+                    <label for="veiculo-placa">Placa:</label>
                 </div>
                 <div class="group">
-                    <input required type="text" class="input">
+                    <input id="veiculo-prefixo" required type="text" class="input" placeholder=" ">
                     <span class="bar"></span>
-                    <label>Prefixo:</label>
+                    <label for="veiculo-prefixo">Prefixo:</label>
                 </div>
             </div>
         </div>

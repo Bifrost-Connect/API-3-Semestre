@@ -41,10 +41,9 @@
             </div>
             <div class="campos-adicionais">
                 <label for="quilometragem-inicial">Quilometragem Inicial:</label>
-                <label for="quilometragem-inicial" style="display: none;">Quilometragem Final:</label>
+                <label for="quilometragem-final" class="hidden">Quilometragem Final:</label>
                 <input type="text" id="quilometragem-inicial" placeholder="Digite a quilometragem inicial">
-                <input type="text" id="quilometragem-inicial" placeholder="Digite a quilometragem final"
-                    style="display: none;">
+                <input type="text" id="quilometragem-final" placeholder="Digite a quilometragem final" class="hidden">
 
                 <label for="data-inicial">Data:</label>
                 <input type="date" id="data-inicial">
@@ -57,10 +56,10 @@
 
                 <div class="acoes-veiculo">
                     <button id="check-in-veiculo" onclick="abrirModalConfirmacao()">Selecionar Veículo</button>
-                    <button id="btn-checkout" style="display: none;">Cancelar</button>
-                    <button id="btn-salvar-veiculo" style="display: none;">Fazer Check-In</button>
-                    <button id="btn-checkout" style="display: none;">Fazer Check-Out</button>
-                    <button id="btn-abs-veiculo" style="display: none;">Abastecimento</button>
+                    <button id="btn-cancelar-veiculo" class="hidden">Cancelar</button>
+                    <button id="btn-salvar-veiculo" class="hidden">Fazer Check-In</button>
+                    <button id="btn-checkout" class="hidden">Fazer Check-Out</button>
+                    <button id="btn-abs-veiculo" class="hidden">Abastecimento</button>
                 </div>
             </div>
         </div>
@@ -110,7 +109,7 @@
             <h2 class="popup-titulo">Filtros</h2>
 
             <div class="grupo-filtro">
-                <label>Tipo de Veículo</label>
+                <label for="filtroTipo">Tipo de Veículo</label>
                 <select id="filtroTipo">
                     <option value="TODOS">Todos os tipos</option>
                     <option value="PASSEIO">Passeio</option>
@@ -119,7 +118,7 @@
             </div>
 
             <div class="grupo-filtro">
-                <label>Marca</label>
+                <label for="filtroMarca">Marca</label>
                 <select id="filtroMarca">
                     <option value="TODOS">Todas as marcas</option>
                     <option value="FIAT">Fiat</option>
@@ -181,9 +180,18 @@
     <div id="popupAbastecimento" class="popup">
         <div class="popup-content">
             <h2>Abastecimento:</h2>
-            <p><strong>Valor:</strong> <input type="text" id="valor-abastecimento" placeholder="Digite o valor"></p>
-            <p><strong>Data:</strong> <input type="date" id="data-abastecimento"></p>
-            <p><strong>Horário:</strong> <input type="time" id="hora-abastecimento"></p>
+            <p>
+                <label for="valor-abastecimento"><strong>Valor:</strong></label>
+                <input type="text" id="valor-abastecimento" placeholder="Digite o valor">
+            </p>
+            <p>
+                <label for="data-abastecimento"><strong>Data:</strong></label>
+                <input type="date" id="data-abastecimento">
+            </p>
+            <p>
+                <label for="hora-abastecimento"><strong>Horário:</strong></label>
+                <input type="time" id="hora-abastecimento">
+            </p>
 
             <div class="popup-buttons">
                 <button id="btn-voltar" class="btn-voltar">Voltar</button>
@@ -199,7 +207,7 @@
         <button id="btnx" class="close-btn">×</button>
         <a href="chamados.html">CHAMADOS</a>
         <a href="#">DÚVIDAS</a>
-        <a href="#">CONFIGURAÇÕES</a>
+        <a href="configuracoes-tecnico.html">CONFIGURAÇÕES</a>
     </div>
 
     <script src="js/script.js"></script>

@@ -19,7 +19,6 @@ body {
 
 .top-bar {
     width: 95%;
-    max-width: 1180px;
     height: 70px;
     background-color: #002080;
     color: white;
@@ -124,6 +123,7 @@ body {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
+    -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
     cursor: pointer;
 }
@@ -285,6 +285,69 @@ body {
     color: #3f5174;
     font-size: 13px;
     font-weight: 700;
+}
+
+.historico-filtro-panel {
+    padding: 18px 0 0;
+    border-top: 1px solid rgba(0, 32, 128, 0.12);
+    margin-top: 8px;
+}
+
+.historico-filtro-grid {
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(170px, 1fr) );
+    gap: 14px;
+    align-items: end;
+}
+
+.campo-filtro {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.campo-filtro label {
+    font-size: 13px;
+    color: #41516f;
+    font-weight: 700;
+}
+
+.campo-filtro input {
+    width: 100%;
+    min-height: 42px;
+    border: 1px solid rgba(0, 32, 128, 0.18);
+    border-radius: 14px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #1f2d48;
+    background: #ffffff;
+}
+
+.historico-filtro-acoes {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-acao-filtrar,
+.btn-limpar-filtro {
+    border: 0;
+    border-radius: 14px;
+    padding: 12px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-acao-filtrar {
+    background-color: #002080;
+    color: #ffffff;
+}
+
+.btn-limpar-filtro {
+    background-color: #e6e8f5;
+    color: #002080;
+    border: 1px solid rgba(0, 32, 128, 0.18);
 }
 
 .filtro-ativo {
