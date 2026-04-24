@@ -1,0 +1,133 @@
+* {
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #1F255F;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.quadrado {
+  background-color: #ffffff;
+  height: 500px;
+  width: 750px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+img {
+  height: 190px;
+  width: auto;
+}
+
+/* Estilização Comum dos Inputs */
+.inputGroup1, .inputGroup2 {
+  margin: 1em 0;
+  width: 300px;
+  position: relative;
+}
+
+.inputGroup1 input, .inputGroup2 input {
+  font-size: 100%;
+  padding: 0.8em;
+  outline: none;
+  border: 2px solid #2F4D98;
+  background-color: transparent;
+  border-radius: 20px;
+  width: 100%;
+  transition: border-color 0.3s;
+}
+
+/* Espaço extra no input de senha para o ícone não cobrir o texto */
+.inputGroup2 input {
+  padding-right: 45px;
+}
+
+.inputGroup1 label, .inputGroup2 label {
+  font-size: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0.8em;
+  margin-left: 0.5em;
+  pointer-events: none;
+  transition: 0.3s ease;
+  color: #2F4D98;
+}
+
+.inputGroup1 input:focus ~ label,
+.inputGroup1 input:valid ~ label,
+.inputGroup2 input:focus ~ label,
+.inputGroup2 input:valid ~ label {
+  transform: translateY(-50%) scale(.9);
+  margin-left: 1.3em;
+  padding: 0.4em;
+  background-color: #ffffff;
+}
+
+/* Posicionamento do Ícone do Olho DENTRO da caixa */
+.eye-wrapper {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.esenha {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.esenha p {
+  color: #2F4D98;
+  font-size: 14px;
+}
+
+#btn1 {
+  padding: 12.5px 60px;
+  border: 0;
+  border-radius: 100px;
+  background-color: #002080;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+#btn1:active {
+  background-color: #2654dd;
+  transform: scale(0.98);
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .quadrado {
+    width: 90%;
+    height: auto;
+    gap: 20px;
+  }
+  img {
+    height: 120px;
+  }
+  .inputGroup1, .inputGroup2 {
+    width: 100%;
+  }
+}
