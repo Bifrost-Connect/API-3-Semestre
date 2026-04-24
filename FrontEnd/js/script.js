@@ -19,7 +19,7 @@ window.btnindex = async function() {
     const email = emailField.value.trim();
     const senha = senhaField.value.trim();
 
-    if (!email || !senha) return alert("Preencha e-mail e senha.");
+    if (!email || !senha) return abrirModalMensagem("Preencha e-mail e senha.");
 
     try {
         const response = await fetch("http://localhost:8080/usuario/login", {
@@ -37,10 +37,10 @@ window.btnindex = async function() {
             // Redirecionamento condicional baseado no cargo
             window.location.href = data.permissao === "ADMINISTRADOR" ? "telainicial-gestor.html" : "telainicial.html";
         } else { 
-            alert("Login inválido. Verifique suas credenciais."); 
+            abrirModalMensagem("Login inválido. Verifique suas credenciais."); 
         }
     } catch (e) { 
-        alert("Erro de conexão com o servidor."); 
+        abrirModalMensagem("Erro de conexão com o servidor."); 
     }
 };
 
@@ -87,7 +87,105 @@ document.addEventListener('DOMContentLoaded', () => {
 // 3. GERENCIAMENTO DE MODAIS
 // ============================================================
 
-let modalConfirmacao, modalDetalhesVeiculo, modalMensagem;
+let modalConfirmacao, modalDetalhesVeiculo, modalMensagem, modalMensagemOnClose = null;
+
+function garantirEstilosModalMensagem() {
+    if (document.getElementById("modalMensagemGlobalStyles")) return;
+
+    const style = document.createElement("style");
+    style.id = "modalMensagemGlobalStyles";
+    style.textContent = `
+        #modalMensagem {
+            display: none;
+            position: fixed;
+            inset: 0;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(2px);
+            z-index: 2000;
+        }
+
+        #modalMensagem .popup-card {
+            width: min(420px, 100%);
+            background: #ffffff;
+            border-radius: 22px;
+            padding: 24px;
+            box-shadow: 0 18px 48px rgba(1, 19, 70, 0.18);
+            text-align: center;
+        }
+
+        #modalMensagem .popup-titulo {
+            margin-bottom: 12px;
+            color: #002080;
+            font-size: 24px;
+        }
+
+        #modalMensagem .popup-conteudo {
+            margin-bottom: 18px;
+            color: #41516f;
+            line-height: 1.5;
+        }
+
+        #modalMensagem .popup-conteudo p {
+            margin: 0;
+        }
+
+        #modalMensagem .btn-aceitar {
+            border: 0;
+            border-radius: 14px;
+            padding: 12px 22px;
+            background-color: #002080;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+    `;
+
+    document.head.appendChild(style);
+}
+
+function garantirModalMensagem() {
+    garantirEstilosModalMensagem();
+
+    modalMensagem = document.getElementById("modalMensagem");
+    if (!modalMensagem) {
+        const modal = document.createElement("div");
+        modal.id = "modalMensagem";
+        modal.className = "sobreposicao";
+        modal.innerHTML = `
+            <div class="popup-card popup-mensagem">
+                <h2 class="popup-titulo">Aviso</h2>
+                <div class="popup-conteudo">
+                    <p id="textoModalMensagem"></p>
+                </div>
+                <button type="button" class="btn-aceitar">Fechar</button>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        modalMensagem = modal;
+    }
+
+    if (!modalMensagem.dataset.inicializado) {
+        modalMensagem.addEventListener("click", (e) => {
+            if (e.target === modalMensagem) window.fecharModalMensagem();
+        });
+
+        const botaoFechar = modalMensagem.querySelector(".btn-aceitar");
+        if (botaoFechar) {
+            botaoFechar.addEventListener("click", () => window.fecharModalMensagem());
+        }
+
+        modalMensagem.dataset.inicializado = "true";
+    }
+
+    return {
+        modal: modalMensagem,
+        texto: modalMensagem.querySelector("#textoModalMensagem") || modalMensagem.querySelector(".popup-conteudo p")
+    };
+}
 
 /**
  * Abre o modal de listagem/confirmação inicial.
@@ -100,16 +198,20 @@ window.abrirModalConfirmacao = () => {
 /**
  * Exibe uma mensagem genérica de feedback ao usuário.
  */
-window.abrirModalMensagem = (mensagem) => {
-    const texto = document.getElementById("textoModalMensagem");
-    modalMensagem = document.getElementById("modalMensagem");
+window.abrirModalMensagem = (mensagem, onClose) => {
+    const { modal, texto } = garantirModalMensagem();
+    modalMensagemOnClose = typeof onClose === "function" ? onClose : null;
     if (texto) texto.textContent = mensagem;
-    if (modalMensagem) modalMensagem.style.display = "flex";
+    modal.style.display = "flex";
 };
 
 window.fecharModalMensagem = () => {
-    modalMensagem = document.getElementById("modalMensagem");
-    if (modalMensagem) modalMensagem.style.display = "none";
+    const { modal } = garantirModalMensagem();
+    modal.style.display = "none";
+
+    const onClose = modalMensagemOnClose;
+    modalMensagemOnClose = null;
+    if (onClose) onClose();
 };
 
 /**
@@ -169,7 +271,7 @@ window.selecionarVeiculo = function(titulo, arg2, arg3, arg4, arg5, arg6, arg7, 
  * Finaliza a escolha do veículo, salva localmente e prepara o chamado.
  */
 window.confirmarVeiculo = () => {
-    if (!veiculoSelecionado.placa) return alert("Erro: Selecione o veículo novamente.");
+    if (!veiculoSelecionado.placa) return abrirModalMensagem("Erro: Selecione o veículo novamente.");
     
     localStorage.setItem("veiculoSelecionado", JSON.stringify(veiculoSelecionado));
     
@@ -201,7 +303,7 @@ window.salvarVeiculoInfo = async function() {
     localStorage.setItem("observacoes", obs);
 
     const v = JSON.parse(localStorage.getItem('veiculoSelecionado'));
-    if (!v) return alert("Nenhum veículo em atendimento para salvar no servidor.");
+    if (!v) return abrirModalMensagem("Nenhum veículo em atendimento para salvar no servidor.");
 
     try {
         const r = await fetch(`http://localhost:8080/veiculo/${v.prefixo}/atualizar-dados`, {
@@ -210,7 +312,7 @@ window.salvarVeiculoInfo = async function() {
             body: JSON.stringify({ quilometragem: parseFloat(km) || 0, observacoes: obs || "" })
         });
         if (r.ok) abrirModalMensagem("Informações sincronizadas com sucesso!");
-        else alert("Salvo localmente, mas houve erro ao sincronizar com o servidor.");
+        else abrirModalMensagem("Salvo localmente, mas houve erro ao sincronizar com o servidor.");
     } catch (e) { 
         abrirModalMensagem("Informações salvas localmente (Modo Offline)."); 
     }
@@ -220,14 +322,15 @@ window.salvarVeiculoInfo = async function() {
  * Limpa todos os dados de serviço ativo.
  */
 window.checkoutChamado = function() {
-    if (!localStorage.getItem('veiculoSelecionado')) return alert("Não há chamado ativo.");
+    if (!localStorage.getItem('veiculoSelecionado')) return abrirModalMensagem("Não há chamado ativo.");
 
     if (confirm("Deseja finalizar o serviço e realizar o Checkout?")) {
         const chavesParaRemover = ["chamadoAtual", "veiculoSelecionado", "quilometragemInicial", "dataInicial", "horarioInicial", "observacoes"];
         chavesParaRemover.forEach(k => localStorage.removeItem(k));
         
-        alert("Checkout realizado com sucesso!");
-        window.location.reload();
+        abrirModalMensagem("Checkout realizado com sucesso!", () => {
+            window.location.reload();
+        });
     }
 };
 
@@ -294,8 +397,14 @@ window.cadastrarUsuario = async function() {
             method: "POST", headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)
         });
-        if (r.ok) { alert("Usuário cadastrado!"); window.location.href = "telainicial-gestor.html"; }
-    } catch (e) { alert("Erro ao conectar ao servidor."); }
+        if (r.ok) {
+            abrirModalMensagem("Usuário cadastrado!", () => {
+                window.location.href = "telainicial-gestor.html";
+            });
+        }
+    } catch (e) {
+        abrirModalMensagem("Erro ao conectar ao servidor.");
+    }
 };
 
 window.cadastrarVeiculo = async function() {
@@ -311,8 +420,14 @@ window.cadastrarVeiculo = async function() {
             method: "POST", headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)
         });
-        if (r.ok) { alert("Veículo cadastrado!"); window.location.href = "telainicial-gestor.html"; }
-    } catch (e) { alert("Erro de rede."); }
+        if (r.ok) {
+            abrirModalMensagem("Veículo cadastrado!", () => {
+                window.location.href = "telainicial-gestor.html";
+            });
+        }
+    } catch (e) {
+        abrirModalMensagem("Erro de rede.");
+    }
 };
 
 // ============================================================

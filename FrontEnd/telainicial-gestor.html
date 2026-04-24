@@ -10,13 +10,13 @@
 
 <body class="pagina-telainicial">
 
-    <!-- ADICIONAR O BACKEND PARA RECEBER OS DADOS DO USUÁRIO -->
+    <!-- ADICIONAR O BACKEND PARA RECEBER OS DADOS DO USUARIO -->
     <div class="top-bar">
         <div class="left">
             <button id="btnmenu">
                 <img src="img/menu.png" alt="icone menu">
             </button>
-            <span class="titulo">Bem vindo, gestor!</span>
+            <span class="titulo">Bem-vindo, gestor!</span>
         </div>
 
         <div class="logout">
@@ -27,64 +27,177 @@
     </div>
 
     <!-- ADICIONAR O BACKEND PARA RECEBER OS DADOS DOS CHAMADOS -->
+    <section class="dashboard-gestor">
+        <div class="dashboard-topo">
+            <div>
+                <span class="dashboard-tag">Resumo operacional</span>
+                <h2>Dashboard da frota e equipe</h2>
+                <p>Painel inicial com os principais indicadores de viaturas, técnicos e abastecimento.</p>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <article class="dashboard-card destaque-disponivel">
+                <span class="dashboard-label">Viaturas disponíveis</span>
+                <strong class="dashboard-valor">18</strong>
+                <span class="dashboard-info">Prontas para atendimento imediato</span>
+            </article>
+
+            <article class="dashboard-card destaque-manutencao">
+                <span class="dashboard-label">Viaturas em manutenção</span>
+                <strong class="dashboard-valor">4</strong>
+                <span class="dashboard-info">Em oficina ou revisao preventiva</span>
+            </article>
+
+            <article class="dashboard-card destaque-uso">
+                <span class="dashboard-label">Viaturas em uso</span>
+                <strong class="dashboard-valor">9</strong>
+                <span class="dashboard-info">Em rondas e operacoes ativas</span>
+            </article>
+
+            <article class="dashboard-card destaque-tecnicos">
+                <span class="dashboard-label">Técnicos disponíveis</span>
+                <strong class="dashboard-valor">6</strong>
+                <span class="dashboard-info">Aguardando nova alocação</span>
+            </article>
+
+            <article class="dashboard-card destaque-servico">
+                <span class="dashboard-label">Técnicos em serviço</span>
+                <strong class="dashboard-valor">11</strong>
+                <span class="dashboard-info">Atendendo chamados neste momento</span>
+            </article>
+
+            <article class="dashboard-card destaque-combustivel">
+                <span class="dashboard-label">Gasto de combustível mensal</span>
+                <strong class="dashboard-valor">R$ 24.860</strong>
+                <span class="dashboard-info">Total registrado no mes atual</span>
+            </article>
+
+            <article class="dashboard-card destaque-preco">
+                <span class="dashboard-label">Preço médio por litro</span>
+                <strong class="dashboard-valor">R$ 5,87</strong>
+                <span class="dashboard-info">Media consolidada dos abastecimentos</span>
+            </article>
+
+            <article class="dashboard-card destaque-litros">
+                <span class="dashboard-label">Total de litros abastecidos</span>
+                <strong class="dashboard-valor">4.236 L</strong>
+                <span class="dashboard-info">Volume acumulado no mes</span>
+            </article>
+        </div>
+    </section>
 
     <section class="card-historico">
-        <header class="card-historico-titulo">Histórico de Chamados</header>
+        <div class="card-historico-topo">
+            <div>
+                <span class="dashboard-tag historico-tag">Atendimento recente</span>
+                <h2>Histórico de chamados</h2>
+                <p>Últimos atendimentos com prioridade, status, responsável e prazo.</p>
+            </div>
+
+            <div class="historico-resumo">
+                <article class="historico-resumo-card">
+                    <span>Chamados ativos</span>
+                    <strong>5</strong>
+                </article>
+                <article class="historico-resumo-card">
+                    <span>Concluídos hoje</span>
+                    <strong>3</strong>
+                </article>
+                <article class="historico-resumo-card">
+                    <span>Tempo médio</span>
+                    <strong>2h18</strong>
+                </article>
+            </div>
+        </div>
 
         <div class="lista-chamados">
-            <article class="item-chamado">
-                <div>
-                    <span class="chamado-numero">N° 7345</span>
-                    <div class="dados-veiculo">Veículo: Ford Ka Sedan | Prefixo: 1234 | Serviço: Verificação de bomba de combustível</div>
+            <article class="item-chamado item-pendente">
+                <div class="item-chamado-principal">
+                    <div class="item-chamado-topo">
+                        <span class="chamado-numero">N° 7345</span>
+                        <span class="status-chip status-indicar">Aguardando técnico</span>
+                    </div>
+                    <h3>Verificação de bomba de combustível</h3>
+                    <div class="dados-veiculo">Ford Ka Sedan | Prefixo 1234 | Unidade Centro</div>
+                    <div class="meta-chamado">
+                        <span>Prioridade alta</span>
+                        <span>Abertura 08:10</span>
+                        <span>Prazo 10:00</span>
+                        <span>Responsável pendente</span>
+                    </div>
                 </div>
                 <button class="btn-status status-indicar">indicar técnico</button>
             </article>
-            <article class="item-chamado">
-                <div>
-                    <span class="chamado-numero">N° 7344</span>
-                    <div class="dados-veiculo">Veículo: VW Gol | Prefixo: 5678 | Serviço: Fiscalização de GNV</div>
+
+            <article class="item-chamado item-andamento">
+                <div class="item-chamado-principal">
+                    <div class="item-chamado-topo">
+                        <span class="chamado-numero">N° 7344</span>
+                        <span class="status-chip status-andamento">Em andamento</span>
+                    </div>
+                    <h3>Fiscalização de GNV</h3>
+                    <div class="dados-veiculo">VW Gol | Prefixo 5678 | Base Leste</div>
+                    <div class="meta-chamado">
+                        <span>Prioridade média</span>
+                        <span>Técnico Ana Paula</span>
+                        <span>Saída 09:05</span>
+                        <span>Chegada estimada 11:20</span>
+                    </div>
                 </div>
                 <button class="btn-status status-andamento">acompanhar serviço</button>
             </article>
-            <article class="item-chamado">
-                <div>
-                    <span class="chamado-numero">N° 7343</span>
-                    <div class="dados-veiculo">Veículo: Fiat Mobi | Prefixo: 9012 | Serviço:Manutenção preventiva de radar</div>
+
+            <article class="item-chamado item-finalizado">
+                <div class="item-chamado-principal">
+                    <div class="item-chamado-topo">
+                        <span class="chamado-numero">N° 7343</span>
+                        <span class="status-chip status-finalizado">Finalizado</span>
+                    </div>
+                    <h3>Manutenção preventiva de radar</h3>
+                    <div class="dados-veiculo">Fiat Mobi | Prefixo 9012 | Regional Norte</div>
+                    <div class="meta-chamado">
+                        <span>Prioridade programada</span>
+                        <span>Técnico Bruno Lima</span>
+                        <span>Encerrado 17/04 às 16:40</span>
+                        <span>Duração 1h35</span>
+                    </div>
                 </div>
                 <button class="btn-status status-finalizado">visualizar informações</button>
             </article>
-            <article class="item-chamado">
-                <div>
-                    <span class="chamado-numero">N° 7342</span>
-                    <div class="dados-veiculo">Veículo: Chevrolet Onix | Prefixo: 3456 | Serviço: Fiscalização de produtos perigosos</div>
+
+            <article class="item-chamado item-finalizado">
+                <div class="item-chamado-principal">
+                    <div class="item-chamado-topo">
+                        <span class="chamado-numero">N° 7342</span>
+                        <span class="status-chip status-finalizado">Finalizado</span>
+                    </div>
+                    <h3>Fiscalização de produtos perigosos</h3>
+                    <div class="dados-veiculo">Chevrolet Onix | Prefixo 3456 | Corredor Sul</div>
+                    <div class="meta-chamado">
+                        <span>Prioridade alta</span>
+                        <span>Técnico Marcos Vinicius</span>
+                        <span>Encerrado 17/04 às 14:15</span>
+                        <span>Ocorrência resolvida sem pendências</span>
+                    </div>
                 </div>
                 <button class="btn-status status-finalizado">visualizar informações</button>
             </article>
-            <article class="item-chamado">
-                <div>
-                    <span class="chamado-numero">N° 7341</span>
-                    <div class="dados-veiculo">Veículo: Toyota Hilux | Prefixo: 7890 | Serviço: Verificação de cronotacógrafos</div>
-                </div>
-                <button class="btn-status status-andamento">acompanhar serviço</button>
-            </article>
-            <article class="item-chamado">
-                <div>
-                    <span class="chamado-numero">N° 7340</span>
-                    <div class="dados-veiculo">Veículo: Nissan Frontier | Prefixo: 1122 | Serviço: Manutenção de radar com defeito</div>
-                </div>
-                <button class="btn-status status-indicar">indicar técnico</button>
-            </article>
-            <article class="item-chamado">
-                <div>
-                    <span class="chamado-numero">N° 7339</span>
-                    <div class="dados-veiculo">Veículo: Renault Duster | Prefixo: 3344 | Serviço: Manutenção preventiva de radar</div>
-                </div>
-                <button class="btn-status status-finalizado">visualizar informações</button>
-            </article>
-            <article class="item-chamado">
-                <div>
-                    <span class="chamado-numero">N° 7338</span>
-                    <div class="dados-veiculo">Veículo: Hyundai HR | Prefixo: 5566 | Serviço: Manutenção preventiva de radar</div>
+
+            <article class="item-chamado item-andamento">
+                <div class="item-chamado-principal">
+                    <div class="item-chamado-topo">
+                        <span class="chamado-numero">N° 7341</span>
+                        <span class="status-chip status-andamento">Em andamento</span>
+                    </div>
+                    <h3>Verificação de cronotacógrafos</h3>
+                    <div class="dados-veiculo">Toyota Hilux | Prefixo 7890 | Polo Oeste</div>
+                    <div class="meta-chamado">
+                        <span>Prioridade baixa</span>
+                        <span>Técnico Juliana Costa</span>
+                        <span>Saída 07:40</span>
+                        <span>Checklist em 82%</span>
+                    </div>
                 </div>
                 <button class="btn-status status-andamento">acompanhar serviço</button>
             </article>
@@ -94,14 +207,12 @@
     </section>
 
     <!-- BLUR DA SIDEBAR -->
-
     <div id="overlayBlurSidebar" class="overlay-blur-sidebar"></div>
 
     <div id="sidebar" class="sidebar">
         <button id="btnx" class="close-btn">×</button>
         <a href="cadastrousuarios.html">CADASTRO DE USUÁRIOS</a>
         <a href="cadastroveiculos.html">CADASTRO DE VEÍCULOS</a>
-        <a href="historicochamados.html">HISTÓRICO DE CHAMADOS</a>
         <a href="#">DÚVIDAS</a>
         <a href="#">CONFIGURAÇÕES</a>
     </div>

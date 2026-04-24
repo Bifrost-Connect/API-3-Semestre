@@ -5,19 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bifrost Connect - Histórico de Chamados</title>
-    <link rel="stylesheet" href="css/chamados.css">
+    <link rel="stylesheet" href="css/historicochamados.css">
 </head>
 
-<body class="pagina-chamados">
-
-    <!-- BARRA SUPERIOR QUE TEM O LOGOUT E O MENU HAMBURGUER -->
+<body class="pagina-historico">
 
     <div class="top-bar">
         <div class="left">
             <button id="btnmenu">
                 <img src="img/menu.png" alt="icone menu">
             </button>
-            <span class="titulo">Bem vindo, fulano!</span>
+            <span class="titulo">Bem-vindo, gestor!</span>
         </div>
 
         <div class="logout">
@@ -27,14 +25,267 @@
         </div>
     </div>
 
-    <!-- MUDAR AQUI PARA ALGO QUE PUXE A QUANTIDADE DE CHAMADOS -->
+    <section class="historico-dashboard">
+        <div class="historico-dashboard-topo">
+            <div>
+                <span class="dashboard-tag">Histórico operacional</span>
+                <h1>Painel completo de chamados</h1>
+                <p>Acompanhe os atendimentos finalizados e em andamento com dados de prazo, viatura, responsável, prioridade e observações.</p>
+            </div>
+            <button class="btn-dashboard" onclick="window.location.href='telainicial-gestor.html'">Voltar para a tela inicial</button>
+        </div>
 
-    <div class="notificacao-bar">
-        <img src="img/bell.png" class="bell">
-        <span>Histórico de chamados realizados</span>
-    </div>
+        <div class="historico-kpis">
+            <article class="historico-kpi">
+                <span>Total no período</span>
+                <strong>38</strong>
+                <small>Chamados registrados em abril</small>
+            </article>
+            <article class="historico-kpi">
+                <span>Finalizados</span>
+                <strong>29</strong>
+                <small>76% concluídos dentro do prazo</small>
+            </article>
+            <article class="historico-kpi">
+                <span>Em andamento</span>
+                <strong>6</strong>
+                <small>3 com prioridade alta</small>
+            </article>
+            <article class="historico-kpi">
+                <span>Tempo médio</span>
+                <strong>2h18</strong>
+                <small>Da abertura ao encerramento</small>
+            </article>
+        </div>
+    </section>
 
-    <!-- BLUR DA SIDEBAR -->
+    <section class="painel-historico">
+        <div class="painel-historico-topo">
+            <div>
+                <span class="secao-eyebrow">Registros detalhados</span>
+                <h2>Histórico de chamados realizados</h2>
+                <p>Os cards abaixo apresentam um resumo executivo de cada chamado para facilitar triagem e auditoria.</p>
+            </div>
+
+            <div class="filtros-historico">
+                <span class="filtro-chip filtro-ativo">Período: abril/2026</span>
+                <span class="filtro-chip">Base: todas</span>
+                <span class="filtro-chip">Prioridade: todas</span>
+            </div>
+        </div>
+
+        <div class="historico-lista">
+            <article class="historico-item item-pendente">
+                <div class="historico-item-topo">
+                    <div>
+                        <div class="historico-header-linha">
+                            <span class="historico-numero">Chamado N° 7345</span>
+                            <span class="status-chip status-indicar">Aguardando técnico</span>
+                        </div>
+                        <h3>Verificação de bomba de combustível</h3>
+                        <p class="historico-subtitulo">Ford Ka Sedan | Prefixo 1234 | Unidade Centro</p>
+                    </div>
+                    <div class="historico-prioridade prioridade-alta">Prioridade alta</div>
+                </div>
+
+                <div class="historico-detalhes">
+                    <div class="detalhe-bloco">
+                        <span class="detalhe-label">Responsável</span>
+                        <strong>Aguardando alocação</strong>
+                    </div>
+                    <div class="detalhe-bloco">
+                        <span class="detalhe-label">Abertura</span>
+                        <strong>20/04/2026 às 08:10</strong>
+                    </div>
+                    <div class="detalhe-bloco">
+                        <span class="detalhe-label">Prazo</span>
+                        <strong>20/04/2026 às 10:00</strong>
+                    </div>
+                    <div class="detalhe-bloco">
+                        <span class="detalhe-label">Local</span>
+                        <strong>Av. Brigadeiro Faria Lima, 1540</strong>
+                    </div>
+                </div>
+
+                <p class="historico-observacao">Ocorrência aberta após relato de falha intermitente no abastecimento. Veículo indisponível até liberação da inspeção.</p>
+            </article>
+
+            <article class="historico-item item-andamento">
+                <div class="historico-item-topo">
+                    <div>
+                        <div class="historico-header-linha">
+                            <span class="historico-numero">Chamado N° 7344</span>
+                            <span class="status-chip status-andamento">Em andamento</span>
+                        </div>
+                        <h3>Fiscalização de GNV</h3>
+                        <p class="historico-subtitulo">VW Gol | Prefixo 5678 | Base Leste</p>
+                    </div>
+                    <div class="historico-prioridade prioridade-media">Prioridade média</div>
+                </div>
+
+                <div class="historico-detalhes">
+                    <div class="detalhe-bloco">
+                        <span class="detalhe-label">Responsável</span>
+                        <strong>Ana Paula Martins</strong>
+                    </div>
+                    <div class="detalhe-bloco">
+                        <span class="detalhe-label">Saída da base</span>
+                        <strong>20/04/2026 às 09:05</strong>
+                    </div>
+                    <div class="detalhe-bloco">
+                        <span class="detalhe-label">Chegada estimada</span>
+                        <strong>20/04/2026 às 11:20</strong>
+                    </div>
+                    <div class="detalhe-bloco">
+                        <span class="detalhe-label">Checklist</span>
+                        <strong>65% concluído</strong>
+                    </div>
+                </div>
+
+                <p class="historico-observacao">Equipe em campo validando documentação e vedação do kit GNV. Sem desvios críticos até o momento.</p>
+            </article>
+
+            <article class="historico-item item-finalizado">
+                <div class="historico-item-topo">
+                    <div>
+                        <div class="historico-header-linha">
+                            <span class="historico-numero">Chamado N° 7343</span>
+                            <span class="status-chip status-finalizado">Finalizado</span>
+                        </div>
+                        <h3>Manutenção preventiva de radar</h3>
+                        <p class="historico-subtitulo">Fiat Mobi | Prefixo 9012 | Regional Norte</p>
+                    </div>
+                    <div class="historico-prioridade prioridade-baixa">Programado</div>
+                </div>
+
+                <div class="historico-detalhes">
+                    <div class="detalhe-bloco">
+                        <span class="detalhe-label">Responsável</span>
+                        <strong>Bruno Lima</strong>
+                    </div>
+                    <div class="detalhe-bloco">
+                        <span class="detalhe-label">Execução</span>
+                        <strong>17/04/2026 das 15:05 às 16:40</strong>
+                    </div>
+                    <div class="detalhe-bloco">
+                        <span class="detalhe-label">Duração</span>
+                        <strong>1h35</strong>
+                    </div>
+                    <div class="detalhe-bloco">
+                        <span class="detalhe-label">Resultado</span>
+                        <strong>Equipamento calibrado</strong>
+                    </div>
+                </div>
+
+                <p class="historico-observacao">Serviço concluído com recalibração e troca de suporte. Viatura liberada para operação normal no mesmo turno.</p>
+            </article>
+
+            <article class="historico-item item-finalizado">
+                <div class="historico-item-topo">
+                    <div>
+                        <div class="historico-header-linha">
+                            <span class="historico-numero">Chamado N° 7342</span>
+                            <span class="status-chip status-finalizado">Finalizado</span>
+                        </div>
+                        <h3>Fiscalização de produtos perigosos</h3>
+                        <p class="historico-subtitulo">Chevrolet Onix | Prefixo 3456 | Corredor Sul</p>
+                    </div>
+                    <div class="historico-prioridade prioridade-alta">Prioridade alta</div>
+                </div>
+
+                <div class="historico-detalhes">
+                    <div class="detalhe-bloco">
+                        <span class="detalhe-label">Responsável</span>
+                        <strong>Marcos Vinicius</strong>
+                    </div>
+                    <div class="detalhe-bloco">
+                        <span class="detalhe-label">Execução</span>
+                        <strong>17/04/2026 das 12:55 às 14:15</strong>
+                    </div>
+                    <div class="detalhe-bloco">
+                        <span class="detalhe-label">Ocorrência</span>
+                        <strong>Sem irregularidades</strong>
+                    </div>
+                    <div class="detalhe-bloco">
+                        <span class="detalhe-label">Relatório</span>
+                        <strong>Emitido e anexado</strong>
+                    </div>
+                </div>
+
+                <p class="historico-observacao">Inspeção encerrada sem pendências. Registro anexado ao processo e encaminhado para auditoria interna.</p>
+            </article>
+
+            <article class="historico-item item-andamento">
+                <div class="historico-item-topo">
+                    <div>
+                        <div class="historico-header-linha">
+                            <span class="historico-numero">Chamado N° 7341</span>
+                            <span class="status-chip status-andamento">Em andamento</span>
+                        </div>
+                        <h3>Verificação de cronotacógrafos</h3>
+                        <p class="historico-subtitulo">Toyota Hilux | Prefixo 7890 | Polo Oeste</p>
+                    </div>
+                    <div class="historico-prioridade prioridade-baixa">Prioridade baixa</div>
+                </div>
+
+                <div class="historico-detalhes">
+                    <div class="detalhe-bloco">
+                        <span class="detalhe-label">Responsável</span>
+                        <strong>Juliana Costa</strong>
+                    </div>
+                    <div class="detalhe-bloco">
+                        <span class="detalhe-label">Abertura</span>
+                        <strong>20/04/2026 às 07:40</strong>
+                    </div>
+                    <div class="detalhe-bloco">
+                        <span class="detalhe-label">Andamento</span>
+                        <strong>82% do checklist</strong>
+                    </div>
+                    <div class="detalhe-bloco">
+                        <span class="detalhe-label">Próxima etapa</span>
+                        <strong>Validação de lacre</strong>
+                    </div>
+                </div>
+
+                <p class="historico-observacao">Atendimento preventivo em execução. Sem impacto operacional crítico, mas a viatura segue reservada até o fim do procedimento.</p>
+            </article>
+
+            <article class="historico-item item-finalizado">
+                <div class="historico-item-topo">
+                    <div>
+                        <div class="historico-header-linha">
+                            <span class="historico-numero">Chamado N° 7340</span>
+                            <span class="status-chip status-finalizado">Finalizado</span>
+                        </div>
+                        <h3>Inspeção documental de tacógrafo</h3>
+                        <p class="historico-subtitulo">Renault Duster | Prefixo 4412 | Base Central</p>
+                    </div>
+                    <div class="historico-prioridade prioridade-media">Prioridade média</div>
+                </div>
+
+                <div class="historico-detalhes">
+                    <div class="detalhe-bloco">
+                        <span class="detalhe-label">Responsável</span>
+                        <strong>Carla Mendes</strong>
+                    </div>
+                    <div class="detalhe-bloco">
+                        <span class="detalhe-label">Execução</span>
+                        <strong>16/04/2026 das 10:10 às 11:05</strong>
+                    </div>
+                    <div class="detalhe-bloco">
+                        <span class="detalhe-label">Duração</span>
+                        <strong>55 min</strong>
+                    </div>
+                    <div class="detalhe-bloco">
+                        <span class="detalhe-label">Condição final</span>
+                        <strong>Liberado para uso</strong>
+                    </div>
+                </div>
+
+                <p class="historico-observacao">Documentação validada e atualizada no sistema. Não houve necessidade de retorno à oficina.</p>
+            </article>
+        </div>
+    </section>
 
     <div id="overlayBlurSidebar" class="overlay-blur-sidebar"></div>
 
@@ -43,20 +294,9 @@
         <a href="telainicial-gestor.html">TELA INICIAL</a>
         <a href="cadastrousuarios.html">CADASTRO DE USUÁRIOS</a>
         <a href="cadastroveiculos.html">CADASTRO DE VEÍCULOS</a>
-        <a href="duvidas.html">DÚVIDAS</a>
-        <a href="configuracoes.html">CONFIGURAÇÕES</a>
-    </div>
-
-    <div class="chamado-card">
-        <h2 class="chamado-titulo">Histórico de Chamados</h2>
-
-        <!-- PRECISA FAZER O BACKEND PARA PREENCHER OS DADOS -->
-
-        <div class="chamado-conteudo">
-            <p><strong>Chamado 1:</strong> Tipo de serviço - Cliente - Endereço - Data: 01/04/2026</p>
-            <p><strong>Chamado 2:</strong> Tipo de serviço - Cliente - Endereço - Data: 02/04/2026</p>
-            <p><strong>Chamado 3:</strong> Tipo de serviço - Cliente - Endereço - Data: 03/04/2026</p>
-        </div>
+        <a href="historicochamados.html">HISTÓRICO DE CHAMADOS</a>
+        <a href="#">DÚVIDAS</a>
+        <a href="#">CONFIGURAÇÕES</a>
     </div>
 
     <script src="js/script.js"></script>

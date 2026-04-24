@@ -10,7 +10,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     margin: 0;
-    background-color: #ffffffff;
+    background-color: #ffffff;
     padding-top: 20px;
     width: 100%;
     font-family: Arial, sans-serif;
@@ -27,7 +27,6 @@ body {
     align-items: center;
     padding: 0 20px;
 }
-
 
 .left {
     display: flex;
@@ -55,7 +54,7 @@ body {
     width: 26px;
     height: 26px;
     background-color: transparent;
-    border: 0px;
+    border: 0;
 }
 
 #btnmenu img,
@@ -74,19 +73,13 @@ body {
 .notificacao-bar {
     width: 95%;
     height: 35px;
-
     background-color: #002080;
     color: white;
-
     border-radius: 20px;
-
     margin-top: 15px;
-
     display: flex;
     align-items: center;
-
     padding-left: 15px;
-
     position: relative;
 }
 
@@ -103,13 +96,10 @@ body {
     position: absolute;
     top: 1px;
     left: 22px;
-
     background-color: red;
     color: white;
-
     font-size: 10px;
     font-weight: bold;
-
     padding: 2px 6px;
     border-radius: 50%;
 }
@@ -140,7 +130,6 @@ body {
     z-index: 1000;
     backdrop-filter: blur(2px);
 }
-
 
 .sidebar a {
     padding: 10px 20px;
@@ -177,7 +166,6 @@ body {
     transform: scale(1.2);
 }
 
-/* Overlay com Blur para Sidebar */
 .overlay-blur-sidebar {
     display: none;
     position: fixed;
@@ -195,63 +183,274 @@ body {
     display: block;
 }
 
+.dashboard-gestor,
 .card-historico {
     width: 95%;
-    max-width: 800px;
+    max-width: 1180px;
     margin: 15px auto 25px auto;
-    background-color: #eeeeee;
     border-radius: 20px;
     padding: 14px;
     box-shadow: 0 0 14px rgba(0, 0, 0, 0.12);
 }
 
-.card-historico-titulo {
-    display: block;
-    background-color: rgba(0, 0, 128, 0.12);
-    color: #002080;
+.dashboard-gestor {
+    background: linear-gradient(135deg, #002080 0%, #0d36b1 55%, #eef3ff 55%, #f7f9ff 100%);
+    color: #ffffff;
+    padding: 20px;
+}
+
+.dashboard-topo {
+    margin-bottom: 18px;
+}
+
+.dashboard-topo h2 {
+    font-size: 28px;
+    margin: 8px 0 6px 0;
+}
+
+.dashboard-topo p {
+    max-width: 600px;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.dashboard-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    font-size: 13px;
     font-weight: 700;
-    text-align: center;
-    padding: 12px 10px;
-    border-radius: 12px;
-    margin-bottom: 12px;
-    font-size: 17px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+}
+
+.dashboard-card {
+    min-height: 148px;
+    padding: 18px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #0a1738;
+    box-shadow: 0 12px 24px rgba(1, 19, 70, 0.14);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-top: 5px solid #002080;
+}
+
+.dashboard-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #3e4f7d;
+}
+
+.dashboard-valor {
+    font-size: 30px;
+    line-height: 1.1;
+    color: #002080;
+}
+
+.dashboard-info {
+    font-size: 13px;
+    color: #5a6785;
+}
+
+.destaque-disponivel {
+    border-top-color: #14804a;
+}
+
+.destaque-manutencao {
+    border-top-color: #d40000;
+}
+
+.destaque-uso {
+    border-top-color: #f0a500;
+}
+
+.destaque-tecnicos {
+    border-top-color: #2d7ff9;
+}
+
+.destaque-servico {
+    border-top-color: #6f42c1;
+}
+
+.destaque-combustivel {
+    border-top-color: #e85d04;
+}
+
+.destaque-preco {
+    border-top-color: #007f5f;
+}
+
+.destaque-litros {
+    border-top-color: #9c36b5;
+}
+
+.card-historico {
+    background: linear-gradient(180deg, #f7f9ff 0%, #eef3ff 100%);
+    border: 1px solid rgba(13, 54, 177, 0.12);
+}
+
+.card-historico-topo {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    align-items: flex-start;
+    margin-bottom: 18px;
+}
+
+.card-historico-topo h2 {
+    color: #002080;
+    font-size: 28px;
+    margin: 8px 0 6px 0;
+}
+
+.card-historico-topo p {
+    max-width: 620px;
+    font-size: 15px;
+    color: #4e5f86;
+}
+
+.historico-tag {
+    background-color: rgba(0, 32, 128, 0.08);
+    border-color: rgba(0, 32, 128, 0.14);
+    color: #002080;
+}
+
+.historico-resumo {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(120px, 1fr));
+    gap: 12px;
+    min-width: min(100%, 370px);
+}
+
+.historico-resumo-card {
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 32, 128, 0.08);
+    border-radius: 16px;
+    padding: 14px 16px;
+    box-shadow: 0 10px 24px rgba(1, 19, 70, 0.08);
+}
+
+.historico-resumo-card span {
+    display: block;
+    font-size: 13px;
+    color: #667694;
+    margin-bottom: 10px;
+}
+
+.historico-resumo-card strong {
+    font-size: 24px;
+    color: #002080;
 }
 
 .lista-chamados {
     display: grid;
-    gap: 10px;
+    gap: 12px;
 }
 
 .item-chamado {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 16px;
     background-color: #ffffff;
-    border: 1px solid #c2c2c2;
-    border-radius: 12px;
-    padding: 10px;
+    border: 1px solid rgba(0, 32, 128, 0.08);
+    border-radius: 18px;
+    padding: 18px;
     font-size: 14px;
+    box-shadow: 0 10px 24px rgba(1, 19, 70, 0.08);
+    border-left: 6px solid #002080;
+}
+
+.item-pendente {
+    border-left-color: #d40000;
+}
+
+.item-andamento {
+    border-left-color: #f0a500;
+}
+
+.item-finalizado {
+    border-left-color: #14804a;
+}
+
+.item-chamado-principal {
+    flex: 1;
+    min-width: 0;
+}
+
+.item-chamado-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.item-chamado h3 {
+    color: #10234f;
+    font-size: 20px;
+    margin-bottom: 6px;
 }
 
 .chamado-numero {
     font-weight: 700;
     font-size: 18px;
+    color: #002080;
 }
 
 .dados-veiculo {
-    font-size: 16px;
-    color: #333333;
+    font-size: 15px;
+    color: #41516f;
     margin-top: 3px;
+}
+
+.meta-chamado {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.meta-chamado span,
+.status-chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background-color: #edf2ff;
+    color: #28406d;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.status-chip {
+    white-space: nowrap;
 }
 
 .btn-status {
     border: 0;
-    border-radius: 12px;
-    padding: 6px 8px;
+    border-radius: 14px;
+    padding: 10px 14px;
     color: #ffffff;
     font-weight: 700;
     cursor: pointer;
     font-size: 12px;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    box-shadow: 0 10px 20px rgba(13, 54, 177, 0.18);
 }
 
 .status-indicar {
@@ -280,3 +479,51 @@ body {
     cursor: pointer;
 }
 
+@media (max-width: 768px) {
+    body {
+        padding-top: 16px;
+    }
+
+    .top-bar,
+    .dashboard-gestor,
+    .card-historico {
+        width: 94%;
+    }
+
+    .dashboard-gestor {
+        padding: 18px 16px;
+        background: linear-gradient(180deg, #002080 0%, #0d36b1 36%, #eef3ff 36%, #f7f9ff 100%);
+    }
+
+    .dashboard-topo h2 {
+        font-size: 23px;
+    }
+
+    .card-historico-topo {
+        flex-direction: column;
+    }
+
+    .historico-resumo {
+        grid-template-columns: 1fr;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .item-chamado {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .item-chamado-topo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btn-status {
+        width: 100%;
+    }
+}
