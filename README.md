@@ -1,41 +1,50 @@
-<h1># API_3-_semestre</h1>
+<a name="topo"></a>
+<h1 align="center">API 3º Semestre - Sistema de Gestão de Frotas</h1>
 
-![alt text](docs/logo.png)
+<div align="center">
+  <img src="docs/logo.png" alt="Logo do Projeto" width="100%">
+</div>
 
 ---
+
 <div align="center">
-<a href='#topo'
-<a href="#desafio"> 🎯 Desafio </a> |
-<a href="#proposta"> ✅ Proposta de Solução </a> |
-<a href="#product-backlog"> 📖 Backlog do Produto </a> | 
-<a href="#sprints"> 📌 Cronograma de Sprints </a> |
-<a href="#tecnologias"> 💻 Tecnologias </a> |
-<a href="#Manual de Instalação"> 📘 Manual de Instalação </a> |
-<a href="#membros"> 👥 Membros </a> |
+
+<a href="#desafio">🎯 Desafio</a> | 
+<a href="#objetivo">✅ Objetivo</a> | 
+<a href="#product-backlog">📖 Backlog do Produto</a> | 
+<a href="#detalhamento-stories">🏃 Detalhamento das User Stories (DoR)</a> | 
+<a href="#evidencias-dod">🟢 Evidências de Conclusão (DoD)</a> | 
+<a href="#tecnologias">💻 Tecnologias</a> | 
+<a href="#sprints">📌 Cronograma de Sprints</a> | 
+<a href="#manual-instalacao">📘 Manual de Instalação</a> | 
+<a href="#mvp">MVP</a> |
+<a href="#membros">👥 Membros</a>
+
 </div>
 
 <br>
 
-> **Status do Projeto:** Em andamento    
-> **Relatório de Testes:** [MD]() 📊  
-> **Pasta de Documentação:** [Docs]() 📄   
-
+<table>
+  <tr>
+    <td><strong>Status do Projeto:</strong></td>
+    <td>🟡 Em andamento</td>
+  </tr>
+</table>
 
 <br>
 
 <BR>
-<h2>## 📌 Desafio Proposto</h2>
+<h2><a name="desafio"></a>## 📌 Desafio Proposto</h2>
 <p>Atualizar o processo de informações sobre o uso das viaturas próprias da empresa IPEM, e no envio destes dados ao SGI mensalmente. Atualmente é um trabalho manual feito pelos funcionários em pranchetas contidas em cada viatura. O desafio é modernizar esse problema, para que os Técnicos que utilizem as viaturas possam ter esse controle tecnológico dos registros e para o Gestor que ira subir aos dados ao final do mês tenha uma facilidade maior em manejar estes dados.</p>
 
 <br>
 
-<h2>## 🎯 Objetivo</h2>
+<h2><a name="objetivo"></a>## 🎯 Objetivo</h2>
 <p>A Bifrost Connect Permitirá que os técnicos tenham acesso á uma interface interativa, onde irão poder de maneira digital, fornecer informações sobre o serviço que irão realizar e as estatísticas do veículo ao decorrer do mesmo, para que consigam enviar este relatório completo ao Gestor, onde ele poderá separar as informações de forma mais precisa e ágil para o envio ao SGI.</p>
 
 <br>
 
-<h1 id='product-backlog'> 📖 Backlog do Produto </h1>
-
+<h2><a name="product-backlog"></a> 📖 Backlog do Produto </h2>
 
 | Rank | Prioridade | User Story | Estimativa | Sprint |
 |------|-------------|-------------|-------------|---------|
@@ -54,39 +63,59 @@
 
 <br>
 
-
-## 🏃 Detalhamento das User Stories (Definition of Ready Completo)
-
-Para acessar as Regras de Negócio detalhadas, Tipos de Dados, Validações e Mensagens de cada funcionalidade, clique no link abaixo:
-
-👉 **[🔍 Acesse aqui o Detalhamento das User Stories](./docs/processo/DoR/DoR%20Backlog%20do%20Produto)**
+<h2><a name="detalhamento-stories"></a>🏃 Detalhamento das User Stories (DoR)</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Conteúdo Disponível</th>
+      <th>Link de Acesso</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Regras de Negócio, Tipos de Dados, Validações e Mensagens detalhadas de cada funcionalidade.</td>
+      <td><a href="./docs/processo/DoR/DoR%20Backlog%20do%20Produto">🔍 Acessar Detalhamento</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>
 
-## 🟢 Evidências de Conclusão (DoD)
-
-Para garantir que cada User Story entregue cumpre todos os requisitos de qualidade (testes, revisão de código e documentação), mantemos um registro detalhado de cada incremento:
-
-👉 **[📊 Visualizar Relatório de Testes e Evidências](./docs/processo/DoD/README.md)**
-
+<h2><a name="evidencias-dod"></a>🟢 Evidências de Conclusão (DoD)</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Garantia de Qualidade</th>
+      <th>Relatório Completo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Registro de testes unitários, funcionais, revisões de código e evidências de incremento.</td>
+      <td><a href="https://github.com/Bifrost-Connect/API-3-Semestre/blob/main/docs/processo/DoD/Definition%20of%20Done.md">📊 Visualizar Evidências</a></td>
+    </tr>
+  </tbody>
+</table>
 <br>
 
+<h2><a names="tecnologias"></a> 💻 Tecnologias </h2>
+<img src="https://github.com/Bifrost-Connect/API-3-Semestre/blob/main/docs/processo/technologies.png">
 
-<h2 id='sprints'> 📌 Cronograma de Sprints </h2>
+
+<h2><a names="sprints"></a> 📌 Cronograma de Sprints </h2>
 
 | Sprint | Período | Entregas | Documentação |
 |--------|---------|----------|:--------------:|
-| 1 | 16/03 a 05/04 | Login, Módulos Administrativos e Funções Técnicas (Check-in/Out). | [Sprint 1](./docs/processo/sprints/README.md) |
-| 2 | 13/04 a 03/05 | Controle de Disponibilidade, Cálculo de KM e Comentários. | [Sprint 2](./docs/sprint2.md) |
-| 3 | 11/05 a 31/05 | Exportação SGI, Suporte Mecânico e Auditoria. | [Sprint 3](./docs/sprint3.md) |
+| 1 | 16/03 a 05/04 | Login, Módulos Administrativos e Funções Técnicas (Check-in/Out). | [Sprint 1](./docs/processo/sprints/Sprint%1) |
+| 2 | 13/04 a 03/05 | Controle de Disponibilidade, Cálculo de KM e Comentários. | [Sprint 2](./docs/processo/sprints/Sprint%2) |
+| 3 | 11/05 a 31/05 | Exportação SGI, Suporte Mecânico e Auditoria. | [Sprint 3](./docs/processo/sprints/Sprint%3) |
 
 ---
 
 <br>
-<h2 id='manual-instalacao'> 📘 Manual de Instalação </h2>
+<h2><a names="manual-instalacao"></a> 📘 Manual de Instalação </h2>
 
 Este guia fornece as instruções detalhadas para configurar o ambiente de desenvolvimento e executar o projeto **Bifrost Connect** em sua máquina local.
-
 
 ## 🛠️ 1. Pré-requisitos
 
@@ -107,6 +136,26 @@ Antes de iniciar, certifique-se de ter os seguintes programas instalados:
 * **MySQL Workbench:** Interface gráfica para gerenciar o banco de dados MySQL.
     * 📥 **Instalação:** Baixe em [Download MySQL Workbench](https://dev.mysql.com/downloads/workbench/) e configure uma conexão local.
     * ✅ **Verificação:** Teste a conexão e execute: <br>`SELECT VERSION();`
+
+---
+
+<h2>## 🌳 Estratégia de Versionamento</h2>
+
+- main → versão estável
+- develop → integração
+- feature/* → funcionalidades
+- bugfix/* → correções
+
+---
+
+<h2>## 📦 Estrutura do Projeto</h2>
+<code>
+src/
+ ├── controller
+ ├── service
+ ├── repository
+ └── model
+ </code>
 
 ---
 
@@ -138,7 +187,12 @@ Siga os passos abaixo para colocar a aplicação em funcionamento:
     mvn clean compile javafx:run
     ```
 
----
+<h2><a name="mvp"></a>MVP </h2>
+<a href="https://youtu.be/EologluBPWg">
+  <img src="https://img.youtube.com/vi/ID_DO_VIDEO/0.jpg" alt="Assista ao vídeo" width="600">
+</a>
+
+<br>
 
 ### 🛠️ 3. Solução de Problemas (FAQ)
 
@@ -162,85 +216,6 @@ Siga os passos abaixo para colocar a aplicação em funcionamento:
 | <img src="https://avatars.githubusercontent.com/u/206007960?v=4" width=50px> | Vitor Samuel | Desenvolvedor | <a href="https://github.com/VitorRibeiro09"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a> |
 
 ---
-<br>
-
-
-
-<h2 id='sprints'> 📌 Cronograma de Sprints </h2>
-
-| Sprint | Período | Entregas | Documentação |
-|--------|---------|----------|--------|
-| 1 | 16/03 a 50/4 | Entrega dos designs iniciais, juntamente com o sistema de autenticação, módulos administrativos e funções técnicas. | <a href = ""> sprint-1 |
-| 2 | 13/04 a 03/05 |  | <a href = ""> sprint-2 </a>    |
-| 3 | 11/05 a 31/05 |  | <a href = ""> sprint-3 </a>    |
-
----
-<br>
-
-<h2 id='tecnologias'> 💻 Tecnologias </h2>
-
-[![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.java.com/)
-[![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)](https://maven.apache.org/)
-[![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com/)
-[![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
-[![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/)
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/)
-[![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)](ttps://slack.com/intl/pt-br/)
-[![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white)](https://www.notion.com/)
-
----
-
-<h2>## 🌳 Estratégia de Versionamento</h2>
-
-- main → versão estável
-- develop → integração
-- feature/* → funcionalidades
-- bugfix/* → correções
-
----
-
-<h2>## 📦 Estrutura do Projeto</h2>
-<code>
-src/
- ├── controller
- ├── service
- ├── repository
- └── model
- </code>
-
----
 
 <h2> # 📝 Padrão de Commits </h2>
-<p>Os commits devem seguir o padrão **"Padrão de Commits – por Renato Adorno"** para manter a consistência e a clareza no repositório.</p>
-
----
-
-<h3> ## 📌 Formato do Commit</h3>
-
-```
-<tipo>: descrição em tom de ação direta
-<informações adicionais> (opcional)
-```
-
----
-
-<h3>## 🔖 Tipos de Commit</h3>
-
-- **fix** – Soluciona um problema (bug fix). Relacionado ao PATCH no versionamento semântico.  
-- **feat** – Inclui um novo recurso. Relacionado ao MINOR no versionamento semântico.  
-- **docs** – Mudanças na documentação (como README). Não inclui alterações em código.  
-- **style** – Alterações de formatação do código (espaços, indentação, ponto e vírgula, etc.). Não inclui alterações em código.  
-- **refactor** – Refatorações que não alteram funcionalidades, mas melhoram performance ou legibilidade.  
-- **build** – Modificações em arquivos de build e dependências.  
-- **test** – Alterações em testes (criação, modificação ou remoção de testes unitários).  
-- **chore** – Atualizações de tarefas administrativas ou configuração (ex.: ajustes no `.gitignore`).  
-
----
-
-<h3>## 💡 Exemplos</h3>
-
-- `feat: Adiciona botão de login na tela inicial`  
-- `fix: Corrige bug no redirecionamento após login`  
-- `refactor: Refatora lógica de autenticação para usar hooks`  
-- `docs: Documenta processo de deploy no README`  
-- `style: Remove espaços em branco desnecessários`  
+<img src="https://github.com/Bifrost-Connect/API-3-Semestre/blob/main/docs/processo/commit_structure.png">
