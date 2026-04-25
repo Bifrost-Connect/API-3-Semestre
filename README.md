@@ -17,7 +17,6 @@
 <a href="#tecnologias">💻 Tecnologias</a> | 
 <a href="#sprints">📌 Cronograma de Sprints</a> | 
 <a href="#manual-instalacao">📘 Manual de Instalação</a> | 
-<a href="#mvp">MVP</a> |
 <a href="#membros">👥 Membros</a>
 
 </div>
@@ -29,6 +28,11 @@
     <td><strong>Status do Projeto:</strong></td>
     <td>🟡 Em andamento</td>
   </tr>
+  <tr>
+    <td><strong>MVP</strong></td>
+    <td> <a href="https://youtu.be/EologluBPWg">
+  <img src="https://img.youtube.com/vi/ID_DO_VIDEO/0.jpg" alt="Assista ao vídeo" width="600">
+</a></td>
 </table>
 
 <br>
@@ -98,99 +102,179 @@
 </table>
 <br>
 
-<h2><a names="tecnologias"></a> 💻 Tecnologias </h2>
-<img src="https://github.com/Bifrost-Connect/API-3-Semestre/blob/main/docs/processo/technologies.png">
+<a name="tecnologias"></a>
+<h2> 💻 Tecnologias </h2>
 
-
-<h2><a names="sprints"></a> 📌 Cronograma de Sprints </h2>
-
-| Sprint | Período | Entregas | Documentação |
-|--------|---------|----------|:--------------:|
-| 1 | 16/03 a 05/04 | Login, Módulos Administrativos e Funções Técnicas (Check-in/Out). | [Sprint 1](./docs/processo/sprints/Sprint%1) |
-| 2 | 13/04 a 03/05 | Controle de Disponibilidade, Cálculo de KM e Comentários. | [Sprint 2](./docs/processo/sprints/Sprint%2) |
-| 3 | 11/05 a 31/05 | Exportação SGI, Suporte Mecânico e Auditoria. | [Sprint 3](./docs/processo/sprints/Sprint%3) |
-
----
+<div align="center">
+  <img src="https://github.com/Bifrost-Connect/API-3-Semestre/blob/main/docs/processo/technologies.png" alt="Tecnologias Utilizadas" width="800">
+</div>
 
 <br>
-<h2><a names="manual-instalacao"></a> 📘 Manual de Instalação </h2>
 
-Este guia fornece as instruções detalhadas para configurar o ambiente de desenvolvimento e executar o projeto **Bifrost Connect** em sua máquina local.
+<h2><a names="sprints"></a> 📌 Cronograma de Sprints </h2>
+<a name="sprints"></a>
 
-## 🛠️ 1. Pré-requisitos
+<table>
+  <thead>
+    <tr>
+      <th>Sprint</th>
+      <th>Período</th>
+      <th>Entregas Principais</th>
+      <th>Documentação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1</strong></td>
+      <td>16/03 a 05/04</td>
+      <td>Login, Módulos Administrativos e Funções Técnicas (Check-in/Out).</td>
+      <td><a href="./docs/processo/sprints/Sprint%201">📂 Ver Sprint 1</a></td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td>13/04 a 03/05</td>
+      <td>Controle de Disponibilidade, Cálculo de KM e Comentários.</td>
+      <td><a href="./docs/processo/sprints/Sprint%202">📂 Ver Sprint 2</a></td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td>11/05 a 31/05</td>
+      <td>Exportação SGI, Suporte Mecânico e Auditoria.</td>
+      <td><a href="./docs/processo/sprints/Sprint%203">📂 Ver Sprint 3</a></td>
+    </tr>
+  </tbody>
+</table>
 
-Antes de iniciar, certifique-se de ter os seguintes programas instalados:
+<br>
 
-* **Git:** Sistema de controle de versão distribuído, usado para gerenciar o código.
-    * 📥 **Instalação:** Acesse [Download Git](https://git-scm.com/downloads), escolha a versão para seu SO e siga as instruções.
-    * ✅ **Verificação:** Abra o terminal e digite: <br>`git --version`
-* **Java JDK (24 ou superior):** Necessário para rodar o backend e ferramentas como o Maven.
-    * 📥 **Instalação:** Acesse [Download Java JDK](https://www.oracle.com/java/technologies/downloads/), baixe o instalador e configure a variável de ambiente `JAVA_HOME`.
-    * ✅ **Verificação:** Abra o terminal e digite:<br> `java -version`
-* **Maven:** Ferramenta de automação e gerenciamento de dependências para projetos Java.
-    * 📥 **Instalação:** Baixe em [Download Maven](https://maven.apache.org/download.cgi), extraia em uma pasta (ex: `C:\apache-maven`) e adicione a pasta `bin` ao seu `PATH`.
-    * ✅ **Verificação:** Abra o terminal e digite:<br> `mvn -version`
-* **Visual Studio Code (VS Code):** Editor de código recomendado.
-    * 📥 **Instalação:** Baixe em [Download VS Code](https://code.visualstudio.com/).
-    * 🔌 **Extensões Recomendadas:** Instale o *Java Extension Pack*, *Maven for Java* e a extensão *MySQL*.
-* **MySQL Workbench:** Interface gráfica para gerenciar o banco de dados MySQL.
-    * 📥 **Instalação:** Baixe em [Download MySQL Workbench](https://dev.mysql.com/downloads/workbench/) e configure uma conexão local.
-    * ✅ **Verificação:** Teste a conexão e execute: <br>`SELECT VERSION();`
+<a name="manual-instalacao"></a>
+<h2> 📘 Manual de Instalação </h2>
 
----
+<p>Este guia fornece as instruções detalhadas para configurar o ambiente de desenvolvimento e executar o projeto <strong>Bifrost Connect</strong> em sua máquina local.</p>
 
-<h2>## 🌳 Estratégia de Versionamento</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Ferramenta</th>
+      <th>Ação / Instalação</th>
+      <th>Verificação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Git</strong></td>
+      <td><a href="https://git-scm.com/downloads">📥 Download Git</a></td>
+      <td><code>git --version</code></td>
+    </tr>
+    <tr>
+      <td><strong>Java JDK (24+)</strong></td>
+      <td><a href="https://www.oracle.com/java/technologies/downloads/">📥 Download JDK</a></td>
+      <td><code>java -version</code></td>
+    </tr>
+    <tr>
+      <td><strong>Maven</strong></td>
+      <td><a href="https://maven.apache.org/download.cgi">📥 Download Maven</a></td>
+      <td><code>mvn -version</code></td>
+    </tr>
+    <tr>
+      <td><strong>VS Code</strong></td>
+      <td><a href="https://code.visualstudio.com/">📥 Download VS Code</a></td>
+      <td>--</td>
+    </tr>
+    <tr>
+      <td><strong>MySQL Workbench</strong></td>
+      <td><a href="https://dev.mysql.com/downloads/workbench/">📥 Download Workbench</a></td>
+      <td><code>SELECT VERSION();</code></td>
+    </tr>
+  </tbody>
+</table>
 
-- main → versão estável
-- develop → integração
-- feature/* → funcionalidades
-- bugfix/* → correções
+<br>
 
----
+<a name="versionamento"></a>
+<h2> 🌳 Estratégia de Versionamento </h2>
 
-<h2>## 📦 Estrutura do Projeto</h2>
-<code>
+<table>
+  <tr>
+    <td><strong>main</strong></td>
+    <td>Versão estável e produtiva</td>
+  </tr>
+  <tr>
+    <td><strong>develop</strong></td>
+    <td>Integração de novas funcionalidades</td>
+  </tr>
+  <tr>
+    <td><strong>feature/*</strong></td>
+    <td>Desenvolvimento de novas funcionalidades</td>
+  </tr>
+  <tr>
+    <td><strong>bugfix/*</strong></td>
+    <td>Correções de erros</td>
+  </tr>
+</table>
+
+<br>
+
+<h2> 📦 Estrutura do Projeto </h2>
+
+<table>
+  <tr>
+    <td>
+      <pre>
 src/
- ├── controller
- ├── service
- ├── repository
- └── model
- </code>
+ ├── controller  # Lógica de controle e fluxo
+ ├── service     # Regras de negócio
+ ├── repository  # Persistência de dados
+ └── model       # Entidades e classes de dados
+      </pre>
+    </td>
+  </tr>
+</table>
 
----
+<br>
 
-### 🚀 2. Configuração e Execução do Projeto
+<a name="execucao"></a>
+<h2>🚀 2. Configuração e Execução do Projeto</h2>
 
-Siga os passos abaixo para colocar a aplicação em funcionamento:
+<p>Siga os passos abaixo para colocar a aplicação em funcionamento:</p>
 
-1.  **Clonar o Repositório:**
-    Abra o terminal na pasta desejada e execute:
-    ```bash
-    git clone [https://github.com/SEU_USUARIO/API_3-_semestre.git](https://github.com/SEU_USUARIO/API_3-_semestre.git)
-    cd API_3-_semestre
-    ```
+<table>
+  <thead>
+    <tr>
+      <th>Passo</th>
+      <th>Ação</th>
+      <th>Comando / Instrução</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Clonar</strong></td>
+      <td>Clone o repositório e acesse a pasta do projeto.</td>
+      <td><code>git clone https://github.com/SEU_USUARIO/API_3-_semestre.git</code><br><code>cd API_3-_semestre</code></td>
+    </tr>
+    <tr>
+      <td><strong>2. Banco de Dados</strong></td>
+      <td>Configure o MySQL Workbench e execute o script SQL.</td>
+      <td>Crie o schema: <code>CREATE DATABASE ipem_db;</code><br>Localize o script em: <code>/docs/database/</code></td>
+    </tr>
+    <tr>
+      <td><strong>3. Ambiente</strong></td>
+      <td>Abra no VS Code e aguarde as dependências.</td>
+      <td>O <strong>Maven</strong> baixará as bibliotecas automaticamente ao abrir a pasta raiz.</td>
+    </tr>
+    <tr>
+      <td><strong>4. Execução</strong></td>
+      <td>Inicie a aplicação via interface ou terminal.</td>
+      <td><code>mvn clean compile javafx:run</code><br>Ou botão direito em <code>App.java</code> > <strong>Run</strong></td>
+    </tr>
+  </tbody>
+</table>
 
-2.  **Configurar o Banco de Dados:**
-    * Abra o **MySQL Workbench** e conecte-se ao seu servidor local.
-    * Crie o schema: `CREATE DATABASE ipem_db;`
-    * Localize o script SQL em `/docs/database/` e execute-o para criar as tabelas de usuários e viaturas.
-    * **Atenção:** No seu código Java (classe de conexão JDBC), certifique-se de que a URL, o usuário e a senha coincidem com as suas configurações locais.
+<br>
 
-3.  **Abrir no VS Code:**
-    * Abra a pasta raiz do projeto no VS Code.
-    * Aguarde o Maven baixar as dependências automaticamente (verifique o ícone de progresso no canto inferior).
-
-4.  **Rodar a Aplicação:**
-    * Você pode clicar com o botão direito na classe principal (`App.java` ou `Main.java`) e selecionar **Run**.
-    * Ou utilizar o terminal do VS Code:
-    ```bash
-    mvn clean compile javafx:run
-    ```
-
-<h2><a name="mvp"></a>MVP </h2>
-<a href="https://youtu.be/EologluBPWg">
-  <img src="https://img.youtube.com/vi/ID_DO_VIDEO/0.jpg" alt="Assista ao vídeo" width="600">
-</a>
+<blockquote>
+  <strong>⚠️ Atenção:</strong> No seu código Java (classe de conexão JDBC), certifique-se de que a URL, o usuário e a senha coincidem com as suas configurações locais do MySQL.
+</blockquote>
 
 <br>
 
@@ -201,6 +285,9 @@ Siga os passos abaixo para colocar a aplicação em funcionamento:
 * **Conexão Recusada:** Verifique se o serviço do MySQL está rodando (no Windows, procure por "Serviços" e veja se o MySQL está "Em Execução").
 
 ---
+
+<h2> # 📝 Padrão de Commits </h2>
+<img src="https://github.com/Bifrost-Connect/API-3-Semestre/blob/main/docs/processo/commit_structure.png">
 
 <h2 id='membros'> 👥 Membros </h2>
 
@@ -214,8 +301,3 @@ Siga os passos abaixo para colocar a aplicação em funcionamento:
 | <img src="https://avatars.githubusercontent.com/u/179888153?v=4" width=50px> | Luan | Desenvolvedor | <a href="https://github.com/SantoszLuan"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a> |
 | <img src="https://avatars.githubusercontent.com/u/162627331?v=4" width=50px> | Niuan Souza | Desenvolvedor | <a href="https://github.com/NiuanSouza"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a> |
 | <img src="https://avatars.githubusercontent.com/u/206007960?v=4" width=50px> | Vitor Samuel | Desenvolvedor | <a href="https://github.com/VitorRibeiro09"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a> |
-
----
-
-<h2> # 📝 Padrão de Commits </h2>
-<img src="https://github.com/Bifrost-Connect/API-3-Semestre/blob/main/docs/processo/commit_structure.png">
