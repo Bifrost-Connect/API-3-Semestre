@@ -1,6 +1,0 @@
-[submodule "FRONT"]
-	path = FRONT
-	url = git@github.com:Bifrost-Connect/API3--FRONT.git
-[submodule "BACK"]
-	path = BACK
-	url = git@github.com:Bifrost-Connect/API3-BACK.git
