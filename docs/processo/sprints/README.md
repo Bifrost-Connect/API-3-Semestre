@@ -218,9 +218,10 @@
 <br>
 
 <h2 <a name="modelodados"></a>Modelo de Dados </h2>
-<img src="" 
+<img src="https://github.com/Bifrost-Connect/API-3-Semestre/blob/main/docs/processo/bds/Modelagem%20Banco%20de%20Dados.png" 
 alt="Modelo de Dados">
 
 <h2><a name="mvp"></a>MVP </h2>
-<img src="[https:[//github.com/Sync-FATEC/API-2026-6SEM/assets/cf2ae83f-9e76-4ac0-8cf0-48ea02134a28](https://youtu.be/EologluBPWg?si=HjurGpJpuXEruf9C)](https://www.youtube.com/watch?v=EologluBPWg)" 
-alt="MVP">
+<a href="https://youtu.be/EologluBPWg">
+  <img src="https://img.youtube.com/vi/ID_DO_VIDEO/0.jpg" alt="Assista ao vídeo" width="600">
+</a>
