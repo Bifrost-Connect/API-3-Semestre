@@ -1,0 +1,33 @@
+# Arquivos gerados pelo Maven
+target/
+*.jar
+*.war
+*.ear
+
+# Arquivos do IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# Pastas de sistema
+.DS_Store
+Thumbs.db
+
+# Logs e arquivos de sistema
+*.log
+*.tmp
+*.bak
+
+# Pastas do SO
+.settings/
+.classpath
+.project
+
+# Banco de dados local (se estiver usando H2 ou arquivos de banco)
+*.db
+*.h2.db
+
+# Variáveis de ambiente locais
+.env

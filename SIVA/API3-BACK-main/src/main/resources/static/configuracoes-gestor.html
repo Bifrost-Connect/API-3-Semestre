@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bifrost Connect - Configurações do Gestor</title>
+    <link rel="stylesheet" href="css/configuracoes.css">
+</head>
+
+<body class="pagina-configuracoes" data-role="gestor">
+    <div class="top-bar">
+        <div class="left">
+            <button id="btnmenu">
+                <img src="img/menu.png" alt="icone menu">
+            </button>
+        </div>
+
+        <div class="logout">
+            <button id="btnlogout" onclick="btnlogout()">
+                <img src="img/logout.png" alt="icone logout">
+            </button>
+        </div>
+    </div>
+
+    <main class="config-container">
+        <section class="config-header">
+            <h1>Configurações da conta</h1>
+            <p>Atualize seu e-mail, senha, telefone, foto e categoria de CNH.</p>
+        </section>
+
+        <section class="config-card">
+            <aside class="perfil-sidebar">
+                <div class="perfil-imagem">
+                    <img id="previewFoto" alt="Foto de perfil" />
+                    <span id="avatarPlaceholder">Sem foto</span>
+                </div>
+                <div class="perfil-info">
+                    <strong id="perfilNome">Gestor</strong>
+                    <span class="perfil-role">Gestor</span>
+                </div>
+            </aside>
+
+            <form class="perfil-form" onsubmit="event.preventDefault(); salvarConfiguracoesPerfil();">
+                <div class="campo-form">
+                    <label for="perfilEmail">E-mail cadastrado</label>
+                    <input id="perfilEmail" type="email" placeholder="seu.email@dominio.com">
+                </div>
+
+                <div class="campo-form">
+                    <label for="perfilSenha">Senha</label>
+                    <input id="perfilSenha" type="password" placeholder="Digite sua senha">
+                </div>
+
+                <div class="campo-form">
+                    <label for="perfilTelefone">Telefone</label>
+                    <input id="perfilTelefone" type="tel" placeholder="(99) 99999-9999">
+                </div>
+
+                <div class="campo-form">
+                    <label for="perfilFoto">Foto de perfil</label>
+                    <input id="perfilFoto" type="file" accept="image/*" onchange="atualizarPreviewFoto(event)">
+                </div>
+
+                <div class="campo-form">
+                    <label for="perfilCNH">Categoria de CNH</label>
+                    <select id="perfilCNH">
+                        <option value="">Selecione a categoria</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="AB">AB</option>
+                        <option value="AC">AC</option>
+                        <option value="AD">AD</option>
+                        <option value="AE">AE</option>
+                    </select>
+                </div>
+
+                <div class="botoes-actions">
+                    <button type="submit" class="btn-aceitar">Salvar alterações</button>
+                    <button type="button" class="btn-voltar" onclick="window.location.href='telainicial-gestor.html'">Voltar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <div id="overlayBlurSidebar" class="overlay-blur-sidebar"></div>
+
+    <div id="sidebar" class="sidebar">
+        <button id="btnx" class="close-btn">×</button>
+        <a href="telainicial-gestor.html">TELA INICIAL</a>
+        <a href="cadastroveiculos.html">CADASTRO DE VEÍCULOS</a>
+        <a href="cadastrousuarios.html">CADASTRO DE USUÁRIOS</a>
+        <a href="historicochamados.html">HISTÓRICO DE CHAMADOS</a>
+        <a href="configuracoes-gestor.html">CONFIGURAÇÕES</a>
+    </div>
+
+    <script src="js/ui.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
+
+</html>
