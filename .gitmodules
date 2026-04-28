@@ -1,0 +1,6 @@
+[submodule "API3--FRONT"]
+	path = API3--FRONT
+	url = https://github.com/Bifrost-Connect/API3--FRONT.git
+[submodule "API3-BACK"]
+	path = API3-BACK
+	url = https://github.com/Bifrost-Connect/API3-BACK.git
