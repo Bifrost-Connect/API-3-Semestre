@@ -19,6 +19,23 @@
 </table>
 
  **Status da Sprint:** Em andamento
+
+ <table>
+  <tbody>
+    <tr>
+      <td><strong>Capacidade estimada da equipe</strong></td>
+      <td>16 Story Points</td>
+    </tr>
+    <tr>
+      <td><strong>Meta da Sprint</strong></td>
+      <td>Entregar as funcionalidades de gerenciamento do Gestor para o controle de negocio </td>
+    </tr>
+    <tr>
+      <td><strong>Período</strong></td>
+      <td>13/04/2026 – 03/05/2026</td>
+    </tr>
+  </tbody>
+</table>
  </br>
  
 <h2><a name="backlog1"></a>Backlog da Sprint 2</h2>
@@ -85,11 +102,11 @@
   </thead>
   <tbody>
     <tr>
-      <td><a href="#">🖼️ <strong>Wireframes das telas</strong></a></td>
+      <td><a href="docs/Protótipo da Aplicação">🖼️ <strong>Wireframes das telas</strong></a></td>
       <td>Protótipos das interfaces de Login, Menu do Técnico (Check-in/Out), Registro de Abastecimento e Painel Administrativo do Gestor, contendo gastos e viaturas em uso.</td>
     </tr>
     <tr>
-      <td><a href="#">🗄️ <strong>Modelo de dados atualizado</strong></a></td>
+      <td><a href="docs/processo/sprints/Sprint 2/Diagrama Lógico.png">🗄️ <strong>Modelo de dados atualizado</strong></a></td>
       <td>Estrutura de entidades no MySQL contendo as tabelas de Usuários (Funcionários), Viaturas e Logs de utilização.</td>
     </tr>
     <tr>
@@ -97,7 +114,7 @@
       <td>Definição dos cenários de validação para autenticação segura, persistência de dados no banco e regras de negócio para quilometragem.</td>
     </tr>
     <tr>
-      <td><a href="#">📂 <strong>Documentação e design disponíveis</strong></a></td>
+      <td><a href="docs/processo/bds/ipem_db.sql">📂 <strong>Documentação e design disponíveis</strong></a></td>
       <td>Todos os diagramas de fluxo, scripts SQL de criação do banco e arquivos de design organizados na pasta <code>/docs/Sprint2</code>.</td>
     </tr>
   </tbody>
@@ -162,7 +179,7 @@
 <br>
 
 <h2><a name="modelodados"></a>Modelo de Dados </h2>
-<img src="" alt="Modelo de Dados">
+<img src="Diagrama Lógico.png" alt="Modelo de Dados">
 
 <h2><a name="mvp"></a>MVP </h2>
 <a href="">
