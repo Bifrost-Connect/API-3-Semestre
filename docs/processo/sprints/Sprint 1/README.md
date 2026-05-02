@@ -1,6 +1,6 @@
-<h1 style="text-align: center;">📌 Sprint 01</h1>
+<h1 style="text-align: center;">📌 Sprint 02</h1>
 <div align="center">
-  <img src="../../logo.png" alt="Logo do Projeto">
+  <img src="docs/logo.png">
 </div>
 
 <br />
@@ -8,7 +8,7 @@
 <table>
   <thead>
     <tr>
-      <th><a href="#backlog1">Backlog da Sprint 1</a></th>
+      <th><a href="#backlog1">Backlog da Sprint 2</a></th>
       <th><a href="#dor">🏃 DoR</a></th>
       <th><a href="#dod">🏆 DoD</a></th>
       <th><a href="#artefatos">🧾 Artefatos Correlatos</a></th>
@@ -18,74 +18,18 @@
   </thead>
 </table>
 
- **Status da Sprint:** Concluída 
+ **Status da Sprint:** Em andamento
+ </br>
+ 
+<h2><a name="backlog1"></a>Backlog da Sprint 2</h2>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>Capacidade estimada da equipe</strong></td>
-      <td>40 Story Points</td>
-    </tr>
-    <tr>
-      <td><strong>Meta da Sprint</strong></td>
-      <td>Entregar a base funcional do sistema para o usuário técnico: Fazer Check-In e Check-Out.</td>
-    </tr>
-    <tr>
-      <td><strong>Período</strong></td>
-      <td>16/03/2026 – 05/04/2026</td>
-    </tr>
-  </tbody>
-</table>
+| Rank | Prioridade | User Story | Estimativa | Sprint |
+|------|-------------|-------------|-------------|---------|
+| 1 | Alta | Como Gestor da IPEM , **quero ter o controle das viaturas que estão disponíveis e as que estão em uso** ,para que eu possa gerenciar a alocação da frota em tempo real. | 8 | 2 |
+| 2 | Alta | Como Gestor da IPEM, **quero ter acesso aos documentos com o compilado de informações** de cada viatura e chamados,para que eu possa auditar o histórico de uso de forma organizada. | 5 | 2 |
+| 3 | Média | Como Técnico da IPEM, **quero cancelar um Check-in caso tenha selecionado a viatura errada por engano**, antes de iniciar o trajeto,para que o histórico de registros não contenha dados incorretos por falha operacional.| 3 | 2 |
 
-<br>
-
-<h2><a name="backlog1"></a>Backlog da Sprint 1</h2>
-<table>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>Alta</td>
-      <td>Como Usuário (Técnico ou Gestor), quero <strong>realizar login com minha funcional/senha</strong> para que meus registros sejam vinculados automaticamente ao meu perfil.</td>
-      <td>8</td>
-      <td>1</td>
-      <td>✅</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Alta</td>
-      <td>Como Técnico do IPEM, quero <strong>registrar o KM inicial, data e horário</strong> ao retirar o veículo.</td>
-      <td>8</td>
-      <td>1</td>
-      <td>✅</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Alta</td>
-      <td>Como técnico do IPEM, quero <strong>registrar o KM final</strong> ao devolver a viatura.</td>
-      <td>8</td>
-      <td>1</td>
-      <td>✅</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>Alta</td>
-      <td>Como Técnico da IPEM, quero <strong>ter o controle do abastecimento da viatura</strong>, para saber o último abastecimento, e poder registrar quando for abastecer novamente.</td>
-      <td>8</td>
-      <td>1</td>
-      <td>✅</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>Alta</td>
-      <td>Como Gestor da IPEM, quero <strong>registrar novos funcionários e viaturas</strong> no sistema.</td>
-      <td>8</td>
-      <td>1</td>
-      <td>✅</td>
-    </tr>
-  </tbody>
-</table>
-
-<br>
+</br>
 
 <h2><a name="dor"></a>🏃 Definition of Ready</h2>
 
@@ -119,7 +63,7 @@
     </tr>
     <tr>
       <td><strong>Artefatos disponíveis</strong></td>
-      <td>Foram anexados wireframes das telas de chat, solicitação, histórico e cadastro de professores.</td>
+      <td>Foram anexados wireframes das telas de Técnico e Gestor, solicitação de viatura, histórico e histórico de abastecimento.</td>
     </tr>
     <tr>
       <td><strong>Estratégia de testes definida</strong></td>
@@ -142,7 +86,7 @@
   <tbody>
     <tr>
       <td><a href="#">🖼️ <strong>Wireframes das telas</strong></a></td>
-      <td>Protótipos das interfaces de Login, Menu do Técnico (Check-in/Out), Registro de Abastecimento e Painel Administrativo do Gestor.</td>
+      <td>Protótipos das interfaces de Login, Menu do Técnico (Check-in/Out), Registro de Abastecimento e Painel Administrativo do Gestor, contendo gastos e viaturas em uso.</td>
     </tr>
     <tr>
       <td><a href="#">🗄️ <strong>Modelo de dados atualizado</strong></a></td>
@@ -154,7 +98,7 @@
     </tr>
     <tr>
       <td><a href="#">📂 <strong>Documentação e design disponíveis</strong></a></td>
-      <td>Todos os diagramas de fluxo, scripts SQL de criação do banco e arquivos de design organizados na pasta <code>/docs/Sprint1</code>.</td>
+      <td>Todos os diagramas de fluxo, scripts SQL de criação do banco e arquivos de design organizados na pasta <code>/docs/Sprint2</code>.</td>
     </tr>
   </tbody>
 </table>
@@ -175,53 +119,52 @@
     <tr>
       <td><strong>Código desenvolvido e funcional</strong></td>
       <td>A funcionalidade foi implementada conforme os critérios de aceitação e está operando corretamente.</td>
-      <td>✅</td>
+      <td> </td>
     </tr>
     <tr>
       <td><strong>Código versionado no Git</strong></td>
       <td>O código foi commitado seguindo o padrão de mensagens definido (<code>feat(#id): descrição</code>).</td>
-      <td>✅</td>
+      <td> </td>
     </tr>
     <tr>
       <td><strong>Branch específica criada</strong></td>
       <td>A história foi desenvolvida em uma branch própria (<code>feature/&lt;nome-da-funcionalidade&gt;</code>).</td>
-      <td>✅</td>
+      <td> </td>
     </tr>
     <tr>
       <td><strong>Code Review realizado</strong></td>
       <td>O código passou por revisão de pelo menos um membro da equipe via Pull Request.</td>
-      <td>✅</td>
+      <td> </td>
     </tr>
     <tr>
       <td><strong>Código limpo e comentado</strong></td>
       <td>Não há trechos comentados desnecessariamente e o código segue boas práticas de legibilidade.</td>
-      <td>✅</td>
+      <td> </td>
     </tr>
     <tr>
       <td><strong>Testes executados com sucesso</strong></td>
       <td>Todos os testes unitários e funcionais previstos foram executados e aprovados.</td>
-      <td>✅</td>
+      <td> </td>
     </tr>
     <tr>
       <td><strong>Documentação atualizada</strong></td>
       <td>A documentação técnica e/ou de usuário foi atualizada no repositório (<code>/docs</code>).</td>
-      <td>✅</td>
+      <td> </td>
     </tr>
     <tr>
       <td><strong>Incremento apresentado</strong></td>
       <td>A funcionalidade foi demonstrada ao cliente em review de Sprint com vídeo ou demonstração ao vivo.</td>
-      <td>✅</td>
+      <td> </td>
     </tr>
   </tbody>
 </table>
 
 <br>
 
-<h2 <a name="modelodados"></a>Modelo de Dados </h2>
-<img src="https://github.com/Bifrost-Connect/API-3-Semestre/blob/main/docs/processo/bds/Modelagem%20Banco%20de%20Dados.png" 
-alt="Modelo de Dados">
+<h2><a name="modelodados"></a>Modelo de Dados </h2>
+<img src="" alt="Modelo de Dados">
 
 <h2><a name="mvp"></a>MVP </h2>
-<a href="https://youtu.be/EologluBPWg">
+<a href="">
   <img src="https://img.youtube.com/vi/ID_DO_VIDEO/0.jpg" alt="Assista ao vídeo" width="600">
 </a>
