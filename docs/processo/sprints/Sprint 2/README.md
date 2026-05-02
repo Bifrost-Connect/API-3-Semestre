@@ -102,11 +102,11 @@
   </thead>
   <tbody>
     <tr>
-      <td><a href="docs/Protótipo da Aplicação">🖼️ <strong>Wireframes das telas</strong></a></td>
+      <td><a href="../../../Prot%C3%B3tipo%20da%20Aplica%C3%A7%C3%A3o">🖼️ <strong>Wireframes das telas</strong></a></td>
       <td>Protótipos das interfaces de Login, Menu do Técnico (Check-in/Out), Registro de Abastecimento e Painel Administrativo do Gestor, contendo gastos e viaturas em uso.</td>
     </tr>
     <tr>
-      <td><a href="docs/processo/sprints/Sprint 2/Diagrama Lógico.png">🗄️ <strong>Modelo de dados atualizado</strong></a></td>
+      <td><a href="Diagrama Lógico.png">🗄️ <strong>Modelo de dados atualizado</strong></a></td>
       <td>Estrutura de entidades no MySQL contendo as tabelas de Usuários (Funcionários), Viaturas e Logs de utilização.</td>
     </tr>
     <tr>
@@ -114,7 +114,7 @@
       <td>Definição dos cenários de validação para autenticação segura, persistência de dados no banco e regras de negócio para quilometragem.</td>
     </tr>
     <tr>
-      <td><a href="docs/processo/bds/ipem_db.sql">📂 <strong>Documentação e design disponíveis</strong></a></td>
+      <td><a href="../../bds/ipem_db.sql">📂 <strong>Documentação e design disponíveis</strong></a></td>
       <td>Todos os diagramas de fluxo, scripts SQL de criação do banco e arquivos de design organizados na pasta <code>/docs/Sprint2</code>.</td>
     </tr>
   </tbody>
