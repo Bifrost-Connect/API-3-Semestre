@@ -1,6 +1,6 @@
 <h1 style="text-align: center;">📌 Sprint 01</h1>
 <div align="center">
-  <img src="../../logo.png" alt="Logo do Projeto">
+  <img src="https://github.com/Bifrost-Connect/API-3-Semestre/blob/main/docs/logo.png?raw=true" alt="Logo do Projeto">
 </div>
 
 <br />
