@@ -8,7 +8,7 @@
 <table>
   <thead>
     <tr>
-      <th><a href="#backlog1">Backlog da Sprint 1</a></th>
+      <th><a href="#backlog1">Backlog da Sprint 2</a></th>
       <th><a href="#dor">🏃 DoR</a></th>
       <th><a href="#dod">🏆 DoD</a></th>
       <th><a href="#artefatos">🧾 Artefatos Correlatos</a></th>
@@ -21,7 +21,7 @@
  **Status da Sprint:** Em andamento
  </br>
  
-<h2><a name="backlog1"></a>Backlog da Sprint 1</h2>
+<h2><a name="backlog1"></a>Backlog da Sprint 2</h2>
 
 | Rank | Prioridade | User Story | Estimativa | Sprint |
 |------|-------------|-------------|-------------|---------|
@@ -160,3 +160,11 @@
 </table>
 
 <br>
+
+<h2><a name="modelodados"></a>Modelo de Dados </h2>
+<img src="" alt="Modelo de Dados">
+
+<h2><a name="mvp"></a>MVP </h2>
+<a href="">
+  <img src="https://img.youtube.com/vi/ID_DO_VIDEO/0.jpg" alt="Assista ao vídeo" width="600">
+</a>
