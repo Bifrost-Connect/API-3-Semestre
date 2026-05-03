@@ -181,7 +181,10 @@
 <h2><a name="modelodados"></a>Modelo de Dados </h2>
 <img src="Diagrama Lógico.png" alt="Modelo de Dados">
 
-<h2><a name="mvp"></a>MVP </h2>
-<a href="https://www.youtube.com/watch?v=aItwSnatptE">
-  <img src="https://img.youtube.com/vi/ID_DO_VIDEO/0.jpg" alt="Assista ao vídeo" width="600">
-</a>
+<br>
+
+### 🎬 Demonstração em Vídeo - Sprint 1
+
+Confira a execução das funcionalidades acima rodando na aplicação: 
+
+[![YouTube Badge](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)]( https://www.youtube.com/watch?v=aItwSnatptE )
