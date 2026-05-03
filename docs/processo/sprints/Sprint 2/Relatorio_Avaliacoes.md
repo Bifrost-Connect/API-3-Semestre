@@ -28,3 +28,10 @@ As principais validações desta etapa focaram na automação, usabilidade e con
 *   ✅ **Visibilidade do Gestor:** Painel administrativo atualizado mostra instantaneamente quais veículos estão na rua e quais estão no pátio.
 
 ---
+<br>
+
+### 🎬 Demonstração em Vídeo - Sprint 2
+
+Confira a execução das funcionalidades acima rodando na aplicação:
+
+[![YouTube Badge](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](  )
