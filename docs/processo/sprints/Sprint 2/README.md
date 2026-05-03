@@ -110,7 +110,7 @@
       <td>Estrutura de entidades no MySQL contendo as tabelas de Usuários (Funcionários), Viaturas e Logs de utilização.</td>
     </tr>
     <tr>
-      <td><a href="docs/processo/sprints/Sprint 2/Relatorio_Avaliacoes.md">🧪 <strong>Estratégia de testes definida</strong></a></td>
+      <td><a href="https://github.com/Bifrost-Connect/API-3-Semestre/blob/main/docs/processo/sprints/Sprint%202/README.md">🧪 <strong>Estratégia de testes definida</strong></a></td>
       <td>Definição dos cenários de validação para autenticação segura, persistência de dados no banco e regras de negócio para quilometragem.</td>
     </tr>
     <tr>
