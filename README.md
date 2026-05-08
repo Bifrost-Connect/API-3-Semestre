@@ -301,3 +301,31 @@ src/
 | <img src="https://avatars.githubusercontent.com/u/162627331?v=4" width=50px> | Niuan Souza | Desenvolvedor | <a href="https://github.com/NiuanSouza"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a> |
 | <img src="https://avatars.githubusercontent.com/u/264030764?v=4" width=50px> | Samir | Desenvolvedor | <a href="https://share.google/yripwQuvg7AHkaXP0"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a> |
 | <img src="https://avatars.githubusercontent.com/u/206007960?v=4" width=50px> | Vitor Samuel | Desenvolvedor | <a href="https://github.com/VitorRibeiro09"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"></a> |
+
+<h2>📋 Gestão e Alocação de Tarefas</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Plataforma</th>
+      <th>Finalidade e Governança</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white" alt="Notion Badge"></td>
+      <td>
+        A <strong>Bifrost Connect</strong> utiliza o Notion como principal ferramenta de gestão. Através desta plataforma, centralizamos o fluxo de trabalho para:
+        <ul>
+          <li><strong>Criação de Tarefas:</strong> Registro de todas as atividades técnicas e gerenciais.</li>
+          <li><strong>Alocação de Integrantes:</strong> Atribuição de responsabilidades individuais por demanda.</li>
+          <li><strong>Acompanhamento de User Stories:</strong> Monitoramento em tempo real do progresso das funcionalidades.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        🔗 <strong><a href="https://www.notion.so/33ba656f7280808fa1cee382273beaac?v=33ba656f72808016929d000c07903970&source=copy_link">Acesse aqui o nosso Board de Gestão no Notion</a></strong>
+      </td>
+    </tr>
+  </tbody>
+</table>
