@@ -1,0 +1,27 @@
+Nome da Equipe: Sambold
+
+1) Daniel Natan - Product Owner
+2) Guilherme Gomes - DEV 
+3) João Gabriel - DEV 
+4) Leonardo Graciano - DEV
+5) Luan santos - DEV
+6) Niaun Souza- DEV
+7) Samir - DEV 
+8) Vitor Samuel - DEV 
+
+Critérios de Permanência:
+1- Comunicação ativa
+Todos os intrigantes devem estar atentos a comunicação no grupo para estar atento as informações. Em casos demora de resposta se puder justificar.
+Em casos de tarefas comunicar sempre que possível seu atraso, e sua dificuldade para organização do grupo.
+
+2- Entregas.
+Cumprir os prazos de entrega. Em casos de atraso nas entregas comunicar em ate 3 dia, dando uma justificativa para atraso.
+Entregas atrasadas sem justificativa será aplicado 2 advertências. Atrasos com justificativa será avaliado a questão do atraso. podendo ser aplicada 1 advertência ou não. Também será avaliado a demora do atraso em questão de dias. 
+
+3- Faltas 
+Faltas em aulas (principalmente Laboratório de desenvolvimento de banco de dados e Arquitetura e Modelagem de Banco de Dados) avisar com antecedência.
+
+4- Qualidade de entrega
+Entrega sempre o melhor que puder. 
+
+Caso integrante tenha 3 advertências será analisado sua permanência no grupo.
