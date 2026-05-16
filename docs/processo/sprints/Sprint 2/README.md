@@ -18,7 +18,7 @@
   </thead>
 </table>
 
- **Status da Sprint:** Em andamento
+ **Status da Sprint:** Concluída
 
  <table>
   <tbody>
