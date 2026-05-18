@@ -2,7 +2,7 @@
 <h1 align="center">API 3º Semestre - Sistema de Gestão de Frotas</h1>
 
 <div align="center">
-  <img src="docs/logo.png" alt="Logo do Projeto" width="100%">
+  <img src="docs/img/logo.png" alt="Logo do Projeto" width="100%">
 </div>
 
 ---
@@ -106,7 +106,7 @@
 <h2> 💻 Tecnologias </h2>
 
 <div align="center">
-  <img src="https://github.com/Bifrost-Connect/API-3-Semestre/blob/main/docs/processo/technologies.png" alt="Tecnologias Utilizadas" width="800">
+  <img src="docs/img/technologies.png" width="800">
 </div>
 
 <br>
@@ -287,7 +287,7 @@ src/
 ---
 
 <h2> # 📝 Padrão de Commits </h2>
-<img src="https://github.com/Bifrost-Connect/API-3-Semestre/blob/main/docs/processo/commit_structure.png">
+<img src="docs/img/commit_structure.png">
 
 <h2 id='membros'> 👥 Membros </h2>
 
