@@ -187,5 +187,5 @@
 
 Confira a execução das funcionalidades acima rodando na aplicação: 
 
-[![YouTube Badge](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)]( https://www.youtube.com/watch?v=aItwSnatptE )
+[![YouTube Badge](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)]( http://youtube.com/watch?v=MVj0pYbLtWQ&t=4s )
 
